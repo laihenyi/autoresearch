@@ -21,3 +21,27 @@ dev/
 
 # Results file
 results.tsv
+
+# Coaching model artifacts (large binaries)
+distilled/coaching_adapter*/
+distilled/coaching_adapter_v1/
+distilled/coaching_adapter_v3/
+distilled/coaching_merged/
+distilled/sessions/
+
+# External datasets (large, download separately)
+external_data/esconv/
+external_data/CPsyCoun/
+external_data/SMILECHAT/
+external_data/empathetic_dialogues_llm/
+external_data/AnnoMI/
+external_data/PsyQA/
+external_data/empatheticdialogues/
+external_data/empatheticdialogues.tar.gz
+external_data/empathetic_dialogues/
+
+# Large converted data files
+external_data/converted/smilechat_sft.jsonl
+external_data/converted/empathetic_llm_sft.jsonl
+external_data/converted/psyqa_distill_input.jsonl
+external_data/converted/sft_v3_combined.jsonl
