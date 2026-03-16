@@ -45,3 +45,43 @@ external_data/converted/smilechat_sft.jsonl
 external_data/converted/empathetic_llm_sft.jsonl
 external_data/converted/psyqa_distill_input.jsonl
 external_data/converted/sft_v3_combined.jsonl
+external_data/converted/sft_v3_clean.jsonl
+
+# Experiment logs
+*.log
+distilled/*.log
+
+# Backups
+backups/
+
+# Intermediate training data & batches
+distilled/round*_replacements.json
+distilled/round*_batch*.json
+distilled/coaching_sft_*_backup.jsonl
+distilled/coaching_sft_r*.jsonl
+distilled/coaching_sft_targeted.jsonl
+
+# Unsloth cache
+unsloth_compiled_cache/
+
+# Eval results (regenerated)
+coaching_results_detail.json
+
+# Gold distillation data (large, regenerable)
+distilled/gold_r*.jsonl
+distilled/chinese_dpo*.jsonl
+distilled/annomi_*.jsonl
+distilled/mixed_dpo.jsonl
+distilled/multilingual_therapy_*.jsonl
+distilled/podcast_coaching_raw.jsonl
+distilled/dpo_v*.jsonl
+distilled/exp_*_*.jsonl
+
+# Coaching research artifacts
+coaching_research/
+
+# One-off experiment scripts
+eval_baseline_stability.sh
+eval_param_search.sh
+replace_weak_convos.py
+extract_annomi_advanced_dpo.py
