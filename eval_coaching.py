@@ -33,7 +33,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 # ── Config ──────────────────────────────────────────────────────────────────
 MODEL_ID = "Qwen/Qwen2.5-3B-Instruct"
-DEFAULT_ADAPTER = "distilled/coaching_adapter_v3_dpo"
+DEFAULT_ADAPTER = "distilled/coaching_adapter_r4_dpo"
 DATA_PATH = "distilled/coaching_sft.jsonl"
 RESULTS_PATH = "coaching_results.tsv"
 GPU_ID = 0
@@ -377,9 +377,9 @@ def load_model(adapter_dir: str, gpu_id: int, model_id: str = None):
     return model, tokenizer
 
 
-TEMPERATURE = 0.7  # default, can be overridden via --temperature
-REP_PENALTY = 1.1  # default, can be overridden via --rep-penalty
-TOP_P = 0.9        # default, can be overridden via --top-p
+TEMPERATURE = 0.01  # low temp for consistent coaching style (was 0.7)
+REP_PENALTY = 1.0   # must be 1.0 for coaching — reflection technique needs repetition (was 1.1)
+TOP_P = 0.9         # default, can be overridden via --top-p
 
 def generate(model, tokenizer, messages, max_new_tokens=256):
     text = tokenizer.apply_chat_template(
