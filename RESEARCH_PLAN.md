@@ -994,11 +994,18 @@ GPU 配置：
 - 資源清理完成：70G→7G
 - **注意**：與原始 v3_dpo V2=91.7 仍有 3.4 分差距（但 91.7 為單次跑，未經多次驗證）
 
-### Step 2：Orchestration 規則微調
-- **目標**：降低 Orchestration eval 方差，提升穩定分數
-- **剩餘失敗項**：goaltending_intervened、technique_varied、graceful_message、contracting_measurement、layer_check_asked
-- **方法**：針對每個失敗項分析 root cause，在 PhaseRouter / coach_hint 做最小修改
-- **成功標準**：3 次平均 ≥ 90%
+### Step 2：Orchestration 規則微調 ✅ 完成
+- **目標**：3 次平均 ≥ 90%
+- **結果**：87% → **93.7% ± 2.5%**（3 runs: 94%, 96%, 91%）
+- **修復內容**（dialogue.py `_build_coach_hint`）：
+  1. technique_varied — 連續重複偵測 + 強制換技巧
+  2. goaltending — golden_thread_alignment < 0.5 觸發拉回提示
+  3. layer_check — INSIGHT 階段自動提醒「底下還有更多嗎？」
+  4. graceful_message — early_exit 時覆蓋 hint 為溫和結束模板
+  5. contracting_measurement — OPENING 階段提醒衡量方式
+- **穩定失敗（無法修復）**：
+  - graceful_message（3/3 失敗）— 3B 模型不照用模板語言
+  - contradiction_surfaced（3/3 失敗）— 需高階推理，3B 能力不足
 
 ### Step 3：Phase 5 部署
 - **目標**：R4 adapter 接入 LINE app 正式上線
