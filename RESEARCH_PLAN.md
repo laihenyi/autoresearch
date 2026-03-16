@@ -1024,3 +1024,67 @@ GPU 配置：
   4. 端對端測試（LINE webhook → Haiku reasoning → vLLM 3B → LINE reply）
   5. 24hr 穩定性測試
 - **成功標準**：穩定運行 24 小時，延遲 < 2s，零簡體字輸出
+
+### Step 4.1：Hybrid 架構實機測試（2026-03-16）
+
+**部署配置**：
+- Haiku (claude-haiku-4-5-20251001) → [INTERNAL] 結構化推理
+- 3B coaching_adapter_r4_dpo (LocalLLMClient) → 教練回應生成
+- LINE Bot webhook → 真實用戶語音+文字測試
+
+**測試 Session 1（修正前）— 鸚鵡複述**：
+
+| Turn | User | Coach | 問題 |
+|------|------|-------|------|
+| 1 | HI | HI. | — |
+| 2 | 總結我先前的對話內容 | 你總結了先前對話的內容。 | 逐字複述 |
+| 3 | 可以告訴我你是誰嗎你是做什麼樣的服務 | 你是誰——你想要成為什麼樣的服務？ | 複述+改寫 |
+| 4 | \x00\x00你好 | 你好。 | STT null bytes |
+| 5 | 我是客戶 | 你說你是客戶。你今天想要探索什麼？ | 複述 |
+| 6 | 心情不好 | 心情不好。你最想帶走什麼？ | 複述+卡死 |
+| 7 | 不知道 | 不知道。你最想帶走什麼？ | 卡死（同問題） |
+| 8 | 好心情 | 好心情。你最想帶走什麼？ | 卡死（同問題×3） |
+
+**問題診斷**：
+1. `repetition_penalty=1.0`：eval 時最佳（88.5），但生產環境導致逐字複述
+2. `_build_coach_hint` 指令「反映時請使用這些詞」→ 3B 理解為「逐字複述」
+3. `temperature=0.01`：diversity 過低，問題卡死循環
+4. STT Whisper artifact：`\x00\x00` 前綴未清理
+
+**修正措施**（commit 40a096a）：
+1. coach_hint 加入全域反複述禁令：「禁止逐字複述客戶的話。反映≠複述」
+2. 關鍵詞指令從「反映時請使用這些詞」→「自然融入（但不要直接複述整句話）」
+3. hybrid 模式 temperature 0.01→0.1（eval 分數僅降 1.3 但 diversity 大幅提升）
+4. STT handler 加入 `text.replace('\x00', '').strip()`
+
+**測試 Session 2（修正後）— 幻覺+卡死**：
+
+| Turn | User | Coach | 問題 |
+|------|------|-------|------|
+| 1 | HI | HI. | — |
+| 2 | 你好 | 我注意到你用了「好累」。這份累，你想要什麼？ | **幻覺**：「你好」≠「好累」 |
+| 3 | 我沒有說好累啊！ | 你說「沒有說好累」。這份累，你想要什麼？ | 無視修正+卡死 |
+| 4 | 沒有啊 | 你說「沒有」。這份累，你想要什麼？ | 卡死（同問題×3） |
+
+**新問題分析**：
+1. **幻覺（hallucination）**：反複述禁令生效（不再逐字複述），但模型的反映能力太弱，在短輸入（≤2字）下產生語義幻覺（「你好」→「好累」）
+2. **問題卡死未解**：temp=0.1 仍不足以打破 generation loop
+3. **distribution shift 確認**：eval_coaching.py 使用長段落 user turn（30-80字），真實語音訊息多為短語（1-5字），模型在此分布外表現極差
+
+**關鍵洞見**：
+
+> **eval 環境 vs 生產環境的根本落差**：
+> - eval_coaching.py：訓練時的 system prompt + 長段落 user turns → 88.5 分
+> - 生產 hybrid：PromptComposer prompt + coach_hint + 短語音 user turns → 不可用
+>
+> 3B 模型在兩個面向同時 out-of-distribution：
+> 1. **Prompt 格式**：從未見過 PromptComposer + coach_hint 的 prompt 結構
+> 2. **輸入長度**：從未在 1-5 字的超短輸入上訓練
+>
+> 單純調參數（rep_penalty, temperature）無法解決 distribution shift。
+
+**後續方向**：
+- **短期 fallback**：user_input < N 字時，跳過 3B 直接用 Haiku 生成回應
+- **中期 Prompt 對齊**：coach_llm 路徑使用訓練時的原始 system prompt（而非 PromptComposer）
+- **中期 S2 重訓**：用 hybrid 架構的 prompt 格式 + 短輸入場景重新訓練 Stage 2
+- **評估**：是否暫停 local 引擎上線，先完善再部署
