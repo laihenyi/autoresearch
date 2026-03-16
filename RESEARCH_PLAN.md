@@ -1007,18 +1007,20 @@ GPU 配置：
   - graceful_message（3/3 失敗）— 3B 模型不照用模板語言
   - contradiction_surfaced（3/3 失敗）— 需高階推理，3B 能力不足
 
-### Step 3：Phase 5 部署
+### Step 3：Pre-deploy 加固 ✅ 完成
+- **Step 4 Pin 版本**：pyproject.toml `[local]` extra — torch==2.10.0, transformers==5.3.0, peft==0.18.1, bitsandbytes==0.49.2
+- **Step 6 OpenCC s2t**：local_client.py + vllm_client.py 輸出路徑都加了簡→繁轉換
+- **Step 7 vLLM**：
+  - `vllm_client.py` — OpenAI-compatible API client，同介面 drop-in
+  - `merge_adapter.py` — QLoRA adapter 合併為獨立模型
+  - `start_vllm.sh` — 一鍵啟動 vLLM server
+
+### Step 4：Phase 5 部署
 - **目標**：R4 adapter 接入 LINE app 正式上線
 - **內容**：
-  - 更新 Breakthrough-Coaching 的 adapter 路徑指向 R4
-  - 端對端測試（LINE webhook → Haiku reasoning → 3B generation → LINE reply）
-  - 監控面板：延遲、錯誤率、用戶滿意度
-- **成功標準**：穩定運行 24 小時無異常
-
-### Step 4：基礎設施加固
-- **目標**：避免重蹈「訓練不可重現」覆轍
-- **內容**：
-  - Pin transformers/trl/peft 版本到 requirements.txt
-  - 建立 adapter 自動備份機制（訓練前 pre-hook）
-  - CI eval pipeline：push 時自動跑 eval_coaching.py 確認分數不退步
-- **成功標準**：版本鎖定 + 備份自動化 + eval gate 完成
+  1. Merge adapter → merged_model/（`python scripts/merge_adapter.py`）
+  2. 啟動 vLLM（`bash scripts/start_vllm.sh`）
+  3. 更新 LINE Bot 設定指向 VLLMClient
+  4. 端對端測試（LINE webhook → Haiku reasoning → vLLM 3B → LINE reply）
+  5. 24hr 穩定性測試
+- **成功標準**：穩定運行 24 小時，延遲 < 2s，零簡體字輸出
