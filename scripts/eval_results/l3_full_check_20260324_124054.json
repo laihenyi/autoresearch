@@ -1,0 +1,4942 @@
+{
+  "tag": "full_check",
+  "timestamp": "2026-03-24T12:40:54.315513",
+  "source": "structured_output_experiment/generated_sessions_7b.jsonl",
+  "total_sessions": 211,
+  "per_session": [
+    {
+      "session_idx": 0,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": false,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from deepening to closing at turn 8",
+        "opening_contracting": "desired outcome never established",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 7-9",
+        "technique_diversity_per_phase": "phase 'closing' has 2 turns but only 1 technique: open_question",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 1,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from deepening to closing at turn 6",
+        "opening_contracting": "desired outcome never established",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 5-7",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 2,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from deepening to closing at turn 7",
+        "opening_contracting": "desired outcome never established",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 3,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": false,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_sequence": "commitment step out of order: 'support' after 'identity'",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 4,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 5,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 6,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 7,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 8,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "no_advice": "advice detected at turn 8: 「十五年的經驗是可以轉換過去的」——要跨出這嘗試的第一步，你具體需要做什麼？...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 9,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 10,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: action, timeline"
+      }
+    },
+    {
+      "session_idx": 11,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": false,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_sequence": "commitment step out of order: 'support' after 'identity'",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 12,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 13,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 14,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 15,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "no_advice": "advice detected at turn 6: 「為什麼對自己這麼苛刻」——既然你看到了這份不合理的苛刻，現在，那個原本的『問題解決者』要如何跨出重新連結團隊的第一步？...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 16,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 2-4",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 17,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 18,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": false,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "no_advice": "advice detected at turn 6: 看懂了逃走的懦弱後——今天晚上回家，當她再次拖著疲憊的身體進門時，你想要怎麼選擇你的第一步動作？...",
+        "commitment_sequence": "commitment step out of order: 'support' after 'identity'",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 19,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 20,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 21,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 2-4",
+        "commitment_action_timeline": "missing commitment: action, timeline"
+      }
+    },
+    {
+      "session_idx": 22,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 23,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 24,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 25,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 26,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 27,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 28,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 29,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 30,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 31,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 32,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_advice": "advice detected at turn 5: 「殼被拔掉，覺得冷冷的但是好輕盈」——帶著這份輕盈的好奇心，這個週末，有哪一件純粹只是為了『我』高興、不為任何人服務的小...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 33,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "no_advice": "advice detected at turn 1: 「很想做，但一直不敢開始」——當你想像自己已經踏出第一步時，你心裡響起的那個阻止你的聲音，第一句話說了什麼？...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 34,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 35,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 36,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 37,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 38,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 39,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 40,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 41,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 42,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 43,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 44,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 45,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 46,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 47,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 48,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 49,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)"
+      }
+    },
+    {
+      "session_idx": 50,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 51,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 52,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 53,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 54,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 55,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 56,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)"
+      }
+    },
+    {
+      "session_idx": 57,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)"
+      }
+    },
+    {
+      "session_idx": 58,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 59,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 60,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 61,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 62,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 63,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 64,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 65,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 66,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from exploring to insight at turn 3",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 0 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 67,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 68,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)"
+      }
+    },
+    {
+      "session_idx": 69,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 70,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 71,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 72,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 73,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 74,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 75,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 76,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 77,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 78,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_advice": "advice detected at turn 4: 「承認有債務是第一步，需要一個知道真相的人」——你身邊有沒有一個你信任的人，可以在這週跟他坐下來，把那張你從來不敢給任何...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 79,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 80,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 81,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 82,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 83,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 84,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 85,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 86,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 87,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": false,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "insight_minimal_response": "insight response too long (84 chars): 「如果你倒了誰來照顧她，所以不敢倒只能撐」——可是你剛才自己說了：如果你倒了，她就沒有人照顧了。這代表什麼？代表你照顧好...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 88,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 89,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_advice": "advice detected at turn 2: 「她越靠近越害怕，與其讓她摧毀你不如你先摧毀關係」——你覺得你這套『先摧毀』的策略，最後摧毀的比較多的是那段關係，還是你...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 90,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 91,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 92,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 93,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 94,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 95,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 96,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 97,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 98,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 99,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 100,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 101,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 102,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 103,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 104,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": false,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_evaluation": "evaluation detected at turn 3: 「花了三十年等一句她說不出口的『你很棒』——你的人生不需要她的認證就已經是好的了」。...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 105,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 106,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 107,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": false,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_sequence": "commitment step out of order: 'support' after 'identity'",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 108,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 109,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 110,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 111,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 112,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "no_advice": "advice detected at turn 8: 「十五年的經驗是可以轉換過去的」——要跨出這嘗試的第一步，你具體需要做什麼？...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 113,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 114,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: action, timeline"
+      }
+    },
+    {
+      "session_idx": 115,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": false,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_sequence": "commitment step out of order: 'support' after 'identity'",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 116,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 117,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 118,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 119,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "no_advice": "advice detected at turn 6: 「為什麼對自己這麼苛刻」——既然你看到了這份不合理的苛刻，現在，那個原本的『問題解決者』要如何跨出重新連結團隊的第一步？...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 120,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 2-4",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 121,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 122,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": false,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "no_advice": "advice detected at turn 6: 看懂了逃走的懦弱後——今天晚上回家，當她再次拖著疲憊的身體進門時，你想要怎麼選擇你的第一步動作？...",
+        "commitment_sequence": "commitment step out of order: 'support' after 'identity'",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 123,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 124,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 125,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 2-4",
+        "commitment_action_timeline": "missing commitment: action, timeline"
+      }
+    },
+    {
+      "session_idx": 126,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 127,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 128,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 129,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 130,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 131,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 132,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 133,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 134,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 135,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 136,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_advice": "advice detected at turn 5: 「殼被拔掉，覺得冷冷的但是好輕盈」——帶著這份輕盈的好奇心，這個週末，有哪一件純粹只是為了『我』高興、不為任何人服務的小...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 137,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "no_advice": "advice detected at turn 1: 「很想做，但一直不敢開始」——當你想像自己已經踏出第一步時，你心裡響起的那個阻止你的聲音，第一句話說了什麼？...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 138,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 139,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 140,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 141,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 142,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 143,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 144,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 145,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 146,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 147,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 148,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 149,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 150,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 151,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 152,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 153,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)"
+      }
+    },
+    {
+      "session_idx": 154,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 155,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 156,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 157,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 158,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_consecutive_technique": "3 consecutive 'reflection/open_question' at turns 1-3",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 159,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 160,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)"
+      }
+    },
+    {
+      "session_idx": 161,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)"
+      }
+    },
+    {
+      "session_idx": 162,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 163,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 164,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 165,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 166,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 167,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 168,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 169,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 170,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from exploring to insight at turn 3",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 0 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 171,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 172,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)"
+      }
+    },
+    {
+      "session_idx": 173,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 174,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 175,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 176,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 177,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 178,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 179,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 180,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 181,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 182,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_advice": "advice detected at turn 4: 「承認有債務是第一步，需要一個知道真相的人」——你身邊有沒有一個你信任的人，可以在這週跟他坐下來，把那張你從來不敢給任何...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 183,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 184,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 185,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 186,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 187,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 188,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 189,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 190,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 191,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": false,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "insight_minimal_response": "insight response too long (84 chars): 「如果你倒了誰來照顧她，所以不敢倒只能撐」——可是你剛才自己說了：如果你倒了，她就沒有人照顧了。這代表什麼？代表你照顧好...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 192,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 193,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_advice": "advice detected at turn 2: 「她越靠近越害怕，與其讓她摧毀你不如你先摧毀關係」——你覺得你這套『先摧毀』的策略，最後摧毀的比較多的是那段關係，還是你...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 194,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 195,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 196,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 197,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 198,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 199,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 200,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 201,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 202,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 203,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 204,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 205,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 206,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 207,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 208,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": false,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "no_evaluation": "evaluation detected at turn 3: 「花了三十年等一句她說不出口的『你很棒』——你的人生不需要她的認證就已經是好的了」。...",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 209,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "session_idx": 210,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": false,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_transition_valid": "skipped from opening to deepening at turn 2",
+        "phase_no_skip": "deepening appeared without exploring",
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 3)",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    }
+  ],
+  "check_summary": {
+    "phase_transition_valid": {
+      "passed": 130,
+      "total": 211,
+      "rate": 0.6161
+    },
+    "phase_no_skip": {
+      "passed": 135,
+      "total": 211,
+      "rate": 0.6398
+    },
+    "opening_contracting": {
+      "passed": 0,
+      "total": 211,
+      "rate": 0.0
+    },
+    "deepening_before_insight": {
+      "passed": 11,
+      "total": 211,
+      "rate": 0.0521
+    },
+    "insight_minimal_response": {
+      "passed": 209,
+      "total": 211,
+      "rate": 0.9905
+    },
+    "no_consecutive_technique": {
+      "passed": 145,
+      "total": 211,
+      "rate": 0.6872
+    },
+    "technique_diversity_per_phase": {
+      "passed": 210,
+      "total": 211,
+      "rate": 0.9953
+    },
+    "coachability_safety": {
+      "passed": 211,
+      "total": 211,
+      "rate": 1.0
+    },
+    "no_advice": {
+      "passed": 197,
+      "total": 211,
+      "rate": 0.9336
+    },
+    "no_evaluation": {
+      "passed": 209,
+      "total": 211,
+      "rate": 0.9905
+    },
+    "commitment_sequence": {
+      "passed": 205,
+      "total": 211,
+      "rate": 0.9716
+    },
+    "commitment_action_timeline": {
+      "passed": 8,
+      "total": 211,
+      "rate": 0.0379
+    }
+  },
+  "overall_pass_rate": 0.6596
+}

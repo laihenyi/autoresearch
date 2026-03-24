@@ -1,0 +1,22 @@
+{
+  "tag": "full_check",
+  "timestamp": "2026-03-24T12:40:53.387693",
+  "mode": "offline",
+  "source": "structured_output_experiment/generated_sessions_7b.jsonl",
+  "elapsed_s": 0.1,
+  "aggregate": {
+    "total_turns": 1146,
+    "total_sessions": 211,
+    "block_rate": 1.0,
+    "block_count": 1146,
+    "avg_fields_present": 20.09,
+    "avg_fields_valid": 19.6,
+    "total_expected_fields": 25,
+    "field_completeness": 0.8036,
+    "field_validity": 0.7839,
+    "enum_validity": 0.8841,
+    "phase_coherence": 0.6161,
+    "contracting_rate": 0.0,
+    "contracting_sessions_checked": 211
+  }
+}
