@@ -1,0 +1,103 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+============================================================
+Track B: Coaching 7B SFT
+============================================================
+  Model:       benchang1110/Qwen2.5-Taiwan-7B-Instruct
+  Data:        coaching_7b_combined_281.jsonl
+  Output:      /workspace/adapter_coaching_7b_sft
+  LR:          5e-05
+  Epochs:      1
+  Max seq len: 4096
+  Dry run:     False
+
+[1/4] Loading and preprocessing data...
+Loaded 282 sessions from coaching_7b_combined_281.jsonl
+  Normalized system prompt in 74 session(s)
+  Train: 253, Eval: 29
+
+[2/4] Loading tokenizer...
+
+[3/4] Computing token statistics...
+  Sessions:        282
+  Token lengths:   min=1658, max=3645, mean=2313, median=2239
+  Percentiles:     p90=2865, p95=2933, p99=3549
+  Exceeds 4096:  0 (0.0%)
+
+  [INTERNAL] field coverage across 1870 blocks:
+    Phase decision                      1870/1870 (100.0%)
+    Technique used                      1870/1870 (100.0%)
+    Desired outcome                     1870/1870 (100.0%)
+    Desired outcome quality             1870/1870 (100.0%)
+    New key words                       1870/1870 (100.0%)
+    Belief identified                   1870/1870 (100.0%)
+    Emotional state                     1870/1870 (100.0%)
+    Insight signal                      1870/1870 (100.0%)
+    Insight                             1870/1870 (100.0%)
+    OS layer                            1870/1870 (100.0%)
+    Resistance type                     1870/1870 (100.0%)
+    Outcome shift                       1870/1870 (100.0%)
+    Trigger words                       1870/1870 (100.0%)
+    Emotion correction                  1870/1870 (100.0%)
+    Client context                      1870/1870 (100.0%)
+    Commitment step                     1870/1870 (100.0%)
+    Layer check completed               1870/1870 (100.0%)
+    Coachability level                  1870/1870 (100.0%)
+    Coachability indicators             1870/1870 (100.0%)
+    Three-brain dominance               1870/1870 (100.0%)
+    Suggested persona                   1870/1870 (100.0%)
+    Desired outcome measurement          750/1870 ( 40.1%) <-- LOW
+    Desired outcome significance         750/1870 ( 40.1%) <-- LOW
+    Contracting completeness             750/1870 ( 40.1%) <-- LOW
+    Key words to clarify                 750/1870 ( 40.1%) <-- LOW
+
+[4/4] Loading model and starting training...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:07,  2.35s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.79s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:08<00:02,  2.68s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  1.67s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.03s/it]
+trainable params: 161,480,704 || all params: 7,777,097,216 || trainable%: 2.0764
+  Estimated total steps: 64
+  Checkpoint targets (~30/50/70%): steps [19, 32, 45]
+  save_steps interval: 19
+Tokenizing train dataset:   0%|          | 0/253 [00:00<?, ? examples/s]Tokenizing train dataset:  22%|██▏       | 56/253 [00:00<00:00, 544.10 examples/s]Tokenizing train dataset:  46%|████▌     | 116/253 [00:00<00:00, 570.92 examples/s]Tokenizing train dataset:  77%|███████▋  | 194/253 [00:00<00:00, 535.17 examples/s]Tokenizing train dataset:  99%|█████████▉| 250/253 [00:00<00:00, 539.85 examples/s]Tokenizing train dataset: 100%|██████████| 253/253 [00:00<00:00, 487.99 examples/s]
+Truncating train dataset:   0%|          | 0/253 [00:00<?, ? examples/s]Truncating train dataset: 100%|██████████| 253/253 [00:00<00:00, 57734.43 examples/s]
+Tokenizing eval dataset:   0%|          | 0/29 [00:00<?, ? examples/s]Tokenizing eval dataset: 100%|██████████| 29/29 [00:00<00:00, 441.74 examples/s]
+Truncating eval dataset:   0%|          | 0/29 [00:00<?, ? examples/s]Truncating eval dataset: 100%|██████████| 29/29 [00:00<00:00, 24828.50 examples/s]
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+
+Starting Track B SFT training...
+  0%|          | 0/64 [00:00<?, ?it/s]/usr/local/lib/python3.11/dist-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+  2%|▏         | 1/64 [00:05<05:46,  5.51s/it]  3%|▎         | 2/64 [00:09<04:59,  4.83s/it]  5%|▍         | 3/64 [00:14<04:41,  4.62s/it]  6%|▋         | 4/64 [00:19<04:44,  4.75s/it]  8%|▊         | 5/64 [00:24<04:50,  4.93s/it]                                                8%|▊         | 5/64 [00:24<04:50,  4.93s/it]  9%|▉         | 6/64 [00:27<04:16,  4.42s/it] 11%|█         | 7/64 [00:32<04:17,  4.52s/it] 12%|█▎        | 8/64 [00:35<03:49,  4.11s/it] 14%|█▍        | 9/64 [00:39<03:46,  4.11s/it] 16%|█▌        | 10/64 [00:44<03:44,  4.15s/it]                                                16%|█▌        | 10/64 [00:44<03:44,  4.15s/it] 17%|█▋        | 11/64 [00:48<03:39,  4.14s/it] 19%|█▉        | 12/64 [00:53<03:45,  4.35s/it] 20%|██        | 13/64 [00:56<03:34,  4.21s/it] 22%|██▏       | 14/64 [01:01<03:36,  4.32s/it] 23%|██▎       | 15/64 [01:05<03:30,  4.29s/it]                                                23%|██▎       | 15/64 [01:05<03:30,  4.29s/it] 25%|██▌       | 16/64 [01:09<03:22,  4.22s/it] 27%|██▋       | 17/64 [01:14<03:28,  4.44s/it] 28%|██▊       | 18/64 [01:18<03:18,  4.31s/it] 30%|██▉       | 19/64 [01:22<03:05,  4.13s/it]{'loss': 1.4937, 'grad_norm': 1.0390625, 'learning_rate': 2.857142857142857e-05, 'entropy': 0.8936106085777282, 'num_tokens': 52700.0, 'mean_token_accuracy': 0.7180493533611297, 'epoch': 0.08}
+{'loss': 1.6461, 'grad_norm': 0.53515625, 'learning_rate': 4.984826693294874e-05, 'entropy': 1.5401828587055206, 'num_tokens': 95815.0, 'mean_token_accuracy': 0.6627567529678344, 'epoch': 0.16}
+{'loss': 1.2744, 'grad_norm': 0.73046875, 'learning_rate': 4.8162351680370044e-05, 'entropy': 1.5116260558366776, 'num_tokens': 142935.0, 'mean_token_accuracy': 0.7245672762393951, 'epoch': 0.24}
+
+  0%|          | 0/29 [00:00<?, ?it/s][A
+  7%|▋         | 2/29 [00:00<00:04,  6.53it/s][A
+ 10%|█         | 3/29 [00:00<00:05,  5.02it/s][A
+ 14%|█▍        | 4/29 [00:00<00:06,  3.57it/s][A
+ 17%|█▋        | 5/29 [00:01<00:06,  3.56it/s][A
+ 21%|██        | 6/29 [00:01<00:07,  3.10it/s][A
+ 24%|██▍       | 7/29 [00:01<00:06,  3.29it/s][A
+ 28%|██▊       | 8/29 [00:02<00:06,  3.03it/s][A
+ 31%|███       | 9/29 [00:02<00:06,  3.14it/s][A
+ 34%|███▍      | 10/29 [00:03<00:06,  2.90it/s][A
+ 38%|███▊      | 11/29 [00:03<00:06,  2.62it/s][A
+ 41%|████▏     | 12/29 [00:03<00:06,  2.51it/s][A
+ 45%|████▍     | 13/29 [00:04<00:05,  2.80it/s][A
+ 48%|████▊     | 14/29 [00:04<00:05,  2.70it/s][A
+ 52%|█████▏    | 15/29 [00:05<00:05,  2.60it/s][A
+ 55%|█████▌    | 16/29 [00:05<00:06,  1.96it/s][A
+ 59%|█████▊    | 17/29 [00:06<00:05,  2.08it/s][A
+ 62%|██████▏   | 18/29 [00:06<00:04,  2.27it/s][A
+ 66%|██████▌   | 19/29 [00:06<00:04,  2.34it/s][A
+ 69%|██████▉   | 20/29 [00:07<00:03,  2.48it/s][A
+ 72%|███████▏  | 21/29 [00:07<00:03,  2.31it/s][A
+ 76%|███████▌  | 22/29 [00:08<00:02,  2.55it/s][A
+ 79%|███████▉  | 23/29 [00:08<00:02,  2.71it/s][A
+ 83%|████████▎ | 24/29 [00:08<00:01,  2.96it/s][A
+ 86%|████████▌ | 25/29 [00:09<00:01,  2.82it/s][A
+ 90%|████████▉ | 26/29 [00:09<00:01,  2.80it/s][A
+ 93%|█████████▎| 27/29 [00:09<00:00,  2.75it/s][A
+ 97%|█████████▋| 28/29 [00:10<00:00,  2.72it/s][A
+100%|██████████| 29/29 [00:10<00:00,  2.97it/s][A                                               
+                                               [A 30%|██▉       | 19/64 [01:33<03:05,  4.13s/it]
+100%|██████████| 29/29 [00:10<00:00,  2.97it/s][A
+                                               [A
