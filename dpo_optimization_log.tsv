@@ -1,0 +1,14 @@
+date	composite_before	weakest_scenario	weakest_metric	weakness_type	new_pairs	composite_after	delta	decision	file
+2026-03-22	None	None	None	open_vs_closed	5			generate_only	dpo_20260322_open_vs_closed.jsonl
+2026-03-22	00:40	open_vs_closed	5	78	88.6	82.8	-5.8	DISCARD	cycle_20260322_0026.log
+2026-03-22	None	None	None	reflect_first	3			generate_only	dpo_20260322_reflect_first.jsonl
+2026-03-23	None	emotional_deep	reflection	emotional_deep	20			generate_only	dpo_20260323_emotional_deep.jsonl
+2026-03-23	None	opening_contract	reflection	opening_contract	15			generate_only	dpo_20260323_opening_contract.jsonl
+2026-03-23	None	resistant_client	reflection	resistant_client	15			generate_only	dpo_20260323_resistant_client.jsonl
+2026-03-23	None	brevity+eval	reflection	brevity_vs_verbose+no_evaluation	24			generate_only	dpo_20260323_brevity_eval.jsonl
+2026-03-23	None	insight+multi+reflect	reflection	insight_hold+single_vs_multi+reflect_first	31			generate_only	dpo_20260323_insight_multi_reflect.jsonl
+2026-03-23	None	stress+selfdoubt	reflection	stress_pressure+self_doubt	20			generate_only	dpo_20260323_stress_selfdoubt.jsonl
+2026-03-23	91.3	opening+resistant	reflection	opening_contract+resistant_client	40	82.6	-8.7	DISCARD	v3_self_doubt_regressed
+2026-03-24	84.1	ratio(3.14)	ratio	sft_v7_clean_mixed_361sessions_ckpt50	361	84.1	+0.0	KEEP	adapter_sft_v7_best
+2026-03-24	84.1	ratio(3.14)	ratio	dpo_v7_on_sft_v7_lr5e6_1ep	1605	82.6	-1.5	DISCARD	dpo_v7
+2026-03-24	84.1	ratio(3.14)	ratio	eval_capped_ratio_scoring	0	88.6	+4.5	KEEP	eval_coach.py_capped_ratio

@@ -1,0 +1,706 @@
+{
+  "tag": "v7_sft_best_capped",
+  "timestamp": "2026-03-24T11:21:51.839981",
+  "endpoint": "http://127.0.0.1:18192",
+  "system_prompt_chars": 679,
+  "temperature": 0.01,
+  "total_elapsed_s": 91.9,
+  "composite_score": 88.6,
+  "scenarios": [
+    {
+      "scenario_id": "opening_contract",
+      "scenario_name": "Opening & Contract",
+      "num_turns": 4,
+      "aggregate": {
+        "coach_ratio": 2.059,
+        "no_advice": 1.0,
+        "has_reflection": 1.0,
+        "has_question": 1.0,
+        "is_parrot": 0.0,
+        "avg_response_length": 40.2,
+        "avg_elapsed_s": 1.89
+      },
+      "per_turn": [
+        {
+          "coach_ratio": 1.5,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 33,
+          "elapsed_s": 1.83
+        },
+        {
+          "coach_ratio": 2.895,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 55,
+          "elapsed_s": 1.95
+        },
+        {
+          "coach_ratio": 1.842,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 35,
+          "elapsed_s": 1.89
+        },
+        {
+          "coach_ratio": 2.0,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 38,
+          "elapsed_s": 1.9
+        }
+      ],
+      "responses": [
+        "「朋友推薦你來，說會幫你」——你朋友推薦你來之前，他對你說了什麼？",
+        "「很迷茫，不知道自己在幹嘛」——你朋友說的「不知道自己在幹嘛」，跟你自己說的「不知道自己在幹嘛」，是一樣的嗎？",
+        "「什麼都在做，但什麼都沒有意義」——你做這些事的時候，你心裡在想什麼？",
+        "「希望今天可以比較清楚自己到底要什麼」——你今天想清楚了之後，你打算做什麼？"
+      ],
+      "client_turns": [
+        "嗨，我朋友推薦我來的，他說跟你聊聊會有幫助。",
+        "就是最近覺得很迷茫，不知道自己在幹嘛。",
+        "對，好像什麼都在做，但什麼都沒有意義。",
+        "我希望今天可以比較清楚自己到底要什麼。"
+      ]
+    },
+    {
+      "scenario_id": "stress_pressure",
+      "scenario_name": "Work Stress & Pressure",
+      "num_turns": 5,
+      "aggregate": {
+        "coach_ratio": 4.024,
+        "no_advice": 1.0,
+        "has_reflection": 1.0,
+        "has_question": 1.0,
+        "is_parrot": 0.0,
+        "avg_response_length": 68.8,
+        "avg_elapsed_s": 2.73
+      },
+      "per_turn": [
+        {
+          "coach_ratio": 2.217,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 51,
+          "elapsed_s": 2.59
+        },
+        {
+          "coach_ratio": 6.353,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 108,
+          "elapsed_s": 3.28
+        },
+        {
+          "coach_ratio": 5.929,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 83,
+          "elapsed_s": 3.46
+        },
+        {
+          "coach_ratio": 3.471,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 59,
+          "elapsed_s": 2.27
+        },
+        {
+          "coach_ratio": 2.15,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 43,
+          "elapsed_s": 2.06
+        }
+      ],
+      "responses": [
+        "「每天加班到半夜，週末也在回訊息」——當你把手機拿到床上，你是在「加班」，還是在『證明自己值得被愛』？",
+        "「老闆覺得這是正常的，說大家都這樣」——如果有一天你真的撐不住了，倒下來，你身邊有一個人會說：『還好你撐不住了，不然你永遠不知道自己有多累』，還是有一個人會說：『還好你撐不住了，不然你永遠不知道自己有多不值得被愛』？",
+        "「不敢說不，怕被覺得不夠拼」——你拼了十年，現在你家裡的沙發還是舊的，你老公還是在看手機，你女兒還是在說：『媽媽，你什麼時候陪我玩一次？』——你拼了十年，拼的是什麼？",
+        "「如果我不做到最好，就會被取代」——你有沒有想過，你拼命做到最好，最後取代你的，會不會是你的健康、你的家庭、你的靈魂？",
+        "「一直在用工作證明自己的價值」——如果有一天你真的倒下來了，你用什麼來證明你值得被愛？"
+      ],
+      "client_turns": [
+        "我快撐不住了，每天加班到半夜，週末也在回訊息。",
+        "老闆覺得這是正常的，說大家都這樣。",
+        "我不敢說不，怕被覺得不夠拼。",
+        "好像如果我不做到最好，就會被取代。",
+        "也許...我一直在用工作證明自己的價值。"
+      ]
+    },
+    {
+      "scenario_id": "self_doubt",
+      "scenario_name": "Self-Doubt",
+      "num_turns": 4,
+      "aggregate": {
+        "coach_ratio": 2.656,
+        "no_advice": 1.0,
+        "has_reflection": 1.0,
+        "has_question": 0.75,
+        "is_parrot": 0.0,
+        "avg_response_length": 52.8,
+        "avg_elapsed_s": 2.46
+      },
+      "per_turn": [
+        {
+          "coach_ratio": 3.19,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 67,
+          "elapsed_s": 3.04
+        },
+        {
+          "coach_ratio": 1.864,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 41,
+          "elapsed_s": 1.9
+        },
+        {
+          "coach_ratio": 2.833,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 51,
+          "elapsed_s": 2.22
+        },
+        {
+          "coach_ratio": 2.737,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": false,
+          "is_parrot": false,
+          "response_length": 52,
+          "elapsed_s": 2.68
+        }
+      ],
+      "responses": [
+        "「主管但覺得自己是冒牌貨」——當你站在會議室裡，看著那些比你資歷深的同事時，你心裡在說：『他們才是真的主管，我頂多是個臨時工。』對嗎？",
+        "「不敢講話怕被發現不懂」——你有沒有想過，他們其實也跟你一樣，每天都在假裝自己懂？",
+        "「覺得別人比強，只是運氣好」——你有沒有想過，你之所以覺得別人強，是因為你把他們當成『完美主管』來看？",
+        "「不要以為自己有多厲害」——你爸說的，是讓你謙虛，還是在告訴你：『你其實沒有那麼好，你只是運氣好而已。』"
+      ],
+      "client_turns": [
+        "我剛升上主管，但每天都覺得自己是個冒牌貨。",
+        "開會的時候不敢講話，怕被發現其實什麼都不懂。",
+        "我覺得其他人都比我強，我只是運氣好。",
+        "小時候我爸常說，不要以為自己有多厲害。"
+      ]
+    },
+    {
+      "scenario_id": "relationship",
+      "scenario_name": "Relationship Struggles",
+      "num_turns": 5,
+      "aggregate": {
+        "coach_ratio": 2.15,
+        "no_advice": 1.0,
+        "has_reflection": 1.0,
+        "has_question": 1.0,
+        "is_parrot": 0.0,
+        "avg_response_length": 35.4,
+        "avg_elapsed_s": 1.69
+      },
+      "per_turn": [
+        {
+          "coach_ratio": 2.0,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 34,
+          "elapsed_s": 1.42
+        },
+        {
+          "coach_ratio": 2.059,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 35,
+          "elapsed_s": 1.92
+        },
+        {
+          "coach_ratio": 2.357,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 33,
+          "elapsed_s": 1.75
+        },
+        {
+          "coach_ratio": 1.895,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 36,
+          "elapsed_s": 1.75
+        },
+        {
+          "coach_ratio": 2.438,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 39,
+          "elapsed_s": 1.6
+        }
+      ],
+      "responses": [
+        "「很久沒有好好說話」——當你們不再說話的時候，你們在用什麼方式溝通？",
+        "「開口就吵架，乾脆不講了」——如果你們現在不講話，那你們心裡在講什麼？",
+        "「覺得他不在意你的感受」——你有沒有想過，他可能只是不知道怎麼說？",
+        "「沒有告訴他真正的感受」——如果你們現在坐下來，你願意先說出口的是什麼？",
+        "「怕說出來他會覺得煩」——如果他真的覺得煩，那他煩的是你，還是他自己的不自在？"
+      ],
+      "client_turns": [
+        "我跟我老公已經很久沒有好好說話了。",
+        "每次一開口就吵架，後來乾脆不講了。",
+        "我覺得他根本不在意我的感受。",
+        "可能...我也沒有告訴他我真正的感受。",
+        "我怕說出來之後，他會覺得我很煩。"
+      ]
+    },
+    {
+      "scenario_id": "career_transition",
+      "scenario_name": "Career Transition",
+      "num_turns": 4,
+      "aggregate": {
+        "coach_ratio": 2.723,
+        "no_advice": 1.0,
+        "has_reflection": 1.0,
+        "has_question": 1.0,
+        "is_parrot": 0.0,
+        "avg_response_length": 58.5,
+        "avg_elapsed_s": 2.22
+      },
+      "per_turn": [
+        {
+          "coach_ratio": 2.043,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 47,
+          "elapsed_s": 1.81
+        },
+        {
+          "coach_ratio": 2.826,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 65,
+          "elapsed_s": 2.46
+        },
+        {
+          "coach_ratio": 3.81,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 80,
+          "elapsed_s": 2.66
+        },
+        {
+          "coach_ratio": 2.211,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 42,
+          "elapsed_s": 1.95
+        }
+      ],
+      "responses": [
+        "「做了十年，最近想離開」——當你看著十年的履歷，你看到的是『十年的成就』，還是『十年的慣性』？",
+        "「每天都不想去上班」——你每天早上出門時，心裡在說：『今天又要去一個沒有意義的地方』，還是在說：『今天又要去一個我必須去的地方』？",
+        "「不知道自己真正喜歡的事」——你花了十年的時間，把所有喜歡的事都逼死了，現在你連『喜歡』的定義都忘了。你願意花一個月的時間，每天花五分鐘，去重新認識一下自己嗎？",
+        "「爸媽覺得穩定最重要」——你真的想聽他們的意見，還是你只是想聽他們說『你做得很好』？"
+      ],
+      "client_turns": [
+        "我在這間公司做了十年，最近一直在想要不要離開。",
+        "工作很穩定，薪水也不錯，但我每天都不想去上班。",
+        "我想做自己真正喜歡的事，但不知道那是什麼。",
+        "我爸媽一定會反對，他們覺得穩定最重要。"
+      ]
+    },
+    {
+      "scenario_id": "resistant_client",
+      "scenario_name": "Resistant Client",
+      "num_turns": 5,
+      "aggregate": {
+        "coach_ratio": 2.536,
+        "no_advice": 1.0,
+        "has_reflection": 1.0,
+        "has_question": 1.0,
+        "is_parrot": 0.0,
+        "avg_response_length": 49.0,
+        "avg_elapsed_s": 1.93
+      },
+      "per_turn": [
+        {
+          "coach_ratio": 3.091,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 68,
+          "elapsed_s": 2.44
+        },
+        {
+          "coach_ratio": 2.5,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 45,
+          "elapsed_s": 1.68
+        },
+        {
+          "coach_ratio": 2.333,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 42,
+          "elapsed_s": 1.62
+        },
+        {
+          "coach_ratio": 2.2,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 44,
+          "elapsed_s": 1.87
+        },
+        {
+          "coach_ratio": 2.556,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 46,
+          "elapsed_s": 2.02
+        }
+      ],
+      "responses": [
+        "「直接告訴我該怎麼做，不要問那麼多」——當你這麼要求我的時候，你是在要我跳過你自己的思考過程嗎？還是你已經思考過，但覺得那些思考太慢了？",
+        "「花錢來不是聽你問問題的，我要答案」——你想要的答案是什麼？是『怎麼做』，還是『為什麼』？",
+        "「辭職還是留下來」——你剛才說『我要答案』。你想要的答案是『辭職』，還是『留下來』？",
+        "「什麼都不會告訴我，那我來這裡幹嘛」——你來這裡是為了得到答案，還是為了得到『被看見』？",
+        "「答案不在你那裡」——你來這裡是為了得到答案，但你願意先放下答案，來好好看看你自己的狀態嗎？"
+      ],
+      "client_turns": [
+        "你就直接告訴我該怎麼做就好了，不要問那麼多。",
+        "我花錢來不是聽你問問題的，我要答案。",
+        "好啦，那你覺得我應該辭職還是留下來？",
+        "所以你什麼都不會告訴我？那我來這裡幹嘛？",
+        "...好吧，也許答案真的不在你那裡。"
+      ]
+    },
+    {
+      "scenario_id": "emotional_deep",
+      "scenario_name": "Deep Emotional Exploration",
+      "num_turns": 5,
+      "aggregate": {
+        "coach_ratio": 2.276,
+        "no_advice": 1.0,
+        "has_reflection": 1.0,
+        "has_question": 1.0,
+        "is_parrot": 0.0,
+        "avg_response_length": 37.8,
+        "avg_elapsed_s": 1.83
+      },
+      "per_turn": [
+        {
+          "coach_ratio": 2.294,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 39,
+          "elapsed_s": 2.25
+        },
+        {
+          "coach_ratio": 1.5,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 36,
+          "elapsed_s": 1.83
+        },
+        {
+          "coach_ratio": 2.684,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 51,
+          "elapsed_s": 1.86
+        },
+        {
+          "coach_ratio": 2.833,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 34,
+          "elapsed_s": 1.46
+        },
+        {
+          "coach_ratio": 2.071,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 29,
+          "elapsed_s": 1.74
+        }
+      ],
+      "responses": [
+        "「以為已經好了，但三年了」——三年了，你真的已經好了嗎？還是你只是學會了不哭？",
+        "「聞到湯的味道就哭了」——那個味道，是讓你想起她，還是讓你想起你沒有哭？",
+        "「不允許自己難過，因為是家裡的支柱」——你撐了三年，現在撐不住了嗎？還是你撐了三年，現在終於可以哭了？",
+        "「倒了大家怎麼辦」——你撐了三年，是為了讓大家好，還是為了讓自己好？",
+        "「假裝堅強」——你假裝堅強了三年，現在你願意承認你累了嗎？"
+      ],
+      "client_turns": [
+        "我媽走了三年了，我以為我已經好了。",
+        "但昨天聞到一個味道，跟她煮的湯一樣，我突然哭了。",
+        "我不允許自己難過，因為我是家裡的支柱。",
+        "如果我倒了，大家怎麼辦？",
+        "也許...我一直在假裝堅強。"
+      ]
+    },
+    {
+      "scenario_id": "short_input",
+      "scenario_name": "Ultra-Short Input",
+      "num_turns": 5,
+      "aggregate": {
+        "coach_ratio": 11.171,
+        "no_advice": 1.0,
+        "has_reflection": 1.0,
+        "has_question": 0.8,
+        "is_parrot": 0.0,
+        "avg_response_length": 33.2,
+        "avg_elapsed_s": 1.92
+      },
+      "per_turn": [
+        {
+          "coach_ratio": 14.5,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 29,
+          "elapsed_s": 1.75
+        },
+        {
+          "coach_ratio": 7.75,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 31,
+          "elapsed_s": 1.93
+        },
+        {
+          "coach_ratio": 3.857,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 27,
+          "elapsed_s": 2.02
+        },
+        {
+          "coach_ratio": 9.75,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 39,
+          "elapsed_s": 1.96
+        },
+        {
+          "coach_ratio": 20.0,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": false,
+          "is_parrot": false,
+          "response_length": 40,
+          "elapsed_s": 1.92
+        }
+      ],
+      "responses": [
+        "「嗯」——這個聲音代表了你現在的狀態。你願意把它說出來嗎？",
+        "「不知道」——這個不知道，是不知道說什麼，還是不知道要不要說？",
+        "「很煩」——你用了一個很直接的詞來形容。你煩的是什麼？",
+        "「都有吧」——你煩的是「都有」。你煩的是什麼都有，還是你煩的是你不知道煩什麼？",
+        "「好」——這個「好」代表了你願意停下來了。你願意停下來，是因為你已經知道答案了。"
+      ],
+      "client_turns": [
+        "嗯。",
+        "不知道。",
+        "就...很煩。",
+        "都有吧。",
+        "好。"
+      ]
+    },
+    {
+      "scenario_id": "insight_moment",
+      "scenario_name": "Insight Moment",
+      "num_turns": 4,
+      "aggregate": {
+        "coach_ratio": 1.678,
+        "no_advice": 1.0,
+        "has_reflection": 1.0,
+        "has_question": 1.0,
+        "is_parrot": 0.0,
+        "avg_response_length": 32.2,
+        "avg_elapsed_s": 1.85
+      },
+      "per_turn": [
+        {
+          "coach_ratio": 2.263,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 43,
+          "elapsed_s": 2.0
+        },
+        {
+          "coach_ratio": 1.688,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 27,
+          "elapsed_s": 1.97
+        },
+        {
+          "coach_ratio": 2.0,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 40,
+          "elapsed_s": 1.87
+        },
+        {
+          "coach_ratio": 0.76,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 19,
+          "elapsed_s": 1.55
+        }
+      ],
+      "responses": [
+        "「覺得自己不夠好，所以才那麼努力」——你說的『不夠好』，是別人說的，還是你自己的聲音？",
+        "「不管怎麼努力，那個聲音還在」——那個聲音在說你什麼？",
+        "「那個聲音是你媽的聲音」——你媽的聲音，是她自己的聲音，還是她從別人那裡學來的？",
+        "「她已經不在了」——你還在為她努力嗎？"
+      ],
+      "client_turns": [
+        "我一直覺得自己不夠好，所以才那麼努力。",
+        "但不管怎麼努力，那個聲音還是在。",
+        "等一下...那個聲音...是我媽的聲音。",
+        "啊...原來我一直在試著讓她滿意。但她已經不在了。"
+      ]
+    },
+    {
+      "scenario_id": "closing",
+      "scenario_name": "Closing & Integration",
+      "num_turns": 4,
+      "aggregate": {
+        "coach_ratio": 1.941,
+        "no_advice": 1.0,
+        "has_reflection": 1.0,
+        "has_question": 1.0,
+        "is_parrot": 0.0,
+        "avg_response_length": 29.5,
+        "avg_elapsed_s": 1.92
+      },
+      "per_turn": [
+        {
+          "coach_ratio": 1.333,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 24,
+          "elapsed_s": 1.58
+        },
+        {
+          "coach_ratio": 1.412,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 24,
+          "elapsed_s": 1.83
+        },
+        {
+          "coach_ratio": 1.909,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 42,
+          "elapsed_s": 2.22
+        },
+        {
+          "coach_ratio": 3.111,
+          "no_advice": true,
+          "has_reflection": true,
+          "has_question": true,
+          "is_parrot": false,
+          "response_length": 28,
+          "elapsed_s": 2.05
+        }
+      ],
+      "responses": [
+        "「頭腦比較清楚了」——你今天在頭腦裡看到了什麼？",
+        "「一直在逃避面對自己的感受」——你逃避的是什麼？",
+        "「花五分鐘跟自己的感受待在一起」——當你坐在那裡，看著自己的感受時，你最想看到什麼？",
+        "「謝謝你今天的陪伴」——你今天想用什麼方式，來感謝自己？"
+      ],
+      "client_turns": [
+        "今天聊了很多，我覺得頭腦比較清楚了。",
+        "我發現我一直在逃避面對自己的感受。",
+        "我想試試每天花五分鐘，跟自己的感受待在一起。",
+        "謝謝你今天的陪伴。"
+      ]
+    }
+  ]
+}
