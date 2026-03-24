@@ -1,0 +1,148 @@
+{
+  "tag": "lr1e4_keep_internal",
+  "timestamp": "2026-03-24T19:39:35.165605",
+  "endpoint": "http://127.0.0.1:28192",
+  "num_scenarios": 3,
+  "total_turns": 24,
+  "internal_block_rate": 1.0,
+  "avg_visible_len": 44.5,
+  "avg_inference_time": 8.298,
+  "l3_check_summary": {
+    "phase_transition_valid": {
+      "passed": 3,
+      "total": 3,
+      "rate": 1.0
+    },
+    "phase_no_skip": {
+      "passed": 2,
+      "total": 3,
+      "rate": 0.6667
+    },
+    "opening_contracting": {
+      "passed": 1,
+      "total": 3,
+      "rate": 0.3333
+    },
+    "deepening_before_insight": {
+      "passed": 1,
+      "total": 3,
+      "rate": 0.3333
+    },
+    "insight_minimal_response": {
+      "passed": 3,
+      "total": 3,
+      "rate": 1.0
+    },
+    "no_consecutive_technique": {
+      "passed": 3,
+      "total": 3,
+      "rate": 1.0
+    },
+    "technique_diversity_per_phase": {
+      "passed": 2,
+      "total": 3,
+      "rate": 0.6667
+    },
+    "coachability_safety": {
+      "passed": 3,
+      "total": 3,
+      "rate": 1.0
+    },
+    "no_advice": {
+      "passed": 2,
+      "total": 3,
+      "rate": 0.6667
+    },
+    "no_evaluation": {
+      "passed": 3,
+      "total": 3,
+      "rate": 1.0
+    },
+    "commitment_sequence": {
+      "passed": 3,
+      "total": 3,
+      "rate": 1.0
+    },
+    "commitment_action_timeline": {
+      "passed": 1,
+      "total": 3,
+      "rate": 0.3333
+    }
+  },
+  "per_session": [
+    {
+      "scenario_id": "work_stress",
+      "num_turns": 8,
+      "total_time": 67.42,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": false,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)",
+        "no_advice": "advice detected at turn 7: 「試試看準時下班」——為了確保你真的能準時下班，你今天晚上回家後，會做一件什麼『不跟工作有關』的事？...",
+        "commitment_action_timeline": "missing commitment: action, timeline"
+      }
+    },
+    {
+      "scenario_id": "relationship_conflict",
+      "num_turns": 8,
+      "total_time": 65.55,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": false,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "desired outcome never established",
+        "deepening_before_insight": "only 2 deepening turns before insight (need >= 3)"
+      }
+    },
+    {
+      "scenario_id": "career_transition",
+      "num_turns": 8,
+      "total_time": 66.19,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": false,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": false,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "phase_no_skip": "exploring appeared without opening",
+        "opening_contracting": "no opening turns",
+        "technique_diversity_per_phase": "phase 'exploring' has 2 turns but only 1 technique: open_question",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    }
+  ],
+  "overall_pass_rate": 0.75
+}

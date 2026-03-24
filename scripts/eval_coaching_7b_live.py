@@ -183,18 +183,25 @@ def _strip_internal(text: str) -> str:
     return re.sub(r"\[INTERNAL\].*?(?:\[/INTERNAL\]|\Z)", "", text, flags=re.DOTALL).strip()
 
 
-def generate_session(endpoint: str, scenario: dict, max_tokens: int = 768) -> dict:
+def generate_session(
+    endpoint: str, scenario: dict, max_tokens: int = 768,
+    keep_internal_in_context: bool = True,
+) -> dict:
     """Generate a complete coaching session by simulating client turns.
 
-    Context management: To prevent OOM on multi-turn conversations,
-    we send trimmed context (visible coach text only, no [INTERNAL] blocks)
-    to the model for turns after the first. The full responses (with [INTERNAL])
-    are preserved in generated_turns for evaluation.
+    Context management:
+    - keep_internal_in_context=True (default): Send full [INTERNAL] blocks in
+      conversation history, matching training format. This is CRITICAL for
+      phase progression — the model needs to see its own prior phase decisions
+      to know when to transition (e.g., deepening → insight).
+    - keep_internal_in_context=False: Strip [INTERNAL] from prior turns to
+      save VRAM. WARNING: causes train/inference mismatch — model loses
+      memory of its phase state and will loop in opening/exploring.
     """
     url = f"{endpoint}/v1/chat/completions"
-    # context_messages: sent to model (trimmed [INTERNAL] for past turns)
+    # context_messages: sent to model
     context_messages = []
-    # full_messages: preserved for L3 eval (includes [INTERNAL])
+    # full_messages: preserved for L3 eval (always includes [INTERNAL])
     full_messages = []
     generated_turns = []
     total_time = 0.0
@@ -230,10 +237,13 @@ def generate_session(endpoint: str, scenario: dict, max_tokens: int = 768) -> di
         elapsed = time.time() - t0
         total_time += elapsed
 
-        # For context: strip [INTERNAL] to save VRAM
-        trimmed = _strip_internal(coach_content)
-        context_messages.append({"role": "assistant", "content": trimmed})
-        # For eval: keep full response with [INTERNAL]
+        # Context for next turn: keep or strip [INTERNAL] based on mode
+        if keep_internal_in_context:
+            context_messages.append({"role": "assistant", "content": coach_content})
+        else:
+            trimmed = _strip_internal(coach_content)
+            context_messages.append({"role": "assistant", "content": trimmed})
+        # For eval: always keep full response
         full_messages.append({"role": "assistant", "content": coach_content})
 
         generated_turns.append({
@@ -261,6 +271,8 @@ def main():
     parser.add_argument("--verbose", action="store_true")
     parser.add_argument("--save-sessions", action="store_true",
                         help="Save generated sessions as JSONL")
+    parser.add_argument("--strip-context", action="store_true",
+                        help="Strip [INTERNAL] from prior turns (saves VRAM but breaks phase flow)")
     args = parser.parse_args()
 
     scenarios = SCENARIOS
@@ -279,7 +291,10 @@ def main():
     all_sessions = []
     for i, scenario in enumerate(scenarios):
         print(f"  [{i+1}/{len(scenarios)}] {scenario['id']:.<30s}", end="", flush=True)
-        session = generate_session(args.endpoint, scenario)
+        session = generate_session(
+            args.endpoint, scenario,
+            keep_internal_in_context=not args.strip_context,
+        )
         all_sessions.append(session)
 
         # Quick summary

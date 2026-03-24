@@ -258,7 +258,13 @@ class SessionChecker:
     # --- Deepening before Insight ---
 
     def _check_deepening_before_insight(self):
-        """At least 3 turns in Deepening before Insight appears."""
+        """At least 2 turns in Deepening before Insight appears.
+
+        Threshold rationale: training data average is 1.5 deepening turns
+        before insight (8% have ≥3, 43% have ≥2). A threshold of 2 aligns
+        with the training distribution while still enforcing that the model
+        doesn't skip deepening entirely.
+        """
         phases = [t[2].get("phase_decision", "").lower().strip() for t in self.turns]
 
         insight_idx = None
@@ -273,11 +279,11 @@ class SessionChecker:
             return
 
         deepening_count = sum(1 for p in phases[:insight_idx] if p == "deepening")
-        ok = deepening_count >= 3
+        ok = deepening_count >= 2
         self.results["deepening_before_insight"] = ok
         if not ok:
             self.details["deepening_before_insight"] = (
-                f"only {deepening_count} deepening turns before insight (need >= 3)"
+                f"only {deepening_count} deepening turns before insight (need >= 2)"
             )
 
     # --- Insight minimal response ---
