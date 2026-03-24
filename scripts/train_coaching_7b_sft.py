@@ -361,11 +361,11 @@ def main():
         logging_steps=5,
         save_steps=save_step_interval,
         save_total_limit=5,
-        eval_strategy="steps",
-        eval_steps=save_step_interval,
-        load_best_model_at_end=True,
-        metric_for_best_model="eval_loss",
-        greater_is_better=False,
+        # CRITICAL: eval disabled during training to prevent OOM on 24GB GPU.
+        # 7B QLoRA + 4096 seq_len uses ~18GB; eval allocates extra memory
+        # that causes crash mid-training (confirmed on RTX 4090).
+        eval_strategy="no",
+        load_best_model_at_end=False,
         bf16=True,
         gradient_checkpointing=True,
         gradient_checkpointing_kwargs={"use_reentrant": False},
@@ -389,12 +389,9 @@ def main():
     trainer.save_model(args.output_dir)
     tokenizer.save_pretrained(args.output_dir)
 
-    try:
-        metrics = trainer.evaluate()
-        print(f"\nTrack B SFT complete! Eval loss: {metrics.get('eval_loss', '?'):.4f}")
-    except Exception:
-        print("\nTrack B SFT complete!")
+    print(f"\nTrack B SFT complete!")
     print(f"Adapter saved to: {args.output_dir}")
+    print(f"Checkpoints at: {ckpt_steps} (pick best via L1+L2 eval)")
 
 
 if __name__ == "__main__":

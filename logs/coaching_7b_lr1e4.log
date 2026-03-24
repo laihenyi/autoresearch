@@ -1,0 +1,91 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+============================================================
+Track B: Coaching 7B SFT
+============================================================
+  Model:       benchang1110/Qwen2.5-Taiwan-7B-Instruct
+  Data:        coaching_7b_combined_281.jsonl
+  Output:      adapter_coaching_7b_lr1e4
+  LR:          0.0001
+  Epochs:      1
+  Max seq len: 4096
+  Dry run:     False
+
+[1/4] Loading and preprocessing data...
+Loaded 282 sessions from coaching_7b_combined_281.jsonl
+  Normalized system prompt in 74 session(s)
+  Train: 253, Eval: 29
+
+[2/4] Loading tokenizer...
+
+[3/4] Computing token statistics...
+  Sessions:        282
+  Token lengths:   min=1658, max=3645, mean=2313, median=2239
+  Percentiles:     p90=2865, p95=2933, p99=3549
+  Exceeds 4096:  0 (0.0%)
+
+  [INTERNAL] field coverage across 1870 blocks:
+    Phase decision                      1870/1870 (100.0%)
+    Technique used                      1870/1870 (100.0%)
+    Desired outcome                     1870/1870 (100.0%)
+    Desired outcome quality             1870/1870 (100.0%)
+    New key words                       1870/1870 (100.0%)
+    Belief identified                   1870/1870 (100.0%)
+    Emotional state                     1870/1870 (100.0%)
+    Insight signal                      1870/1870 (100.0%)
+    Insight                             1870/1870 (100.0%)
+    OS layer                            1870/1870 (100.0%)
+    Resistance type                     1870/1870 (100.0%)
+    Outcome shift                       1870/1870 (100.0%)
+    Trigger words                       1870/1870 (100.0%)
+    Emotion correction                  1870/1870 (100.0%)
+    Client context                      1870/1870 (100.0%)
+    Commitment step                     1870/1870 (100.0%)
+    Layer check completed               1870/1870 (100.0%)
+    Coachability level                  1870/1870 (100.0%)
+    Coachability indicators             1870/1870 (100.0%)
+    Three-brain dominance               1870/1870 (100.0%)
+    Suggested persona                   1870/1870 (100.0%)
+    Desired outcome measurement          750/1870 ( 40.1%) <-- LOW
+    Desired outcome significance         750/1870 ( 40.1%) <-- LOW
+    Contracting completeness             750/1870 ( 40.1%) <-- LOW
+    Key words to clarify                 750/1870 ( 40.1%) <-- LOW
+
+[4/4] Loading model and starting training...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:07,  2.64s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.95s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:08<00:02,  2.90s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  1.80s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.19s/it]
+trainable params: 161,480,704 || all params: 7,777,097,216 || trainable%: 2.0764
+  Estimated total steps: 64
+  Checkpoint targets (~30/50/70%): steps [19, 32, 45]
+  save_steps interval: 19
+Tokenizing train dataset:   0%|          | 0/253 [00:00<?, ? examples/s]Tokenizing train dataset:  22%|██▏       | 55/253 [00:00<00:00, 530.49 examples/s]Tokenizing train dataset:  45%|████▌     | 115/253 [00:00<00:00, 560.72 examples/s]Tokenizing train dataset:  76%|███████▌  | 192/253 [00:00<00:00, 527.39 examples/s]Tokenizing train dataset:  98%|█████████▊| 247/253 [00:00<00:00, 532.53 examples/s]Tokenizing train dataset: 100%|██████████| 253/253 [00:00<00:00, 481.33 examples/s]
+Truncating train dataset:   0%|          | 0/253 [00:00<?, ? examples/s]Truncating train dataset: 100%|██████████| 253/253 [00:00<00:00, 51333.15 examples/s]
+Tokenizing eval dataset:   0%|          | 0/29 [00:00<?, ? examples/s]Tokenizing eval dataset: 100%|██████████| 29/29 [00:00<00:00, 430.55 examples/s]
+Truncating eval dataset:   0%|          | 0/29 [00:00<?, ? examples/s]Truncating eval dataset: 100%|██████████| 29/29 [00:00<00:00, 23279.39 examples/s]
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+
+Starting Track B SFT training...
+  0%|          | 0/64 [00:00<?, ?it/s]/usr/local/lib/python3.11/dist-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+  2%|▏         | 1/64 [00:05<05:38,  5.37s/it]  3%|▎         | 2/64 [00:09<04:53,  4.74s/it]  5%|▍         | 3/64 [00:13<04:36,  4.54s/it]  6%|▋         | 4/64 [00:18<04:39,  4.67s/it]  8%|▊         | 5/64 [00:23<04:45,  4.84s/it]                                                8%|▊         | 5/64 [00:23<04:45,  4.84s/it]  9%|▉         | 6/64 [00:27<04:12,  4.35s/it] 11%|█         | 7/64 [00:32<04:13,  4.45s/it] 12%|█▎        | 8/64 [00:35<03:46,  4.04s/it] 14%|█▍        | 9/64 [00:39<03:42,  4.04s/it] 16%|█▌        | 10/64 [00:43<03:45,  4.17s/it]                                                16%|█▌        | 10/64 [00:43<03:45,  4.17s/it] 17%|█▋        | 11/64 [00:47<03:38,  4.13s/it] 19%|█▉        | 12/64 [00:52<03:44,  4.32s/it] 20%|██        | 13/64 [00:56<03:32,  4.17s/it] 22%|██▏       | 14/64 [01:00<03:33,  4.27s/it] 23%|██▎       | 15/64 [01:04<03:26,  4.22s/it]                                                23%|██▎       | 15/64 [01:04<03:26,  4.22s/it] 25%|██▌       | 16/64 [01:08<03:19,  4.15s/it] 27%|██▋       | 17/64 [01:13<03:25,  4.37s/it] 28%|██▊       | 18/64 [01:17<03:15,  4.24s/it] 30%|██▉       | 19/64 [01:21<03:02,  4.06s/it]/usr/local/lib/python3.11/dist-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+ 31%|███▏      | 20/64 [01:28<03:34,  4.88s/it]                                                31%|███▏      | 20/64 [01:28<03:34,  4.88s/it] 33%|███▎      | 21/64 [01:32<03:18,  4.62s/it] 34%|███▍      | 22/64 [01:36<03:10,  4.54s/it] 36%|███▌      | 23/64 [01:40<02:57,  4.34s/it] 38%|███▊      | 24/64 [01:44<02:44,  4.12s/it] 39%|███▉      | 25/64 [01:48<02:49,  4.36s/it]                                                39%|███▉      | 25/64 [01:48<02:49,  4.36s/it] 41%|████      | 26/64 [01:53<02:47,  4.41s/it] 42%|████▏     | 27/64 [01:56<02:33,  4.14s/it] 44%|████▍     | 28/64 [02:00<02:25,  4.04s/it] 45%|████▌     | 29/64 [02:04<02:16,  3.89s/it] 47%|████▋     | 30/64 [02:08<02:15,  3.98s/it]                                                47%|████▋     | 30/64 [02:08<02:15,  3.98s/it] 48%|████▊     | 31/64 [02:12<02:07,  3.85s/it] 50%|█████     | 32/64 [02:16<02:09,  4.04s/it] 52%|█████▏    | 33/64 [02:20<02:04,  4.02s/it] 53%|█████▎    | 34/64 [02:24<01:59,  4.00s/it] 55%|█████▍    | 35/64 [02:29<02:05,  4.33s/it]                                                55%|█████▍    | 35/64 [02:29<02:05,  4.33s/it] 56%|█████▋    | 36/64 [02:33<01:59,  4.25s/it] 58%|█████▊    | 37/64 [02:37<01:55,  4.26s/it] 59%|█████▉    | 38/64 [02:42<01:52,  4.33s/it]/usr/local/lib/python3.11/dist-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+ 61%|██████    | 39/64 [02:48<01:58,  4.73s/it] 62%|██████▎   | 40/64 [02:52<01:52,  4.70s/it]                                                62%|██████▎   | 40/64 [02:52<01:52,  4.70s/it] 64%|██████▍   | 41/64 [02:56<01:42,  4.47s/it] 66%|██████▌   | 42/64 [03:00<01:36,  4.39s/it] 67%|██████▋   | 43/64 [03:04<01:28,  4.22s/it] 69%|██████▉   | 44/64 [03:08<01:21,  4.10s/it] 70%|███████   | 45/64 [03:12<01:17,  4.08s/it]                                                70%|███████   | 45/64 [03:12<01:17,  4.08s/it] 72%|███████▏  | 46/64 [03:16<01:14,  4.12s/it] 73%|███████▎  | 47/64 [03:20<01:06,  3.90s/it] 75%|███████▌  | 48/64 [03:24<01:03,  3.95s/it] 77%|███████▋  | 49/64 [03:28<01:02,  4.16s/it] 78%|███████▊  | 50/64 [03:32<00:56,  4.05s/it]                                                78%|███████▊  | 50/64 [03:32<00:56,  4.05s/it] 80%|███████▉  | 51/64 [03:36<00:53,  4.09s/it] 81%|████████▏ | 52/64 [03:40<00:47,  3.93s/it] 83%|████████▎ | 53/64 [03:44<00:43,  3.99s/it] 84%|████████▍ | 54/64 [03:48<00:40,  4.09s/it] 86%|████████▌ | 55/64 [03:52<00:34,  3.86s/it]                                                86%|████████▌ | 55/64 [03:52<00:34,  3.86s/it] 88%|████████▊ | 56/64 [03:55<00:30,  3.84s/it] 89%|████████▉ | 57/64 [04:00<00:27,  3.94s/it]/usr/local/lib/python3.11/dist-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+ 91%|█████████ | 58/64 [04:06<00:28,  4.72s/it] 92%|█████████▏| 59/64 [04:11<00:23,  4.63s/it] 94%|█████████▍| 60/64 [04:15<00:18,  4.57s/it]                                                94%|█████████▍| 60/64 [04:15<00:18,  4.57s/it] 95%|█████████▌| 61/64 [04:19<00:13,  4.51s/it] 97%|█████████▋| 62/64 [04:24<00:08,  4.48s/it] 98%|█████████▊| 63/64 [04:27<00:04,  4.22s/it]100%|██████████| 64/64 [04:29<00:00,  3.32s/it]                                               100%|██████████| 64/64 [04:31<00:00,  3.32s/it]100%|██████████| 64/64 [04:31<00:00,  4.24s/it]
+{'loss': 1.4564, 'grad_norm': 0.58984375, 'learning_rate': 5.714285714285714e-05, 'entropy': 0.9263883262872696, 'num_tokens': 52700.0, 'mean_token_accuracy': 0.7208637028932572, 'epoch': 0.08}
+{'loss': 1.4925, 'grad_norm': 0.58984375, 'learning_rate': 9.969653386589748e-05, 'entropy': 1.6753591507673264, 'num_tokens': 95815.0, 'mean_token_accuracy': 0.6843146204948425, 'epoch': 0.16}
+{'loss': 0.9576, 'grad_norm': 0.5390625, 'learning_rate': 9.632470336074009e-05, 'entropy': 1.061148363351822, 'num_tokens': 142935.0, 'mean_token_accuracy': 0.781055337190628, 'epoch': 0.24}
+{'loss': 0.7717, 'grad_norm': 0.3359375, 'learning_rate': 8.945702546981969e-05, 'entropy': 0.7556164488196373, 'num_tokens': 189749.0, 'mean_token_accuracy': 0.8220543831586837, 'epoch': 0.32}
+{'loss': 0.6446, 'grad_norm': 0.34375, 'learning_rate': 7.961176263324901e-05, 'entropy': 0.6915799170732498, 'num_tokens': 235939.0, 'mean_token_accuracy': 0.8466550767421722, 'epoch': 0.4}
+{'loss': 0.6485, 'grad_norm': 0.33984375, 'learning_rate': 6.753187775963773e-05, 'entropy': 0.6705380871891975, 'num_tokens': 279222.0, 'mean_token_accuracy': 0.846071457862854, 'epoch': 0.47}
+{'loss': 0.6012, 'grad_norm': 0.3046875, 'learning_rate': 5.4128967273616625e-05, 'entropy': 0.6205595962703228, 'num_tokens': 326082.0, 'mean_token_accuracy': 0.8564154207706451, 'epoch': 0.55}
+{'loss': 0.6123, 'grad_norm': 0.369140625, 'learning_rate': 4.0414468403813095e-05, 'entropy': 0.6227997854351998, 'num_tokens': 372446.0, 'mean_token_accuracy': 0.8498850703239441, 'epoch': 0.63}
+{'loss': 0.6184, 'grad_norm': 0.32421875, 'learning_rate': 2.7423332084455544e-05, 'entropy': 0.6271377258002758, 'num_tokens': 416343.0, 'mean_token_accuracy': 0.8492450028657913, 'epoch': 0.71}
+{'loss': 0.6143, 'grad_norm': 0.3671875, 'learning_rate': 1.6135921418712956e-05, 'entropy': 0.6494678132236004, 'num_tokens': 460738.0, 'mean_token_accuracy': 0.8517274618148803, 'epoch': 0.79}
+{'loss': 0.7124, 'grad_norm': 0.482421875, 'learning_rate': 7.404029558083653e-06, 'entropy': 0.7287570804357528, 'num_tokens': 504059.0, 'mean_token_accuracy': 0.8311067521572113, 'epoch': 0.87}
+{'loss': 0.4921, 'grad_norm': 0.275390625, 'learning_rate': 1.8865999845374793e-06, 'entropy': 0.5574569791555405, 'num_tokens': 550755.0, 'mean_token_accuracy': 0.8750115662813187, 'epoch': 0.95}
+{'train_runtime': 271.1911, 'train_samples_per_second': 0.933, 'train_steps_per_second': 0.236, 'train_loss': 0.7931342124938965, 'entropy': 0.6791207595513418, 'num_tokens': 581058.0, 'mean_token_accuracy': 0.843123394709367, 'epoch': 1.0}
+
+Track B SFT complete!
+Adapter saved to: adapter_coaching_7b_lr1e4
+Checkpoints at: [19, 32, 45] (pick best via L1+L2 eval)
