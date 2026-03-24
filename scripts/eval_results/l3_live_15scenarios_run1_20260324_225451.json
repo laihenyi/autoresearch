@@ -1,0 +1,419 @@
+{
+  "tag": "15scenarios_run1",
+  "timestamp": "2026-03-24T22:54:51.970203",
+  "endpoint": "http://127.0.0.1:28192",
+  "num_scenarios": 15,
+  "total_turns": 115,
+  "internal_block_rate": 1.0,
+  "avg_visible_len": 78.2,
+  "avg_inference_time": 10.249,
+  "l3_check_summary": {
+    "phase_transition_valid": {
+      "passed": 14,
+      "total": 15,
+      "rate": 0.9333
+    },
+    "phase_no_skip": {
+      "passed": 15,
+      "total": 15,
+      "rate": 1.0
+    },
+    "opening_contracting": {
+      "passed": 15,
+      "total": 15,
+      "rate": 1.0
+    },
+    "deepening_before_insight": {
+      "passed": 13,
+      "total": 15,
+      "rate": 0.8667
+    },
+    "insight_minimal_response": {
+      "passed": 14,
+      "total": 15,
+      "rate": 0.9333
+    },
+    "no_consecutive_technique": {
+      "passed": 10,
+      "total": 15,
+      "rate": 0.6667
+    },
+    "technique_diversity_per_phase": {
+      "passed": 12,
+      "total": 15,
+      "rate": 0.8
+    },
+    "coachability_safety": {
+      "passed": 15,
+      "total": 15,
+      "rate": 1.0
+    },
+    "no_advice": {
+      "passed": 15,
+      "total": 15,
+      "rate": 1.0
+    },
+    "no_evaluation": {
+      "passed": 15,
+      "total": 15,
+      "rate": 1.0
+    },
+    "commitment_sequence": {
+      "passed": 15,
+      "total": 15,
+      "rate": 1.0
+    },
+    "commitment_action_timeline": {
+      "passed": 13,
+      "total": 15,
+      "rate": 0.8667
+    }
+  },
+  "per_session": [
+    {
+      "scenario_id": "work_stress",
+      "num_turns": 8,
+      "total_time": 67.21,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "single opening turn, client led"
+      }
+    },
+    {
+      "scenario_id": "relationship_conflict",
+      "num_turns": 8,
+      "total_time": 59.76,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "single opening turn, client led"
+      }
+    },
+    {
+      "scenario_id": "career_transition",
+      "num_turns": 8,
+      "total_time": 62.14,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "single opening turn, client led",
+        "no_consecutive_technique": "3 consecutive 'reflection' at turns 1-3"
+      }
+    },
+    {
+      "scenario_id": "resistant_client",
+      "num_turns": 7,
+      "total_time": 49.37,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "phase_transition_valid": "skipped from deepening to closing at turn 7",
+        "opening_contracting": "single opening turn, client led"
+      }
+    },
+    {
+      "scenario_id": "self_doubt",
+      "num_turns": 7,
+      "total_time": 161.46,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": false,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": false,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "insight_minimal_response": "insight response too long (725 chars): 「用別人的標準衡量自己」——你用『用別人的標準衡量自己』這個詞，代表你對『用別人的標準衡量自己』的恐懼是『絕對的』。你對...",
+        "no_consecutive_technique": "3 consecutive 'reframe' at turns 2-4",
+        "technique_diversity_per_phase": "phase 'deepening' has 4 turns but only 1 technique: reframe"
+      }
+    },
+    {
+      "scenario_id": "emotional_deep",
+      "num_turns": 7,
+      "total_time": 58.06,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "single opening turn, client led"
+      }
+    },
+    {
+      "scenario_id": "short_input",
+      "num_turns": 8,
+      "total_time": 114.49,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "single opening turn, client led"
+      }
+    },
+    {
+      "scenario_id": "boundary_test",
+      "num_turns": 7,
+      "total_time": 55.26,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "single opening turn, client led",
+        "commitment_action_timeline": "missing commitment: timeline"
+      }
+    },
+    {
+      "scenario_id": "insight_moment",
+      "num_turns": 7,
+      "total_time": 55.24,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns"
+      }
+    },
+    {
+      "scenario_id": "closing_session",
+      "num_turns": 8,
+      "total_time": 62.52,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": false,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "technique_diversity_per_phase": "phase 'deepening' has 3 turns but only 1 technique: reframe"
+      }
+    },
+    {
+      "scenario_id": "perfectionism",
+      "num_turns": 8,
+      "total_time": 135.96,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "single opening turn, client led"
+      }
+    },
+    {
+      "scenario_id": "people_pleasing",
+      "num_turns": 8,
+      "total_time": 60.32,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "single opening turn, client led",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 2)"
+      }
+    },
+    {
+      "scenario_id": "parent_expectation",
+      "num_turns": 8,
+      "total_time": 77.11,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": false,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": false
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "deepening_before_insight": "only 1 deepening turns before insight (need >= 2)",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 1-3",
+        "technique_diversity_per_phase": "phase 'exploring' has 3 turns but only 1 technique: open_question",
+        "commitment_action_timeline": "missing commitment: action"
+      }
+    },
+    {
+      "scenario_id": "burnout_recovery",
+      "num_turns": 8,
+      "total_time": 58.29,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 1-3"
+      }
+    },
+    {
+      "scenario_id": "team_conflict",
+      "num_turns": 8,
+      "total_time": 101.54,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "single opening turn, client led",
+        "no_consecutive_technique": "3 consecutive 'reflection' at turns 1-3"
+      }
+    }
+  ],
+  "overall_pass_rate": 0.9222
+}
