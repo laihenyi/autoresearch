@@ -1,358 +1,311 @@
 # Track B: Coaching 7B Implementation Plan
 
-> **Date**: 2026-03-24
-> **Status**: Planning & Data Preparation (Pod offline)
+> **Date**: 2026-03-24 (updated after v1 experiments)
+> **Status**: SFT v1 complete — L1 ✅ L2 ✅ L3 ❌ — needs training data improvement
 > **Goal**: Train a self-contained coaching model that internalizes the full Orchestration Layer
+
+---
+
+## 0. Executive Summary
+
+Track B v1 training is complete. The model successfully learns **single-turn coaching quality** (L1: 89.7/100, on par with Track A) and **structured output format** (L2: 100% [INTERNAL] block rate, 11/11 core fields). However, it **fails to learn dialogue flow management** (L3: 62.5%, target ≥ 90%). This failure is consistent across all 12 checkpoints tested (3 LRs × 4 checkpoints), confirming the root cause is **training data quality**, not hyperparameters.
+
+### What Works
+- [INTERNAL] block generation: 100% reliable
+- Single-turn coaching: reflection, no-advice, questioning all strong
+- Field accuracy: correct phase labels, techniques, emotions
+
+### What Doesn't Work
+- Technique diversity: model uses reflection 90%+ of the time (0% diversity check pass)
+- Phase progression: skips deepening, jumps straight to insight (0-30% pass)
+- Opening contracting: doesn't ask desired outcome (20-50% pass)
+- Consecutive technique: repeats same technique 3+ turns in a row (0% pass)
+
+### Root Cause
+The 282 training sessions have:
+1. **Technique imbalance**: reflection appears in ~70% of turns; challenge, reframe, metaphor rarely appear
+2. **Shallow phase arcs**: many sessions go opening→exploring→closing without deepening
+3. **Weak opening contracting**: few sessions model the full outcome→measurement→significance flow
 
 ---
 
 ## 1. [INTERNAL] Field Definition
 
+*(No changes from original — 25 fields validated)*
+
 The Coaching 7B model generates a `[INTERNAL]...[/INTERNAL]` block after every assistant response. This block replaces the Orchestration Layer's PhaseRouter, StateUpdater, and PromptComposer.
 
 ### 1.1 Complete Field List (25 fields)
 
-Fields marked with `[2B]` were validated in Phase 2B (94.3/100, 98.5% token accuracy).
-Fields marked with `[NEW]` are new additions for Track B or extensions beyond Phase 2B's eval scope.
+| # | Field Name | Type | Valid Values | Coverage in v1 |
+|---|-----------|------|-------------|----------------|
+| 1 | Phase decision | enum | opening, exploring, deepening, insight, closing | 100% |
+| 2 | Technique used | enum | reflection, open_question, silence, challenge, reframe, normalize, summarize, bottom_lining, goaltending, brain_hack, metaphor | 100% |
+| 3 | Desired outcome | free text / "none" | Client's stated goal | 100% |
+| 4 | Desired outcome quality | enum | undefined, vague, clear, observable, measurable | 100% |
+| 5 | New key words | list | Comma-separated key words from this turn | 100% |
+| 6 | Belief identified | free text / "none" | Underlying belief detected | 100% |
+| 7 | Emotional state | free text | Client's current emotion | 100% |
+| 8 | Insight signal | free text / "none" | Signal that client is having an insight | 100% |
+| 9 | Insight | free text / "none" | Content of insight if present | 100% |
+| 10 | OS layer | enum | surface, emotions, beliefs, identity | 100% |
+| 11 | Resistance type | enum | none, intellectualizing, deflecting, challenging, hesitation, defensiveness, rejection | 100% |
+| 12 | Outcome shift | free text / "none" | Whether desired outcome changed | 100% |
+| 13 | Trigger words | list / "none" | Words that triggered emotional response | 100% |
+| 14 | Emotion correction | free text / "none" | Updated emotion assessment | 100% |
+| 15 | Client context | free text / "none" | Background info accumulated | 100% |
+| 16 | Commitment step | enum | none, action, timeline, obstacles, support, identity, feeling | 100% |
+| 17 | Layer check completed | bool | true, false | 100% |
+| 18 | Coachability level | int | 1-7 | 100% |
+| 19 | Coachability indicators | structured | engagement=1-5, openness=1-5, willingness_to_feel=1-5, self_awareness=1-5, action_readiness=1-5 | 100% |
+| 20 | Three-brain dominance | enum | head, heart, gut | 100% |
+| 21 | Suggested persona | enum | reynolds_breakthrough, architect, mirror, catalyst, challenger, anchor | 100% |
+| 22 | Desired outcome measurement | free text / "none" | How client will measure success | 40% |
+| 23 | Desired outcome significance | free text / "none" | Why this outcome matters | 40% |
+| 24 | Contracting completeness | structured | outcome:true/false, measurement:true/false, significance:true/false | 40% |
+| 25 | Key words to clarify | list / "none" | Words needing further exploration | 40% |
 
-| # | Field Name | Type | Valid Values | Source |
-|---|-----------|------|-------------|--------|
-| 1 | Phase decision | enum | opening, exploring, deepening, insight, closing | [2B] PhaseRouter |
-| 2 | Technique used | enum | reflection, open_question, silence, challenge, reframe, normalize, summarize, bottom_lining, goaltending, brain_hack, metaphor | [2B] PromptComposer |
-| 3 | Desired outcome | free text / "none" | Client's stated goal | [2B] StateUpdater |
-| 4 | Desired outcome quality | enum | undefined, vague, clear, observable, measurable | [2B] StateUpdater |
-| 5 | New key words | list | Comma-separated key words from this turn | [2B] StateUpdater |
-| 6 | Belief identified | free text / "none" | Underlying belief detected | [2B] StateUpdater |
-| 7 | Emotional state | free text | Client's current emotion | [2B] StateUpdater |
-| 8 | Insight signal | free text / "none" | Signal that client is having an insight | [2B] StateUpdater |
-| 9 | Insight | free text / "none" | Content of insight if present | [2B] StateUpdater |
-| 10 | OS layer | enum | surface, emotions, beliefs, identity | [2B] StateUpdater |
-| 11 | Resistance type | enum | none, intellectualizing, deflecting, challenging, hesitation, defensiveness, rejection | [2B] StateUpdater |
-| 12 | Outcome shift | free text / "none" | Whether desired outcome changed | [2B] StateUpdater |
-| 13 | Trigger words | list / "none" | Words that triggered emotional response | [2B] StateUpdater |
-| 14 | Emotion correction | free text / "none" | Updated emotion assessment | [2B] StateUpdater |
-| 15 | Client context | free text / "none" | Background info accumulated | [2B] StateUpdater |
-| 16 | Commitment step | enum | none, action, timeline, obstacles, support, identity, feeling | [2B] Closing tracker |
-| 17 | Layer check completed | bool | true, false | [2B] Insight phase |
-| 18 | Coachability level | int | 1-7 | [2B] Safety |
-| 19 | Coachability indicators | structured | engagement=1-5, openness=1-5, willingness_to_feel=1-5, self_awareness=1-5, action_readiness=1-5 | [2B] Safety |
-| 20 | Three-brain dominance | enum | head, heart, gut | [2B] Part B6 |
-| 21 | Suggested persona | enum | reynolds_breakthrough, architect, mirror, catalyst, challenger, anchor | [2B] Part H |
-| 22 | Desired outcome measurement | free text / "none" | How client will measure success | [NEW] Opening contracting |
-| 23 | Desired outcome significance | free text / "none" | Why this outcome matters | [NEW] Opening contracting |
-| 24 | Contracting completeness | structured | outcome:true/false, measurement:true/false, significance:true/false | [NEW] Opening contracting |
-| 25 | Key words to clarify | list / "none" | Words needing further exploration | [NEW] Exploring |
-
-### 1.2 Key Differences from Phase 2B
-
-Phase 2B validated fields #1-21 on the 4B model. Track B adds:
-- **Fields #22-25**: Opening contracting fields (measurement, significance, completeness tracking, key word clarification). These drive the model's ability to complete the Opening phase properly -- 4B's weakest area.
-- **Decision rationale**: I4 specifies the model should learn "why" not just "what". In Track B training data, the field values should encode reasoning (e.g., `Phase decision: deepening` with context, not just the label). However, adding a separate "rationale" field risks over-complexity. The approach is to embed rationale in the existing `Insight signal`, `Outcome shift`, and `Emotion correction` fields when relevant.
-
-### 1.3 Fields NOT Included (Deliberate Omissions)
-
-- **Turn count**: The Orchestration Layer tracks turn counts for safety valves (e.g., Opening > 6 turns). The model should internalize this via training examples rather than an explicit counter field.
-- **Explicit transition reason**: Considered but rejected. A separate `phase_transition_reason` field would add complexity without improving parsability. The combination of Phase decision + other contextual fields conveys this.
-- **Session-level summary**: Not per-turn; belongs in a post-session analysis, not in [INTERNAL].
+Fields #22-25 only appear in the 71 supplementary sessions, not in the original 211.
 
 ---
 
-## 2. Training Data Specification
+## 2. Training Data
 
-### 2.1 JSONL Format
+### 2.1 Current Dataset: `coaching_7b_combined_281.jsonl` (282 sessions)
 
-Each line is one complete coaching session:
+| Source | Sessions | Quality |
+|--------|----------|---------|
+| `generated_sessions_7b_normalized.jsonl` | 211 | Normalized from original 7B generation. 21/25 fields, some shallow phase arcs |
+| `coaching_7b_supplementary.jsonl` | 71 | Generated to cover 71 uncovered scenarios. 25/25 fields, better contracting |
+| **Total** | **282** | L2 PASS (86.4% completeness, 96.3% enum validity) |
 
-```json
-{
-  "messages": [
-    {"role": "system", "content": "<system prompt>"},
-    {"role": "user", "content": "Client turn 1"},
-    {"role": "assistant", "content": "Coach response 1\n\n[INTERNAL]\nPhase decision: opening\n...\n[/INTERNAL]"},
-    {"role": "user", "content": "Client turn 2"},
-    {"role": "assistant", "content": "Coach response 2\n\n[INTERNAL]\n...\n[/INTERNAL]"},
-    ...
-  ]
-}
-```
+### 2.2 Data Quality Issues (confirmed by L3 eval)
 
-### 2.2 System Prompt
+| Issue | Evidence | Impact on L3 |
+|-------|----------|-------------|
+| **Technique imbalance** | ~70% reflection, <5% challenge/reframe/metaphor | technique_diversity 0%, no_consecutive_technique 0% |
+| **Missing deepening phase** | Many sessions: opening→exploring→closing | deepening_before_insight 0-30% |
+| **Weak opening contracting** | Only 71/282 sessions have fields #22-25 | opening_contracting 20-50% |
+| **Short sessions** | Original 211 avg 4-5 turns, supplementary 10-12 | Not enough turns for full phase arc |
 
-Track B uses the same system prompt as Track A (`base.py` from Breakthrough-Coaching), with one addition: an instruction block telling the model to generate `[INTERNAL]` after every response.
+### 2.3 Training Data v2 Requirements
 
-The additional instruction (appended to base system prompt):
+To fix L3, the next batch of training data MUST have:
 
-```
-# Internal Assessment
+1. **Technique diversity per session**: each session uses ≥ 3 different techniques, no 3 consecutive same
+2. **Complete phase arcs**: opening (1-2 turns) → exploring (2-3 turns) → deepening (3-4 turns) → insight (0-1 turn) → closing (1-2 turns)
+3. **Opening contracting**: first 2-3 turns must include desired outcome + measurement + significance
+4. **Minimum 8 turns per session** (not 4-5)
+5. **Technique distribution targets**:
+   - reflection: 30-40% (down from 70%)
+   - open_question: 20-25%
+   - challenge/reframe: 15-20% combined
+   - silence: 5-10%
+   - others (normalize, summarize, metaphor, etc.): 10-15%
 
-After every response, output a structured assessment block:
+### 2.4 Generation Strategy for v2
 
-[INTERNAL]
-Phase decision: <current phase>
-Technique used: <technique you just used>
-... (all 25 fields)
-[/INTERNAL]
+Option A: **Regenerate all 282 sessions** with strict technique/phase constraints in Claude prompts
+- Pro: cleanest data, consistent quality
+- Con: ~15-20 Claude Code sessions, 6-8 hours
 
-This block is for internal tracking only. The client does not see it.
-```
+Option B: **Generate 100 new technique-diverse sessions**, keep best 100 from existing
+- Pro: faster, reuses validated data
+- Con: mixed quality
 
-### 2.3 Per-Session Structure
+Option C: **DPO on L3 failures** from existing SFT model
+- Pro: targeted fix without full regeneration
+- Con: model may not have learned enough diversity to generate good alternatives
 
-| Element | Requirement |
-|---------|------------|
-| Turns | 8-14 turns (1 turn = 1 user + 1 assistant) |
-| Opening | 1-2 turns: establish rapport, ask "what to explore today", begin contracting |
-| Exploring | 2-4 turns: surface story, identify key words and beliefs |
-| Deepening | 2-4 turns: challenge beliefs, connect to OS layers |
-| Insight | 0-1 turns: client self-discovers, coach holds silence |
-| Closing | 1-3 turns: action, timeline, obstacles (not every session reaches this) |
-| System prompt | Identical across all sessions |
-| [INTERNAL] | Every assistant message must have one |
-| Language | Traditional Chinese (Taiwan), natural speech patterns |
-
-### 2.4 Data Volume
-
-| Source | Sessions | Status |
-|--------|----------|--------|
-| Existing `generated_sessions_7b.jsonl` | 211 | Done (generated via Claude Code sessions) |
-| Additional needed | ~0 (already exceeds 200+ target) | -- |
-
-**Assessment**: The 211 existing sessions meet the I8.1 volume target. Validation shows 100% pass rate on structural checks (all have [INTERNAL] blocks with sufficient fields, valid phase arcs). However, scenario coverage is only 34/105 (32%) -- many sessions reuse the same opening scenarios. Supplementary generation should prioritize the 71 uncovered scenarios (especially boundary situations #51-60 and deep issues #61-75).
-
-### 2.5 Quality Criteria
-
-Per session:
-- [ ] Coach always reflects before questioning (uses `「」` quoting client's words)
-- [ ] Coach never gives advice, evaluation, or multiple questions
-- [ ] Responses are 1-3 sentences
-- [ ] Phase progresses naturally (no skipping)
-- [ ] All 25 [INTERNAL] fields are filled
-- [ ] Client speech sounds natural (Taiwan Chinese)
-- [ ] Overall arc is natural (not forced)
-- [ ] Contracting fields are properly tracked through Opening
-- [ ] Commitment steps are properly tracked through Closing (if reached)
+**Recommended**: Option A (regenerate). The data quality gap is fundamental — DPO cannot teach techniques the model has never seen in SFT data.
 
 ---
 
-## 3. Data Generation Strategy
+## 3. Training Recipe
 
-### 3.1 Current State Assessment
+### 3.1 Confirmed Configuration
 
-211 sessions already exist. Before generating more, the priority is **quality review** of existing data.
+| Parameter | Value | Source |
+|-----------|-------|--------|
+| Base model | benchang1110/Qwen2.5-Taiwan-7B-Instruct | Shared with Track A |
+| Method | QLoRA (4-bit) via bitsandbytes | Validated |
+| LoRA r | 64 | Validated |
+| LoRA alpha | 128 | Validated |
+| Batch size | 1, grad_accum 4 | GPU constraint |
+| Max seq len | 4096 | Validated (max=3645, no truncation) |
+| Warmup ratio | 0.1 | Standard |
+| Scheduler | cosine | Standard |
+| **eval_strategy** | **"no"** | **Mid-training eval causes OOM on 4090** |
+| save_steps | auto (30%, 59%, 89% of total) | 3 checkpoints per run |
 
-### 3.2 Quality Review Protocol
+### 3.2 LR Sweep Results (v1)
+
+| Checkpoint | LR 2e-5 | LR 5e-5 | LR 1e-4 |
+|------------|---------|---------|---------|
+| ckpt-19 (30%) | 76.1 | 86.3 | 80.0 |
+| ckpt-38 (59%) | **89.3** | 87.4 | 85.5 |
+| ckpt-57 (89%) | 80.9 | 87.0 | 89.2 |
+| final (100%) | 83.7 | 88.2 | **89.7** |
+
+**Key findings:**
+- LR 2e-5: peaks at 59% then decays — needs more training but overfits past 60%
+- LR 5e-5: most stable across all checkpoints (86-88 range)
+- LR 1e-4: monotonically improves to final — may benefit from >1 epoch
+- **No early stopping advantage** unlike Track A — Track B data is more diverse so more training helps
+
+### 3.3 Recommended v2 Training Plan
 
 ```
-Step 1: Automated validation (scripts/validate_coaching_7b_data.py)
-  - Parse all 211 sessions
-  - Check [INTERNAL] block presence and field completeness
-  - Flag sessions with < 22 fields filled
-  - Flag sessions where Phase decision doesn't follow valid arc
+Phase 1: SFT on v2 data (~200-300 sessions)
+  → LR = 1e-4 (best in v1 sweep) + 5e-5 as fallback
+  → 1 epoch, noeval, save at 30/60/90%
+  → L1 eval all checkpoints → pick top 2
 
-Step 2: Spot-check (manual, ~20 sessions)
-  - Verify coaching quality (no advice, proper reflection)
-  - Verify field accuracy (phase matches conversation flow)
-  - Verify client naturalness
+Phase 2: L3 live eval on top 2 checkpoints
+  → 10 multi-turn scenarios
+  → Target: L3 ≥ 80% (stretch: ≥ 90%)
 
-Step 3: Decision
-  - If quality ≥ 80% → proceed with existing 211 (clean bad ones)
-  - If quality < 80% → regenerate bad sessions
+Phase 3: DPO (if L3 ≥ 70% but < 90%)
+  → Generate DPO pairs from L3 failures:
+    - chosen: correct phase transition + diverse technique
+    - rejected: wrong phase skip + repetitive technique
+  → beta=0.05, 1 epoch
 ```
 
-### 3.3 Supplementary Generation (if needed)
+### 3.4 Operational Notes
 
-Use `scripts/generate_coaching_7b_sessions.py` to generate prompts for Claude Code sessions:
-
-- **Batch size**: 7 sessions per batch (matches existing approach)
-- **Execution**: Claude Code subscription session (zero API cost)
-- **Scenarios**: 105 scenarios defined in `scripts/generate_coaching_sessions.py`
-- **Coverage check**: Ensure all 15 topic categories are represented
-
-### 3.4 Scenario Coverage Targets
-
-| Category | Count | Topics |
-|----------|-------|--------|
-| Workplace stress & burnout | 15 | career_burnout, perfectionism, imposter_syndrome, ... |
-| Relationships | 15 | marriage_distance, parent_aging, friendship_loss, ... |
-| Self-identity & growth | 20 | identity_crisis, fear_of_failure, comparison, ... |
-| Coaching boundary situations | 10 | resistant_start, wants_advice, testing_coach, ... |
-| Deep issues | 15 | childhood_wound, abandonment, emotional_numbness, ... |
-| Life transitions | 15 | pregnancy_anxiety, relocation, health_scare, ... |
-| Special coaching scenarios | 15 | insight_moment, follow_up, closing_session, ... |
+- **OOM prevention**: eval_strategy="no" is mandatory. Eval after training only.
+- **Disk quota**: RunPod `/workspace` has inode limits. Delete old checkpoints before training.
+- **Serve for inference**: `serve_4b_coach.py --structured` keeps [INTERNAL]; without `--structured` strips it.
+- **Context trimming for multi-turn**: During L3 eval, strip [INTERNAL] from prior turns when sending to model. This prevents context overflow and OOM. See `eval_coaching_7b_live.py`.
 
 ---
 
-## 4. Training Recipe
+## 4. Evaluation Framework
 
-### 4.1 Base Configuration (from Track A experience)
+### 4.1 Three-Level Evaluation (all implemented)
 
-| Parameter | Track A (v7) | Track B (proposed) | Rationale |
-|-----------|-------------|-------------------|-----------|
-| Base model | Qwen2.5-Taiwan-7B-Instruct | Same | Shared base |
-| Method | QLoRA (4-bit) via Unsloth | Same | 24GB GPU constraint |
-| LoRA alpha | 128 | 128 | Validated in Track A |
-| LoRA r | 64 | 64 | Validated in Track A |
-| LR | 1.2e-4 | **5e-5** (start) | Track B has longer sequences (multi-turn with [INTERNAL]); lower LR to avoid overfitting |
-| Epochs | 1 (early stop ~30%) | 1 (early stop ~30%) | Track A pattern: best ckpt at ~30% |
-| Batch size | 1 | 1 | GPU memory constraint |
-| Grad accumulation | 4 | 4 | Effective batch = 4 |
-| Max seq len | 2048 | **4096** | Multi-turn sessions with [INTERNAL] can exceed 2048 tokens |
-| Warmup ratio | 0.1 | 0.1 | Standard |
-| Scheduler | cosine | cosine | Standard |
+| Level | What | Tool | Threshold | v1 Result |
+|-------|------|------|-----------|-----------|
+| **L1** | Single-turn coaching quality | `eval_coach.py` | ≥ 85 | **89.7 ✅** |
+| **L2** | Structured output correctness | `eval_coaching_7b_structured.py` | ≥ 95% block rate, ≥ 85% fields | **100% / 100% ✅** |
+| **L3** | Dialogue flow management | `eval_coaching_7b_live.py` + `eval_coaching_7b_flow.py` | ≥ 90% overall | **62.5% ❌** |
 
-### 4.2 Key Adjustments from Track A
+### 4.2 L3 Check Breakdown (v1 results)
 
-1. **Longer max_seq_len (4096)**: Each session has 8-14 turns of assistant content, each with a 25-field [INTERNAL] block. Estimated ~3000-4000 tokens per session. Track A's 2048 would truncate.
+| Check | Pass Rate | Status |
+|-------|-----------|--------|
+| phase_transition_valid | 20-30% | ❌ FAIL |
+| phase_no_skip | 50-80% | ⚠ WARN |
+| deepening_before_insight | 0-30% | ❌ FAIL |
+| insight_minimal_response | 100% | ✅ PASS |
+| opening_contracting | 20-50% | ❌ FAIL |
+| no_consecutive_technique | 0% | ❌ FAIL |
+| technique_diversity_per_phase | 0-40% | ❌ FAIL |
+| coachability_safety | 100% | ✅ PASS |
+| no_advice | 90% | ✅ PASS |
+| no_evaluation | 100% | ✅ PASS |
+| commitment_sequence | 100% | ✅ PASS |
+| commitment_action_timeline | 90-100% | ✅ PASS |
 
-2. **Lower initial LR (5e-5)**: Track B has fewer but longer training examples. Risk of overfitting is higher. Start at 5e-5 and sweep {2e-5, 5e-5, 1e-4}.
+Safety and content quality checks all PASS. Phase management and technique diversity FAIL.
 
-3. **No adapter stacking**: Track B trains from the base model directly. Do NOT load Track A's adapter as base -- the two tracks must remain independent (per I0 "never merge" principle).
+### 4.3 Comparison Matrix (actual results)
 
-### 4.3 Training Sequence
+| Metric | Track A (v7) | Track B v1 (best) | Track B Target |
+|--------|-------------|-------------------|----------------|
+| L1 composite | 89.3 | 89.7 | ≥ 85 ✅ |
+| L2 block rate | N/A | 100% | ≥ 95% ✅ |
+| L2 field coverage | N/A | 11/11 core | ≥ 85% ✅ |
+| **L3 dialogue flow** | N/A | **62.5%** | **≥ 90% ❌** |
 
-```
-Phase 1: SFT on 211 sessions (with [INTERNAL])
-  → Checkpoint at 20%, 30%, 40%, 50%
-  → Eval each checkpoint with L1 + L2
+### 4.4 Eval Tools Reference
 
-Phase 2: LR Sweep
-  → {2e-5, 5e-5, 1e-4} × 1 epoch
-  → Pick best by L2 dialogue_flow score
-
-Phase 3: DPO Refinement (if SFT > 85/100)
-  → Reuse 4B DPO infrastructure
-  → Generate Track B specific DPO pairs:
-    - Phase transition errors (chose wrong phase)
-    - [INTERNAL] field inaccuracy (wrong OS layer, wrong technique)
-    - Coaching quality regressions (advice-giving, evaluation)
-  → Config: beta=0.05, 1 epoch (inherited from 4B)
-```
-
-### 4.4 GPU Requirements
-
-- RunPod RTX 4090 24GB
-- QLoRA 4-bit: ~18GB VRAM for 7B + 4096 seq len
-- Training time: ~1-2 hours per SFT run
-- Total estimated Pod time: ~10-15 hours (including sweeps + DPO)
-- Estimated cost: ~$2-4
+| Script | Purpose | Mode |
+|--------|---------|------|
+| `eval_coach.py` | L1: 10-scenario single-turn eval | Serve (non-structured) |
+| `eval_coaching_7b_structured.py` | L2: offline JSONL field analysis | Offline |
+| `eval_coaching_7b_flow.py` | L3: offline dialogue flow checks | Offline |
+| `eval_coaching_7b_live.py` | L3: live multi-turn generation + flow eval | Serve (structured) |
+| `sweep_eval_coaching_7b.sh` | Batch L1 eval across checkpoints | Pod-side |
 
 ---
 
-## 5. Evaluation Framework
+## 5. Assets on Pod / Local
 
-### 5.1 Three-Level Evaluation
+### 5.1 Pod (213.173.110.214:21248) — may be terminated
 
-| Level | What | Tool | Threshold | Status |
-|-------|------|------|-----------|--------|
-| L1: Single-turn quality | Reflection, no_advice, question quality | `eval_coach.py` | ≥ 85 composite | Exists |
-| L2: Structured output | Block rate, field completeness, field validity | `eval_structured_output.py` (adapted) | ≥ 90% block rate, ≥ 80% field completeness | Exists (Phase 2B) |
-| L3: Dialogue flow | 58 checks: phase transitions, commitment sequence, technique diversity | `dialogue_flow_evaluation.py` (adapted for standalone) | ≥ 90% pass rate | Needs adaptation |
+| Path | Description |
+|------|-------------|
+| `/workspace/adapter_coaching_7b_lr2e5/` | LR 2e-5, checkpoints 19/38/57/64 |
+| `/workspace/adapter_coaching_7b_lr5e5/` | LR 5e-5, checkpoints 19/38/57/64 |
+| `/workspace/adapter_coaching_7b_lr1e4/` | LR 1e-4, checkpoints 19/38/57/64 |
+| `/workspace/adapter_coaching_7b_best/` | Copy of lr5e5 ckpt-19 (original v1) |
+| `/workspace/adapter_sft_v7/` | Track A adapter (for comparison) |
+| `/workspace/coaching_7b_combined_281.jsonl` | Training data (282 sessions) |
 
-### 5.2 L2 Structured Output Eval (Track B specific)
+### 5.2 Local (`autoresearch/`)
 
-Extends Phase 2B's eval to cover all 25 fields:
-
-```
-Metrics:
-  1. Block rate: % of assistant responses with [INTERNAL] block (target ≥ 95%)
-  2. Field completeness: avg fields present / 25 (target ≥ 85%)
-  3. Field validity: % of enum fields with valid values (target ≥ 90%)
-  4. Phase coherence: % of sessions with valid phase arc (target ≥ 85%)
-  5. Contracting tracking: Opening sessions correctly track outcome/measurement/significance
-```
-
-### 5.3 L3 Dialogue Flow Eval (New for Track B)
-
-The key differentiator from Track A. Tests whether the model can manage a full session:
-
-```
-Checks (adapted from Orchestration Layer's 58 checks):
-  - Phase transition validity (no skipping Opening→Deepening)
-  - Opening contracting (outcome, measurement, significance asked)
-  - Deepening ≥ 3 turns before Insight
-  - Insight: silence/minimal response when insight_signal detected
-  - Closing: tracks commitment steps (action→timeline→obstacles→support)
-  - Safety: coachability_level triggers appropriate strategy
-  - Technique diversity: no 3 consecutive same technique
-  - Talk ratio: coach responses ≤ 40% of total word count
-```
-
-### 5.4 Comparison Matrix
-
-| Metric | Track A (88.6) | Phase 2B (94.3) | Track B Target |
-|--------|---------------|-----------------|----------------|
-| L1 composite | 88.6 | 94.3 | ≥ 85 |
-| Block rate | N/A (no [INTERNAL]) | 100% | ≥ 95% |
-| Field completeness | N/A | 89% (9.78/11 fields) | ≥ 85% (of 25 fields) |
-| L3 dialogue flow | N/A | N/A | ≥ 90% |
+| Path | Description |
+|------|-------------|
+| `qwen35_4b_experiment/adapter_coaching_7b_best/` | Track B v1 adapter (ckpt-19, 309MB) |
+| `qwen35_4b_experiment/adapter_sft_v7_best/` | Track A adapter (309MB) |
+| `qwen35_4b_experiment/eval_results/lr*` | 12 L1 sweep eval results |
+| `scripts/eval_results/l3_live_*` | 4 L3 live eval results + session logs |
+| `structured_output_experiment/coaching_7b_combined_281.jsonl` | Training data |
+| `logs/coaching_7b_lr*.log` | 3 training logs |
 
 ---
 
-## 6. Milestones & Dependencies
+## 6. Next Steps (Priority Order)
 
-### 6.1 What Can Start Now (No Pod Needed)
+### 6.1 Critical: Training Data v2
 
-| Task | Effort | Output |
-|------|--------|--------|
-| Quality review of 211 sessions | ~2 hours | Clean dataset + quality report |
-| Build validation script | ~1 hour | `scripts/validate_coaching_7b_data.py` |
-| Adapt L2 eval for 25 fields | ~1 hour | Updated `eval_structured_output.py` |
-| Design L3 dialogue flow eval | ~3 hours | `scripts/eval_dialogue_flow_7b.py` |
-| Generate supplementary sessions (if needed) | ~4-6 hours | Additional JSONL entries |
-| Prepare training script | ~1 hour | `scripts/train_coaching_7b_sft.py` |
+**Goal**: Generate 200+ sessions with enforced technique diversity and complete phase arcs.
 
-### 6.2 What Requires Pod (RTX 4090)
+Requirements per session:
+- ≥ 8 turns (target 10-12)
+- Phase arc: opening (1-2) → exploring (2-3) → deepening (3-4) → insight (0-1) → closing (1-2)
+- ≥ 3 distinct techniques per session
+- No 3 consecutive same technique
+- Opening contracting (fields #22-25) in every session
+- Technique distribution: reflection ≤ 40%, open_question ≥ 20%, challenge+reframe ≥ 15%
 
-| Task | Estimated Pod Time | Cost |
-|------|-------------------|------|
-| SFT training (1 run) | ~1-2 hours | ~$0.2-0.4 |
-| LR sweep (3 runs) | ~4-6 hours | ~$0.8-1.2 |
-| Eval per checkpoint | ~0.5 hours each | ~$0.1 each |
-| DPO (if SFT succeeds) | ~1-2 hours | ~$0.2-0.4 |
-| **Total** | **~10-15 hours** | **~$2-4** |
+**Approach**: Use `scripts/generate_coaching_7b_sessions.py` with updated prompts that enforce these constraints. Generate via Claude Code sessions.
 
-### 6.3 Dependencies
+### 6.2 Retrain with v2 Data
 
-```
-[NOW] Quality review of 211 sessions
-  → Clean dataset ready
-    → [POD] SFT training
-      → [POD] Eval (L1 + L2)
-        → If L1 ≥ 85 AND L2 ≥ 90%:
-          → [POD] L3 dialogue flow eval
-            → If L3 ≥ 90%: SUCCESS — Coaching 7B v1 ready
-            → If L3 < 90%: DPO refinement
-        → If L1 < 85 OR L2 < 90%:
-          → Diagnose: data quality? LR? seq_len?
-          → Regenerate / adjust / retry
+- LR = 1e-4 (best in v1) as primary, 5e-5 as backup
+- Same config (noeval, 4096 seq, QLoRA r=64)
+- Target: L3 ≥ 80% before DPO
 
-[PARALLEL] Build eval scripts (L2 expansion, L3 new)
-[PARALLEL] Prepare training script (adapt train_7b_sft.py)
-```
+### 6.3 DPO Refinement (if SFT L3 ≥ 70%)
 
-### 6.4 I7 Checklist Progress
+Generate DPO pairs targeting:
+1. **Phase transition errors**: chosen = correct progression, rejected = phase skipping
+2. **Technique diversity**: chosen = varied techniques, rejected = 3x reflection
+3. **Opening contracting**: chosen = asks outcome+measurement, rejected = skips contracting
 
-| Condition | Status |
-|-----------|--------|
-| 7B quick validation (I8.3 Stage A) | Done |
-| Prompt-based 7B = 88.6/100 (Track A) | Done |
-| RunPod account ready | Done |
-| G10.p10 Phase 3D deployment | Blocked (not started) |
-| Prompt-based 7B stable ≥ 2 weeks | Blocked (not deployed) |
-| dialogue_flow 58 checks ≥ 95% | Blocked (needs Track A deployment) |
-| Session generation pipeline ready | **Done** (211 sessions exist) |
+### 6.4 Success Criteria
 
-**Critical path**: Track A deployment (G10.p10 Phase 3D) is the gating factor. Data preparation (this plan) can proceed in parallel.
+Track B v2 is ready when:
+- L1 ≥ 85 (maintain coaching quality)
+- L2 ≥ 95% block rate (maintain structured output)
+- **L3 ≥ 90% overall** (dialogue flow management)
+- At least 8/10 L3 scenarios pass ALL 12 checks
 
 ---
 
-## 7. Risk Mitigation
+## 7. Lessons Learned (v1)
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| 211 sessions have quality issues | Medium | Can regenerate | Validate first, regenerate only bad ones |
-| 4096 seq_len causes OOM on 4090 | Low | Use gradient checkpointing | Test with 1 sample first; fallback to 3072 |
-| Model generates [INTERNAL] but coaching quality drops | Medium | DPO correction | Keep Track A's eval_coach.py as L1 regression gate |
-| Phase management doesn't transfer from training data | High | Core risk | Ensure training data has diverse phase arcs; DPO on phase errors |
-| Contracting fields (22-25) poorly learned | Medium | New fields, less training signal | Include explicit opening-focused sessions; augment with DPO |
-| Pod unavailable when needed | Low | Timing issue | All prep work is Pod-independent |
+1. **Data quality > hyperparameters**: 3 LRs × 4 checkpoints all produced identical L3 failures. The bottleneck is training data, not model capacity or learning rate.
+
+2. **Mid-training eval causes OOM**: On RTX 4090 with 7B QLoRA + 4096 seq_len, mid-training eval allocates extra memory that crashes the process. Always use `eval_strategy="no"`.
+
+3. **Context trimming for multi-turn inference**: Sending full [INTERNAL] blocks in conversation history causes context overflow. Strip [INTERNAL] from prior turns, keep only for current turn.
+
+4. **Checkpoint sweet spots vary by LR**: Unlike Track A (always best at ~30%), Track B shows different patterns per LR. LR 1e-4 improves monotonically; LR 2e-5 peaks at 59%.
+
+5. **L1 and L3 are independent**: A model can score 89.7 on L1 (single-turn quality) while scoring 62.5% on L3 (dialogue flow). Single-turn coaching skill doesn't imply session management skill.
+
+6. **[INTERNAL] format is easy to learn**: 100% block rate even at 30% training. The format is not the bottleneck — the _content_ (phase decisions, technique choices) is.
