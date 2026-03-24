@@ -1,0 +1,22 @@
+{
+  "tag": "supplementary_all_71",
+  "timestamp": "2026-03-24T15:54:10.115149",
+  "mode": "offline",
+  "source": "structured_output_experiment/coaching_7b_supplementary.jsonl",
+  "elapsed_s": 0.1,
+  "aggregate": {
+    "total_turns": 724,
+    "total_sessions": 71,
+    "block_rate": 1.0,
+    "block_count": 724,
+    "avg_fields_present": 24.0,
+    "avg_fields_valid": 24.0,
+    "total_expected_fields": 25,
+    "field_completeness": 0.96,
+    "field_validity": 0.96,
+    "enum_validity": 1.0,
+    "phase_coherence": 1.0,
+    "contracting_rate": 0.8451,
+    "contracting_sessions_checked": 71
+  }
+}

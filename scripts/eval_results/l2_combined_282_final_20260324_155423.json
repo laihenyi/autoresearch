@@ -1,0 +1,22 @@
+{
+  "tag": "combined_282_final",
+  "timestamp": "2026-03-24T15:54:23.291494",
+  "mode": "offline",
+  "source": "structured_output_experiment/coaching_7b_combined_281.jsonl",
+  "elapsed_s": 0.3,
+  "aggregate": {
+    "total_turns": 1870,
+    "total_sessions": 282,
+    "block_rate": 1.0,
+    "block_count": 1870,
+    "avg_fields_present": 21.6,
+    "avg_fields_valid": 21.45,
+    "total_expected_fields": 25,
+    "field_completeness": 0.8642,
+    "field_validity": 0.8582,
+    "enum_validity": 0.9633,
+    "phase_coherence": 0.7128,
+    "contracting_rate": 0.2128,
+    "contracting_sessions_checked": 282
+  }
+}
