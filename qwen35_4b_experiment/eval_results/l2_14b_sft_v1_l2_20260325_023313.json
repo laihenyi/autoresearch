@@ -1,0 +1,22 @@
+{
+  "tag": "14b_sft_v1_l2",
+  "timestamp": "2026-03-25T02:33:13.551683",
+  "mode": "offline",
+  "source": "qwen35_4b_experiment/l3_live_sessions/l3_live_14b_sft_v1_20260325_020756.jsonl",
+  "elapsed_s": 0.0,
+  "aggregate": {
+    "total_turns": 87,
+    "total_sessions": 10,
+    "block_rate": 1.0,
+    "block_count": 87,
+    "avg_fields_present": 20.0,
+    "avg_fields_valid": 18.7,
+    "total_expected_fields": 25,
+    "field_completeness": 0.8,
+    "field_validity": 0.748,
+    "enum_validity": 0.7206,
+    "phase_coherence": 0.7,
+    "contracting_rate": 0.0,
+    "contracting_sessions_checked": 10
+  }
+}

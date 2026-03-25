@@ -1,0 +1,22 @@
+{
+  "tag": "l2_live_14b_twopass_run1_20260325_104452",
+  "timestamp": "2026-03-25T11:22:57.375396",
+  "mode": "offline",
+  "source": "/workspace/qwen35_4b_experiment/l3_live_sessions/l3_live_14b_twopass_run1_20260325_104452.jsonl",
+  "elapsed_s": 0.0,
+  "aggregate": {
+    "total_turns": 87,
+    "total_sessions": 10,
+    "block_rate": 1.0,
+    "block_count": 87,
+    "avg_fields_present": 10.93,
+    "avg_fields_valid": 10.84,
+    "total_expected_fields": 25,
+    "field_completeness": 0.4372,
+    "field_validity": 0.4336,
+    "enum_validity": 0.9564,
+    "phase_coherence": 0.6,
+    "contracting_rate": 0.0,
+    "contracting_sessions_checked": 10
+  }
+}

@@ -102,6 +102,82 @@ def parse_internal(text: str) -> tuple[dict, str, bool]:
 
 
 # ---------------------------------------------------------------------------
+# Text-based technique inference (independent of [INTERNAL] labels)
+# ---------------------------------------------------------------------------
+
+_REFLECTION_WORDS = re.compile(
+    r"你說|你提到|你用了|你覺得|聽起來你|你剛才說|你描述的|你表達的"
+)
+_CHALLENGE_WORDS = re.compile(
+    r"如果那不是真的|假設|真的是這樣嗎|真的嗎|好奇的是|怎麼共存|哪一個是真的"
+    r"|你在假設什麼|你確定嗎|這是真的嗎"
+)
+_REFRAME_WORDS = re.compile(
+    r"換個角度|另一種|也許.*其實|不是.*而是|也可能是|從.*位置看"
+    r"|你的優勢.*也是.*盲點|如果這不是問題.*而是"
+)
+_SILENCE_PATTERNS = re.compile(
+    r"^[⋯…。嗯]+[。]?$|^留在那裡[。]?$|^嗯[。]?$"
+)
+_NORMALIZE_WORDS = re.compile(
+    r"很多人|這很正常|這是自然的|很常見|不少人"
+)
+_SUMMARIZE_WORDS = re.compile(
+    r"你提到.*又提到|你一方面.*另一方面|串連|整理一下|你說了.*也說了"
+)
+
+
+def infer_technique_from_text(coach_text: str) -> str:
+    """Infer coaching technique from visible response text using rules.
+
+    Priority order (most specific first):
+    silence > normalize > challenge > reframe > summarize > reflection > open_question
+    """
+    text = coach_text.strip()
+
+    # Silence: very short, only punctuation/minimal words
+    if _SILENCE_PATTERNS.match(text) or (len(text) <= 6 and "？" not in text):
+        return "silence"
+
+    # Normalize
+    if _NORMALIZE_WORDS.search(text):
+        return "normalize"
+
+    # Challenge (before question check — challenges often end with ？)
+    if _CHALLENGE_WORDS.search(text):
+        return "challenge"
+
+    # Reframe
+    if _REFRAME_WORDS.search(text):
+        return "reframe"
+
+    # Summarize (connects multiple threads)
+    if _SUMMARIZE_WORDS.search(text):
+        return "summarize"
+
+    has_question = "？" in text
+    has_reflection = bool(_REFLECTION_WORDS.search(text))
+
+    # Reflection + Question compound → reflection (primary technique)
+    if has_reflection and has_question:
+        return "reflection"
+
+    # Pure reflection (no question mark)
+    if has_reflection and not has_question:
+        return "reflection"
+
+    # Question without reflection words
+    if has_question:
+        return "open_question"
+
+    # Default: if it's a short statement, likely reflection/encapsulation
+    if len(text) < 20:
+        return "reflection"
+
+    return "open_question"
+
+
+# ---------------------------------------------------------------------------
 # Advice / evaluation detection (overlaps with L1 but from [INTERNAL] angle)
 # ---------------------------------------------------------------------------
 
@@ -135,13 +211,18 @@ class SessionChecker:
         self.details: dict[str, str] = {}
 
     def _parse_turns(self):
-        """Extract (user, assistant) turn pairs with parsed fields."""
+        """Extract (user, assistant) turn pairs with parsed fields.
+
+        Also infers technique from visible text (independent of [INTERNAL]).
+        """
         pending_user = None
         for m in self.messages:
             if m["role"] == "user":
                 pending_user = m["content"]
             elif m["role"] == "assistant" and pending_user is not None:
                 fields, coach_text, has_block = parse_internal(m["content"])
+                # Always infer technique from visible text
+                fields["_inferred_technique"] = infer_technique_from_text(coach_text)
                 self.turns.append((pending_user, coach_text, fields, has_block))
                 pending_user = None
 
@@ -359,13 +440,17 @@ class SessionChecker:
     def _check_no_consecutive_same_technique(self):
         """No 3 consecutive turns with the same technique.
 
-        Exception: when client gives very short responses (≤ 5 chars),
+        Uses text-inferred technique (_inferred_technique) instead of
+        [INTERNAL] technique_used label, for accuracy independent of
+        model self-labeling.
+
+        Exception: when client gives very short responses (≤ 10 chars),
         reflection is often the only viable technique. Consecutive
         reflections paired with short inputs are excused.
         """
         turn_data = [
-            (t[0], t[2].get("technique_used", "").lower().strip())
-            for t in self.turns if t[2].get("technique_used")
+            (t[0], t[2].get("_inferred_technique", "").lower().strip())
+            for t in self.turns if t[2].get("_inferred_technique")
         ]
 
         if len(turn_data) < 3:
@@ -408,14 +493,11 @@ class SessionChecker:
         phase_techniques: dict[str, set[str]] = {}
         for _user, _coach, fields, _ in self.turns:
             phase = fields.get("phase_decision", "").lower().strip()
-            tech = fields.get("technique_used", "").lower().strip()
+            # Use text-inferred technique instead of [INTERNAL] label
+            tech = fields.get("_inferred_technique", "").lower().strip()
             if phase and tech:
                 phase_techniques.setdefault(phase, set())
-                # Expand compound techniques
-                for part in tech.split("/"):
-                    part = part.strip()
-                    if part:
-                        phase_techniques[phase].add(part)
+                phase_techniques[phase].add(tech)
 
         # Also need turn counts per phase
         phase_turn_counts: dict[str, int] = {}
