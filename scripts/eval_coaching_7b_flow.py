@@ -191,6 +191,74 @@ def infer_technique_from_text(coach_text: str) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Functional-layer classification (4 categories, coarser than 8 techniques)
+# ---------------------------------------------------------------------------
+
+_DEEPENING_SIGNALS = re.compile(
+    r"如果.*不是真的|怎麼共存|你在假設|你是誰|你真正想要"
+    r"|應該.*誰的聲音|哪一個是真的|這兩者|如果那不是|假設"
+    r"|真的是這樣嗎|你在保護什麼|底下.*什麼|背後.*什麼"
+    r"|不應該|你心裡的聲音|這個.*底下"
+)
+
+_SUPPORTING_SIGNALS = re.compile(
+    r"很多人|這很正常|很常見|這是自然的|不少人"
+)
+
+
+def infer_function_from_text(coach_text: str) -> str:
+    """Infer coaching function from visible response text.
+
+    4 functional categories (coarser than 8 techniques):
+      holding    = reflection, silence, encapsulating, labeling (持守空間)
+      exploring  = open questions, summarize (拓展探索)
+      deepening  = challenge, reframe, identity questions (深化挑戰)
+      supporting = normalize, metaphor, acknowledge (支持穩定)
+
+    Key advantage: holding → holding → exploring matches Reynolds' 2:1
+    reflection:question ratio naturally, eliminating the methodology
+    contradiction in no_consecutive_technique.
+    """
+    text = coach_text.strip()
+
+    # Holding: short responses, silence, encapsulating
+    if len(text) <= 6:
+        return "holding"
+    if re.match(r"^[⋯…。嗯]+[。]?$", text):
+        return "holding"
+
+    # Deepening: challenge, reframe, identity probing
+    if _DEEPENING_SIGNALS.search(text):
+        return "deepening"
+
+    # Supporting: normalize, metaphor
+    if _SUPPORTING_SIGNALS.search(text):
+        return "supporting"
+
+    # Exploring: questions (non-challenging)
+    has_question = "？" in text
+    has_reflection = bool(_REFLECTION_WORDS.search(text))
+
+    if has_question and not has_reflection:
+        return "exploring"
+
+    # Compound (reflection + question) → holding (reflection is the primary act;
+    # the question is secondary. This matches Reynolds' 2:1 ratio pattern.)
+    if has_question and has_reflection:
+        return "holding"
+
+    # Pure reflection without question → holding
+    if has_reflection:
+        return "holding"
+
+    # Short statement without question → holding (labeling, encapsulating)
+    if len(text) < 30:
+        return "holding"
+
+    return "exploring"
+
+
+# ---------------------------------------------------------------------------
 # Advice / evaluation detection (overlaps with L1 but from [INTERNAL] angle)
 # ---------------------------------------------------------------------------
 
@@ -306,8 +374,9 @@ class SessionChecker:
                 pending_user = m["content"]
             elif m["role"] == "assistant" and pending_user is not None:
                 fields, coach_text, has_block = parse_internal(m["content"])
-                # Always infer technique from visible text
+                # Always infer technique and function from visible text
                 fields["_inferred_technique"] = infer_technique_from_text(coach_text)
+                fields["_inferred_function"] = infer_function_from_text(coach_text)
                 self.turns.append((pending_user, coach_text, fields, has_block))
                 pending_user = None
 
@@ -614,40 +683,48 @@ class SessionChecker:
         self.results["no_mechanical_repetition"] = ok
 
     def _check_technique_diversity_per_phase(self):
-        """Each phase with >= 3 turns should use at least 2 different techniques.
+        """Each phase with >= 5 turns should use at least 2 different functions.
 
-        Threshold rationale: training data uses compound techniques
-        (e.g., 'reflection/open_question') where a single turn counts as
-        2 techniques. Live inference typically uses atomic techniques, so
-        2-turn phases naturally have only 1 technique per turn. Requiring
-        diversity at ≥3 turns is fairer and still ensures technique variation
-        in longer phases where it matters most.
+        Uses functional-layer classification (holding/exploring/deepening/
+        supporting) instead of 8 technique labels. This eliminates the
+        methodology contradiction where Reynolds' 2:1 reflection:question
+        ratio would fail technique-level diversity checks.
 
-        Compound values like 'reflection/open_question' are still expanded.
+        Also checks: 3 consecutive 'exploring' = FAIL (asking questions
+        without reflection is bad coaching). 3 consecutive 'holding' = OK
+        (holding space in insight/deepening moments is correct).
         """
-        phase_techniques: dict[str, set[str]] = {}
+        phase_functions: dict[str, list[str]] = {}
         for _user, _coach, fields, _ in self.turns:
             phase = fields.get("phase_decision", "").lower().strip()
-            # Use text-inferred technique instead of [INTERNAL] label
-            tech = fields.get("_inferred_technique", "").lower().strip()
-            if phase and tech:
-                phase_techniques.setdefault(phase, set())
-                phase_techniques[phase].add(tech)
-
-        # Also need turn counts per phase
-        phase_turn_counts: dict[str, int] = {}
-        for _user, _coach, fields, _ in self.turns:
-            phase = fields.get("phase_decision", "").lower().strip()
-            if phase:
-                phase_turn_counts[phase] = phase_turn_counts.get(phase, 0) + 1
+            func = fields.get("_inferred_function", "").lower().strip()
+            if phase and func:
+                phase_functions.setdefault(phase, [])
+                phase_functions[phase].append(func)
 
         ok = True
-        for phase, techs in phase_techniques.items():
-            if phase_turn_counts.get(phase, 0) >= 3 and len(techs) < 2:
+        for phase, funcs in phase_functions.items():
+            n_turns = len(funcs)
+
+            # Check: 3 consecutive 'exploring' = FAIL (asking without reflecting)
+            for i in range(len(funcs) - 2):
+                if funcs[i] == funcs[i + 1] == funcs[i + 2] == "exploring":
+                    ok = False
+                    self.details["technique_diversity_per_phase"] = (
+                        f"3 consecutive exploring in phase '{phase}' "
+                        f"at positions {i+1}-{i+3}"
+                    )
+                    break
+
+            if not ok:
+                break
+
+            # Check: >= 5 turns should have >= 2 distinct functions
+            if n_turns >= 5 and len(set(funcs)) < 2:
                 ok = False
                 self.details["technique_diversity_per_phase"] = (
-                    f"phase '{phase}' has {phase_turn_counts[phase]} turns "
-                    f"but only 1 technique: {list(techs)[0]}"
+                    f"phase '{phase}' has {n_turns} turns "
+                    f"but only 1 function: {funcs[0]}"
                 )
                 break
 
