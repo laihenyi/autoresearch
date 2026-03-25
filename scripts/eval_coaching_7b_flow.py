@@ -28,6 +28,7 @@ import argparse
 import json
 import re
 import sys
+from difflib import SequenceMatcher
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
@@ -131,7 +132,12 @@ def infer_technique_from_text(coach_text: str) -> str:
     """Infer coaching technique from visible response text using rules.
 
     Priority order (most specific first):
-    silence > normalize > challenge > reframe > summarize > reflection > open_question
+    silence > normalize > challenge > reframe > summarize > reflection/open_question
+
+    For compound responses (reflection + question), the technique is
+    determined by the final sentence's function: if the response ends with
+    a question mark, the primary coaching action is asking → open_question;
+    if it ends with a statement, the primary action is reflecting → reflection.
     """
     text = coach_text.strip()
 
@@ -158,9 +164,16 @@ def infer_technique_from_text(coach_text: str) -> str:
     has_question = "？" in text
     has_reflection = bool(_REFLECTION_WORDS.search(text))
 
-    # Reflection + Question compound → reflection (primary technique)
+    # Compound response: reflection + question → check final sentence
+    # 「你說X。Y？」→ ends with question → open_question
+    # 「Y？你說X。」→ ends with statement → reflection
     if has_reflection and has_question:
-        return "reflection"
+        last_period = text.rfind("。")
+        last_question = text.rfind("？")
+        if last_question > last_period:
+            return "open_question"  # ends with question → primary action is asking
+        else:
+            return "reflection"     # ends with statement → primary action is reflecting
 
     # Pure reflection (no question mark)
     if has_reflection and not has_question:
@@ -190,6 +203,78 @@ _EVALUATION_PATTERNS = re.compile(
     r"你做得很好|你很棒|做得好|很勇敢|我很欣賞|這很好|很了不起"
     r"|我為你感到驕傲|真的很厲害"
 )
+
+# ---------------------------------------------------------------------------
+# Response fingerprint for mechanical repetition detection
+# ---------------------------------------------------------------------------
+
+def extract_response_fingerprint(coach_text: str) -> dict:
+    """Extract structural fingerprint from a coach response.
+
+    Used by no_mechanical_repetition to detect when the coach uses
+    nearly identical sentence structures repeatedly — the actual bad
+    behaviour that no_consecutive_technique was trying to catch.
+    """
+    text = coach_text.strip()
+
+    # Template: replace quoted content and Chinese content words with _
+    template = re.sub(r"「[^」]+」", "「_」", text)
+    template = re.sub(r"[\u4e00-\u9fff]{2,}", "_", template)
+
+    # Opening pattern: first 6 characters
+    opening = text[:6] if len(text) >= 6 else text
+
+    # Closing pattern: last 8 characters
+    closing = text[-8:] if len(text) >= 8 else text
+
+    # Functional structure signals
+    has_quote = "「" in text
+    has_question = "？" in text
+    has_pause = "⋯" in text or "…" in text
+    char_count = len(text)
+    sentence_count = len(re.findall(r"[。？！]", text))
+
+    return {
+        "template": template,
+        "opening": opening,
+        "closing": closing,
+        "has_quote": has_quote,
+        "has_question": has_question,
+        "has_pause": has_pause,
+        "char_count_bucket": char_count // 15,
+        "sentence_count": sentence_count,
+    }
+
+
+def fingerprint_similarity(fp1: dict, fp2: dict) -> float:
+    """Compute similarity between two response fingerprints (0.0–1.0)."""
+    score = 0.0
+
+    # Template similarity (40%)
+    template_sim = SequenceMatcher(
+        None, fp1["template"], fp2["template"]
+    ).ratio()
+    score += template_sim * 0.4
+
+    # Opening match (25%) — most visible sign of mechanical feel
+    opening_sim = 1.0 if fp1["opening"] == fp2["opening"] else 0.0
+    score += opening_sim * 0.25
+
+    # Closing match (15%)
+    closing_sim = 1.0 if fp1["closing"] == fp2["closing"] else 0.0
+    score += closing_sim * 0.15
+
+    # Functional structure match (20%)
+    struct_match = sum([
+        fp1["has_quote"] == fp2["has_quote"],
+        fp1["has_question"] == fp2["has_question"],
+        fp1["char_count_bucket"] == fp2["char_count_bucket"],
+        fp1["sentence_count"] == fp2["sentence_count"],
+    ]) / 4.0
+    score += struct_match * 0.2
+
+    return score
+
 
 # ---------------------------------------------------------------------------
 # Dialogue flow checks
@@ -234,6 +319,7 @@ class SessionChecker:
         self._check_deepening_before_insight()
         self._check_insight_minimal_response()
         self._check_no_consecutive_same_technique()
+        self._check_no_mechanical_repetition()
         self._check_technique_diversity_per_phase()
         self._check_coachability_safety()
         self._check_no_advice()
@@ -477,6 +563,55 @@ class SessionChecker:
                 break
 
         self.results["no_consecutive_technique"] = ok
+
+    def _check_no_mechanical_repetition(self):
+        """Fail if the coach uses nearly identical sentence structures 3+ times.
+
+        Unlike no_consecutive_technique (which checks technique labels),
+        this checks the actual sentence patterns — the real bad behaviour
+        we want to prevent (robotic, template-like responses).
+
+        Exemptions:
+        - All 3 responses are encapsulating (≤ 6 chars) — valid in insight moments
+        - All 3 client inputs are very short (≤ 10 chars) — limited response options
+        """
+        if len(self.turns) < 3:
+            self.results["no_mechanical_repetition"] = True
+            return
+
+        coach_texts = [t[1] for t in self.turns]
+        user_texts = [t[0] for t in self.turns]
+        fingerprints = [extract_response_fingerprint(ct) for ct in coach_texts]
+
+        threshold = 0.75
+        ok = True
+        for i in range(len(fingerprints) - 2):
+            sim_12 = fingerprint_similarity(fingerprints[i], fingerprints[i + 1])
+            sim_23 = fingerprint_similarity(fingerprints[i + 1], fingerprints[i + 2])
+
+            if sim_12 > threshold and sim_23 > threshold:
+                # Exemption 1: all encapsulating (very short responses)
+                all_short = all(
+                    len(coach_texts[j].strip()) <= 6 for j in range(i, i + 3)
+                )
+                if all_short:
+                    continue
+
+                # Exemption 2: all client inputs very short
+                all_client_short = all(
+                    len(user_texts[j].strip()) <= 10 for j in range(i, i + 3)
+                )
+                if all_client_short:
+                    continue
+
+                ok = False
+                self.details["no_mechanical_repetition"] = (
+                    f"mechanical repetition at turns {i+1}-{i+3}: "
+                    f"sim={sim_12:.2f},{sim_23:.2f}"
+                )
+                break
+
+        self.results["no_mechanical_repetition"] = ok
 
     def _check_technique_diversity_per_phase(self):
         """Each phase with >= 3 turns should use at least 2 different techniques.
@@ -730,6 +865,7 @@ ALL_CHECKS = [
     "deepening_before_insight",
     "insight_minimal_response",
     "no_consecutive_technique",
+    "no_mechanical_repetition",
     "technique_diversity_per_phase",
     "coachability_safety",
     "no_advice",
@@ -795,7 +931,8 @@ def print_report(
         "Phase": ["phase_transition_valid", "phase_no_skip",
                    "deepening_before_insight", "insight_minimal_response"],
         "Opening": ["opening_contracting"],
-        "Technique": ["no_consecutive_technique", "technique_diversity_per_phase"],
+        "Technique": ["no_consecutive_technique", "no_mechanical_repetition",
+                       "technique_diversity_per_phase"],
         "Safety": ["coachability_safety", "no_advice", "no_evaluation"],
         "Commitment": ["commitment_sequence", "commitment_action_timeline"],
     }
