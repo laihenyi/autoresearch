@@ -223,3 +223,252 @@
    - LLM-as-judge（offline QA）
 
 3. **「無法做到」的 15% 應該在產品設計中被誠實面對**——不假裝 AI 教練有同理心，而是讓使用者知道「這是一個結構化的思考工具」。
+
+---
+
+## 五、25% 待完成項目——執行計畫與進度追蹤
+
+### 執行順序
+
+```
+Phase A (基礎)：  Item 6 LLM-as-Judge → Item 1 心理狀態註解
+Phase B (訓練)：  Item 2 多視角 DPO
+Phase C (推理)：  Item 5 語意多樣性監控 → Item 4 Self-Reflection Loop
+Phase D (進階)：  Item 3 PRM 過程獎勵模型
+```
+
+---
+
+### Item 6: LLM-as-Judge（ICF 職能離線 QA）
+
+**狀態**：⬜ 待開始
+**Phase**：A（第一項）| **工時**：2-3 天 | **成本**：~$1.5 | **風險**：低
+
+**目標**：用 Claude Haiku 評估 coaching sessions 的 4 個 ICF 核心職能維度（1-5 分），建立所有後續改善的驗證基礎。
+
+**4 個 ICF 評估維度**：
+1. **Trust & Safety**（培育信任與安全感）：是否建立心理安全？不給建議、不評價？
+2. **Coaching Presence**（教練同在）：是否適當 hold space？Insight 時回應短？不急著推進？
+3. **Active Listening**（積極傾聽）：是否用客戶的話反映？技巧多樣？
+4. **Evokes Awareness**（喚起覺察）：是否挑戰框架而非感受？OS Layer 深化？Layer-check 完成？
+
+**待辦**：
+- [ ] 建立 `scripts/eval_coaching_llm_judge.py`
+- [ ] 設計 ICF rubric prompt（繁體中文，JSON 輸出）
+- [ ] 用現有 SFT v3 4-run sessions（40 sessions）跑 baseline 評分
+- [ ] 用 zero-shot sessions 跑對照評分，確認分數能區分好壞
+- [ ] 驗證 inter-run consistency（同 session 3 次評分，variance < 0.5）
+- [ ] 整合到 `eval_coaching_7b_live_l3.py` 的 `--llm-judge` flag
+
+**成功標準**：
+- LLM-judge 分數與 rule-based L3 pass/fail 相關性 r > 0.7
+- 能區分 SFT v3 sessions（好）vs zero-shot sessions（差）
+- Inter-run score variance < 0.5
+
+**實作記錄**：
+> （待填寫）
+
+---
+
+### Item 1: 心理狀態註解（訓練數據增強）
+
+**狀態**：⬜ 待開始
+**Phase**：A（第二項）| **工時**：3-4 天 | **成本**：~$8-50 | **風險**：中
+**依賴**：Item 6 完成（需要 LLM-judge 驗證 SFT v4 不退化）
+
+**目標**：為 150 sessions 的每個 turn 標註認知扭曲、防禦機制、OS Layer，作為 enriched SFT 訓練數據。
+
+**每 turn 標註欄位**：
+- `cognitive_distortion`：all-or-nothing / catastrophizing / mind reading / should statements / emotional reasoning / overgeneralization / none
+- `defense_mechanism`：intellectualizing / deflecting / minimizing / rationalizing / projection / none
+- `os_layer`：surface / emotions / beliefs / identity / needs_values
+- `emotional_valence`：positive / negative / mixed / neutral
+- `coachability_shift`：up / down / stable
+
+**`<think>` 洩漏對策**：採 Option B——訓練時包含標註（教會模型隱含推理），推理時 `enable_thinking=False`（不暴露 CoT）。標註全用繁體中文。
+
+**待辦**：
+- [ ] 建立 `scripts/annotate_psychological_state.py`
+- [ ] 設計標註 prompt（Claude Sonnet，繁中輸出，JSON 格式）
+- [ ] 跑 150 sessions × ~11 turns 的標註（~$8 Sonnet）
+- [ ] 抽樣驗證 20 sessions 的標註品質
+- [ ] 生成 `coaching_sft_r4_annotated.jsonl`
+- [ ] 備份 adapter_14b_sft_v3（**必須！CUDA nondeterminism**）
+- [ ] 用 annotated data 訓練 SFT v4（LR 1e-5, 1 epoch）
+- [ ] 用 Item 6 LLM-judge + L3 eval 驗證不退化
+- [ ] 比較 Evokes Awareness 維度是否提升
+
+**成功標準**：
+- 95%+ turns 有非 trivial 標註
+- SFT v4 L3 >= 99%（不退化）
+- LLM-judge Evokes Awareness 提升 >= 0.5 分
+
+**實作記錄**：
+> （待填寫）
+
+---
+
+### Item 2: 多視角 DPO（三維度偏好對齊）
+
+**狀態**：⬜ 待開始
+**Phase**：B | **工時**：5-7 天 | **成本**：~$17 | **風險**：中高
+**依賴**：Items 1 + 6
+
+**目標**：從 3 個視角生成 DPO pairs，教模型平衡同理心、客戶接收度、專業倫理。
+
+**3 個視角**：
+1. **Supporter（支持者）**：高同理 vs 膚淺回應。用 Item 1 的 `emotional_valence` + `os_layer` 找情緒關鍵 turns。
+2. **Seeker（尋求者）**：推進深化 vs 客戶關閉。用對話軌跡作為信號。
+3. **Bystander（旁觀者）**：純非指導 vs 隱性建議。用 `no_advice` + `no_evaluation` patterns。
+
+**技術約束**（from memory）：
+- DPO must NOT merge SFT adapter to 4-bit base（`feedback_no_merge_dpo.md`）
+- Must use trl 0.29.0（`feedback_trl_version.md`）
+- LR 5e-7
+- 必須先備份 adapter（`feedback_adapter_backup.md`）
+
+**待辦**：
+- [ ] 建立 `scripts/gen_supporter_perspective_dpo.py`
+- [ ] 建立 `scripts/gen_seeker_perspective_dpo.py`
+- [ ] 建立 `scripts/gen_bystander_perspective_dpo.py`
+- [ ] 各生成 ~50 pairs，共 ~150 pairs
+- [ ] 合併為 `coaching_dpo_multiperspective.jsonl`
+- [ ] 備份 adapter
+- [ ] 訓練 DPO（LR 5e-7, trl 0.29.0, no merge）
+- [ ] L3 eval + LLM-judge 驗證
+- [ ] 個別視角回歸測試（如某視角造成退化，drop 它）
+
+**成功標準**：
+- L3 >= 99%（不退化）
+- LLM-judge 至少 2/4 維度提升
+- `no_advice` + `no_evaluation` 維持 100%
+
+**實作記錄**：
+> （待填寫）
+
+---
+
+### Item 5: 語意多樣性即時監控（推理層護欄）
+
+**狀態**：⬜ 待開始
+**Phase**：C（第一項）| **工時**：2-3 天 | **成本**：$0 | **風險**：低
+**依賴**：無（可與 Phase A/B 並行）
+
+**目標**：在 serve 層即時偵測「點頭娃娃退化」（模型重複安撫），自動觸發 challenge mode。
+
+**兩個指標**：
+- **Distinct-2**：3-turn window 的 unique bigram 比例。< 0.4 → 觸發
+- **Embedding Similarity**：連續 2 對回應的 cosine similarity > 0.85 → 觸發
+
+**觸發動作**：注入動態 prompt「你最近的回應風格重複了。這次請使用不同的教練技巧。」
+
+**豁免**：encapsulating（≤6 字）、insight phase 連續短反映
+
+**待辦**：
+- [ ] 在 `serve_4b_coach.py` 加入 `DiversityMonitor` class
+- [ ] 實作 Distinct-2 計算（pure text，無 VRAM 需求）
+- [ ] 評估是否需要 sentence embedding model（VRAM budget check）
+- [ ] 實作 challenge mode prompt injection
+- [ ] 加入 exemption 邏輯（encapsulating, insight phase）
+- [ ] 測試 false positive rate（目標 ≤ 10%）
+- [ ] 測試 latency impact（目標 p99 增加 < 100ms）
+
+**成功標準**：
+- 觸發率 ≤ 10%
+- 觸發後下一回應使用不同 technique（手動驗證 20 cases）
+- 無 latency 退化
+
+**實作記錄**：
+> （待填寫）
+
+---
+
+### Item 4: Self-Reflection Loop（推理時 Critic）
+
+**狀態**：⬜ 待開始
+**Phase**：C（第二項）| **工時**：4-5 天 | **成本**：~$0.002/session | **風險**：中
+**依賴**：Items 5 + 6
+
+**目標**：主模型生成草稿 → Critic 評估 → 不合格則重新生成。如同「教練督導」。
+
+**架構**：Option A（Claude Haiku 外部 Critic）
+- 規則預篩 80%（`_ADVICE_PATTERNS` + `_EVALUATION_PATTERNS` + length check）
+- 只有 borderline case 呼叫 Haiku（~20% turns）
+- Haiku 返回 `{"pass": true/false, "issue": "advice_detected" | "repetitive" | "too_long" | null}`
+- Max 2 次重新生成
+
+**待辦**：
+- [ ] 設計 Critic prompt（簡化版 Item 6 rubric，optimized for speed）
+- [ ] 在 serve 層加入 `CriticLoop` class
+- [ ] 實作規則預篩邏輯（復用 eval 的 patterns）
+- [ ] 實作 Haiku API 呼叫（async，不阻塞 streaming）
+- [ ] 實作重新生成邏輯（corrective hint injection）
+- [ ] 測試 regeneration rate（目標 < 15%）
+- [ ] 測試 latency（目標 95% turns < 3s）
+- [ ] A/B 測試：critic ON vs OFF 的 L3 分數比較
+
+**成功標準**：
+- Critic 捕捉 > 80% 的 rule-based no_advice violations
+- Regeneration rate < 15%
+- L3 with critic >= L3 without critic
+- 95% turns latency < 3s
+
+**實作記錄**：
+> （待填寫）
+
+---
+
+### Item 3: PRM 過程獎勵模型（進階推理品質）
+
+**狀態**：⬜ 待開始
+**Phase**：D | **工時**：10-15 天 | **成本**：~$38 | **風險**：高
+**依賴**：Items 1 + 2 + 6
+
+**目標**：評估模型內部推理的每個步驟（情緒偵測 → 扭曲辨識 → phase 判斷 → technique 選擇），而非只看最終輸出。
+
+**推理步驟定義**（from system_prompt_v3）：
+1. 偵測客戶情緒狀態
+2. 辨識認知扭曲 / 防禦機制
+3. 評估當前 OS Layer 深度
+4. 判斷當前 phase + 是否推進
+5. 選擇適合 phase + 客戶狀態的 technique
+6. 生成回應
+
+**推薦起步方案**：PRM-as-a-service（Claude Haiku 評估 `<think>` block），避免 VRAM 壓力。
+
+**備選方案**：訓練 3B 小 PRM 模型（14B 4-bit 10GB + 3B FP16 6GB = 16GB，fit 24GB）。
+
+**待辦**：
+- [ ] 定義 6 步推理鏈的評分 rubric
+- [ ] 用 Item 1 的標註建立「正確推理鏈」ground truth
+- [ ] 建立「錯誤推理鏈」（擾動個別步驟）
+- [ ] 實作 PRM-as-a-service（Haiku 評估 `<think>` block）
+- [ ] 或：生成 step-level DPO pairs，訓練 14B 模型的推理品質
+- [ ] 或：訓練 3B PRM 模型，在 serve 層並行載入
+- [ ] 整合到 Self-Reflection Loop（Item 4）
+- [ ] L3 eval + LLM-judge 驗證
+- [ ] 比較 `deepening_before_insight` 改善
+
+**成功標準**：
+- L3 >= 99%（不退化）
+- LLM-judge Evokes Awareness 提升 >= 0.5 分
+- `deepening_before_insight` pass rate 提升
+- 質性審查：technique 選擇更符合上下文（不只是交替多樣性）
+
+**實作記錄**：
+> （待填寫）
+
+---
+
+### 整體追蹤
+
+| Phase | Item | 狀態 | 開始日期 | 完成日期 | L3 結果 |
+|-------|------|------|---------|---------|---------|
+| A | 6. LLM-as-Judge | ⬜ | — | — | — |
+| A | 1. 心理狀態註解 | ⬜ | — | — | — |
+| B | 2. 多視角 DPO | ⬜ | — | — | — |
+| C | 5. 語意多樣性監控 | ⬜ | — | — | — |
+| C | 4. Self-Reflection Loop | ⬜ | — | — | — |
+| D | 3. PRM 過程獎勵 | ⬜ | — | — | — |
+
+**基線**：SFT v3, L3 92.9% ± 0.7% (含 deprecated), 99.6% (排除 deprecated)
