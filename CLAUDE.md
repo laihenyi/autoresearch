@@ -73,9 +73,10 @@ All else equal, simpler code wins. A tiny val_bpb gain adding ugly complexity is
 ### 原則
 
 1. **Pod 上所有長時間任務一律 nohup + background**——主 agent 必須持續回應使用者
-2. **每次訓練/eval 完成後立即 commit & push**——不管結果好壞
-3. **每次 KEEP 或 DISCARD 都更新 TODO 文件**——記錄完整數據
-4. **關鍵數據生成後立即下載到本地**——不依賴 Pod 持久性
+2. **等待 Pod 任務時不得 sleep 阻塞**——用 `run_in_background` 發起等待，或先回應使用者再檢查。絕對不可以 `sleep 780` 然後讓使用者乾等
+3. **每次訓練/eval 完成後立即 commit & push**——不管結果好壞
+4. **每次 KEEP 或 DISCARD 都更新 TODO 文件**——記錄完整數據
+5. **關鍵數據生成後立即下載到本地**——不依賴 Pod 持久性
 
 ### 訓練迴圈 SOP
 
