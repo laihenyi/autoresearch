@@ -1,0 +1,657 @@
+[
+  {
+    "session_idx": 0,
+    "turn_idx": 12,
+    "rewritten": "計畫壞掉了。"
+  },
+  {
+    "session_idx": 0,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 1,
+    "turn_idx": 20,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 1,
+    "turn_idx": 22,
+    "rewritten": "溫柔。"
+  },
+  {
+    "session_idx": 2,
+    "turn_idx": 12,
+    "rewritten": "停下來就失控。"
+  },
+  {
+    "session_idx": 2,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 3,
+    "turn_idx": 12,
+    "rewritten": "努力。但結果不聽話。"
+  },
+  {
+    "session_idx": 3,
+    "turn_idx": 20,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 4,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 5,
+    "turn_idx": 22,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 6,
+    "turn_idx": 20,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 8,
+    "turn_idx": 12,
+    "rewritten": "等待。三年的等待。"
+  },
+  {
+    "session_idx": 8,
+    "turn_idx": 22,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 9,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 10,
+    "turn_idx": 20,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 11,
+    "turn_idx": 12,
+    "rewritten": "被否定。"
+  },
+  {
+    "session_idx": 11,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 12,
+    "turn_idx": 22,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 13,
+    "turn_idx": 6,
+    "rewritten": "你心裡在說：『我撐得住，只是身體不聽話。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 13,
+    "turn_idx": 8,
+    "rewritten": "正常。但身體不睡。"
+  },
+  {
+    "session_idx": 13,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 14,
+    "turn_idx": 12,
+    "rewritten": "意義和現實在打架。"
+  },
+  {
+    "session_idx": 14,
+    "turn_idx": 22,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 15,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 16,
+    "turn_idx": 6,
+    "rewritten": "經營。你用了這個詞。那是愛，還是工作？"
+  },
+  {
+    "session_idx": 16,
+    "turn_idx": 12,
+    "rewritten": "更努力，更累。迴圈。"
+  },
+  {
+    "session_idx": 16,
+    "turn_idx": 22,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 17,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 18,
+    "turn_idx": 12,
+    "rewritten": "監控。餵養恐懼。"
+  },
+  {
+    "session_idx": 18,
+    "turn_idx": 20,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 20,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 21,
+    "turn_idx": 24,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 22,
+    "turn_idx": 12,
+    "rewritten": "停不下來。盔甲太重了。"
+  },
+  {
+    "session_idx": 22,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 23,
+    "turn_idx": 22,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 24,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 25,
+    "turn_idx": 22,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 26,
+    "turn_idx": 6,
+    "rewritten": "你想要不看排名，但你做的第一件事就是看排名。"
+  },
+  {
+    "session_idx": 26,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 27,
+    "turn_idx": 24,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 28,
+    "turn_idx": 10,
+    "rewritten": "你心裡在說：『她的語氣讓我回到小時候。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 28,
+    "turn_idx": 22,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 29,
+    "turn_idx": 24,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 30,
+    "turn_idx": 24,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 31,
+    "turn_idx": 6,
+    "rewritten": "不公平。你在意的是公平。"
+  },
+  {
+    "session_idx": 32,
+    "turn_idx": 26,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 33,
+    "turn_idx": 12,
+    "rewritten": "空。你怕是空的。"
+  },
+  {
+    "session_idx": 33,
+    "turn_idx": 30,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 34,
+    "turn_idx": 24,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 36,
+    "turn_idx": 12,
+    "rewritten": "格格不入。"
+  },
+  {
+    "session_idx": 36,
+    "turn_idx": 30,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 38,
+    "turn_idx": 28,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 42,
+    "turn_idx": 12,
+    "rewritten": "火花被蓋住了。"
+  },
+  {
+    "session_idx": 50,
+    "turn_idx": 4,
+    "rewritten": "不在。"
+  },
+  {
+    "session_idx": 50,
+    "turn_idx": 10,
+    "rewritten": "你心裡在說：『如果我放掉工作，我就是不負責任的人。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 54,
+    "turn_idx": 4,
+    "rewritten": "你心裡在說：『我不知道真正的我是誰。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 54,
+    "turn_idx": 12,
+    "rewritten": "崩潰。你說的是媽媽的崩潰，還是你的？"
+  },
+  {
+    "session_idx": 54,
+    "turn_idx": 14,
+    "rewritten": "最後面。"
+  },
+  {
+    "session_idx": 54,
+    "turn_idx": 16,
+    "rewritten": "你想要選自己，但你把選自己等於自私。"
+  },
+  {
+    "session_idx": 55,
+    "turn_idx": 4,
+    "rewritten": "問題。你用了『問題』來形容自己。"
+  },
+  {
+    "session_idx": 55,
+    "turn_idx": 12,
+    "rewritten": "應該。那個標準是誰的？"
+  },
+  {
+    "session_idx": 56,
+    "turn_idx": 12,
+    "rewritten": "你心裡在說：『承認我不行，就代表爸爸說得對——男人不能倒下。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 57,
+    "turn_idx": 4,
+    "rewritten": "好好說話。"
+  },
+  {
+    "session_idx": 57,
+    "turn_idx": 10,
+    "rewritten": "你心裡在說：『我失去了自己的名字。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 57,
+    "turn_idx": 12,
+    "rewritten": "喉嚨很緊。那些卡住的話是什麼？"
+  },
+  {
+    "session_idx": 59,
+    "turn_idx": 12,
+    "rewritten": "縮成一個身份。三十年。"
+  },
+  {
+    "session_idx": 61,
+    "turn_idx": 26,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 64,
+    "turn_idx": 4,
+    "rewritten": "知道，但做不到。"
+  },
+  {
+    "session_idx": 64,
+    "turn_idx": 10,
+    "rewritten": "你心裡在說：『我的健康不值得被排在前面。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 64,
+    "turn_idx": 12,
+    "rewritten": "你學了媽媽那一套。現在你想繼續嗎？"
+  },
+  {
+    "session_idx": 64,
+    "turn_idx": 14,
+    "rewritten": "自私。照顧自己等於自私。"
+  },
+  {
+    "session_idx": 65,
+    "turn_idx": 4,
+    "rewritten": "明明沒事。但你不信。"
+  },
+  {
+    "session_idx": 65,
+    "turn_idx": 10,
+    "rewritten": "你心裡在說：『壞事是我的錯，因為我不夠努力。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 65,
+    "turn_idx": 12,
+    "rewritten": "身體不聽。腦袋知道，身體不聽。"
+  },
+  {
+    "session_idx": 65,
+    "turn_idx": 14,
+    "rewritten": "你想要抓住一切，但抓得越緊越害怕。"
+  },
+  {
+    "session_idx": 66,
+    "turn_idx": 4,
+    "rewritten": "崩潰。"
+  },
+  {
+    "session_idx": 66,
+    "turn_idx": 6,
+    "rewritten": "你心裡在說：『又來了，那個不夠好的感覺。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 66,
+    "turn_idx": 12,
+    "rewritten": "不夠好。那個聲音從什麼時候開始的？"
+  },
+  {
+    "session_idx": 67,
+    "turn_idx": 10,
+    "rewritten": "永遠讓步。"
+  },
+  {
+    "session_idx": 67,
+    "turn_idx": 12,
+    "rewritten": "你心裡在說：『如果我開口，就會變成那種丟臉的人。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 67,
+    "turn_idx": 14,
+    "rewritten": "你想要有聲音，但你把聲音等於被討厭。"
+  },
+  {
+    "session_idx": 70,
+    "turn_idx": 24,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 71,
+    "turn_idx": 4,
+    "rewritten": "你做了很多。但他需要的不是這些。"
+  },
+  {
+    "session_idx": 72,
+    "turn_idx": 8,
+    "rewritten": "你心裡在說：『我在等他看見我，就像小時候等爸爸一樣。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 85,
+    "turn_idx": 12,
+    "rewritten": "在身邊。唯一的方式。"
+  },
+  {
+    "session_idx": 85,
+    "turn_idx": 22,
+    "rewritten": "你說怕不孝，但你也怕失敗。"
+  },
+  {
+    "session_idx": 86,
+    "turn_idx": 12,
+    "rewritten": "第一名或墊底。中間不存在。"
+  },
+  {
+    "session_idx": 90,
+    "turn_idx": 4,
+    "rewritten": "恐怖。"
+  },
+  {
+    "session_idx": 90,
+    "turn_idx": 6,
+    "rewritten": "你心裡在說：『被笑就代表我不行。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 93,
+    "turn_idx": 6,
+    "rewritten": "學了沒用。那是事實，還是你的規則？"
+  },
+  {
+    "session_idx": 93,
+    "turn_idx": 14,
+    "rewritten": "你用了『不認真』這個詞。拖了兩個月——這算認真嗎？"
+  },
+  {
+    "session_idx": 93,
+    "turn_idx": 16,
+    "rewritten": "矛盾。追求最好，結果連開始都沒有。"
+  },
+  {
+    "session_idx": 95,
+    "turn_idx": 28,
+    "rewritten": "嗯。"
+  },
+  {
+    "session_idx": 97,
+    "turn_idx": 12,
+    "rewritten": "一次被笑。一個標籤。十幾年。"
+  },
+  {
+    "session_idx": 99,
+    "turn_idx": 12,
+    "rewritten": "夠乖才不會被拋棄。"
+  },
+  {
+    "session_idx": 120,
+    "turn_idx": 8,
+    "rewritten": "你心裡在說：『任何瑕疵就代表我整個人失敗了。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 120,
+    "turn_idx": 12,
+    "rewritten": "完美拿掉了，你就不見了。"
+  },
+  {
+    "session_idx": 120,
+    "turn_idx": 20,
+    "rewritten": "⋯⋯"
+  },
+  {
+    "session_idx": 121,
+    "turn_idx": 8,
+    "rewritten": "你心裡在說：『只要別人不需要我，他們就會走。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 125,
+    "turn_idx": 6,
+    "rewritten": "縮。"
+  },
+  {
+    "session_idx": 125,
+    "turn_idx": 8,
+    "rewritten": "你心裡在說：『這個壓住的感覺，我認識它。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 126,
+    "turn_idx": 4,
+    "rewritten": "做不到。你在保護自己不去看見什麼？"
+  },
+  {
+    "session_idx": 126,
+    "turn_idx": 6,
+    "rewritten": "數字等於失敗。帳單等於你。"
+  },
+  {
+    "session_idx": 128,
+    "turn_idx": 8,
+    "rewritten": "拒絕等於自私。"
+  },
+  {
+    "session_idx": 128,
+    "turn_idx": 12,
+    "rewritten": "奶奶的眼神。"
+  },
+  {
+    "session_idx": 131,
+    "turn_idx": 12,
+    "rewritten": "你心裡在說：『我不能停止備戰，否則就不安全了。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 132,
+    "turn_idx": 4,
+    "rewritten": "嚇自己。你怎麼知道的？"
+  },
+  {
+    "session_idx": 132,
+    "turn_idx": 12,
+    "rewritten": "唯一被肯定的地方。程式。"
+  },
+  {
+    "session_idx": 133,
+    "turn_idx": 4,
+    "rewritten": "少了什麼。你最在意的是哪一塊？"
+  },
+  {
+    "session_idx": 134,
+    "turn_idx": 6,
+    "rewritten": "你心裡在說：『沒有頭銜和薪水，我什麼都不是。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 135,
+    "turn_idx": 4,
+    "rewritten": "控制不了。"
+  },
+  {
+    "session_idx": 135,
+    "turn_idx": 10,
+    "rewritten": "你想要被安慰，但只允許用吃來安慰。"
+  },
+  {
+    "session_idx": 136,
+    "turn_idx": 6,
+    "rewritten": "居高臨下。那是她的態度，還是你的感覺？"
+  },
+  {
+    "session_idx": 136,
+    "turn_idx": 12,
+    "rewritten": "你心裡在說：『如果不是跟她比，我不知道自己值多少。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 137,
+    "turn_idx": 6,
+    "rewritten": "怕被看見不夠好。"
+  },
+  {
+    "session_idx": 137,
+    "turn_idx": 12,
+    "rewritten": "你心裡在說：『他們說我聰明，但那一定是搞錯了。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 139,
+    "turn_idx": 4,
+    "rewritten": "閒不下來。"
+  },
+  {
+    "session_idx": 139,
+    "turn_idx": 6,
+    "rewritten": "你心裡在說：『不做事的我，就沒有存在的理由。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 139,
+    "turn_idx": 12,
+    "rewritten": "工作以外，空的。"
+  },
+  {
+    "session_idx": 139,
+    "turn_idx": 14,
+    "rewritten": "你想要學攝影，但你在猶豫。那個猶豫裡面是什麼？"
+  },
+  {
+    "session_idx": 141,
+    "turn_idx": 12,
+    "rewritten": "等著被看見。"
+  },
+  {
+    "session_idx": 142,
+    "turn_idx": 12,
+    "rewritten": "淘汰。"
+  },
+  {
+    "session_idx": 145,
+    "turn_idx": 4,
+    "rewritten": "你心裡在說：『太晚了是最安全的藉口，因為這樣我就不用面對失敗。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 146,
+    "turn_idx": 4,
+    "rewritten": "連結。"
+  },
+  {
+    "session_idx": 146,
+    "turn_idx": 14,
+    "rewritten": "你想要知道她好好的，但你把關心和控制放在一起了。"
+  },
+  {
+    "session_idx": 147,
+    "turn_idx": 4,
+    "rewritten": "痛苦。每天。"
+  },
+  {
+    "session_idx": 148,
+    "turn_idx": 4,
+    "rewritten": "你心裡在說：『我曾經有過另一種生活，但我弄丟了。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 148,
+    "turn_idx": 16,
+    "rewritten": "只靠表現。被排擠以後定下的規則。"
+  },
+  {
+    "session_idx": 149,
+    "turn_idx": 4,
+    "rewritten": "你心裡在說：『我生氣是因為我對自己太失望了。』⋯⋯是這樣嗎？"
+  },
+  {
+    "session_idx": 149,
+    "turn_idx": 6,
+    "rewritten": "什麼都做不好。那是事實嗎？"
+  },
+  {
+    "session_idx": 149,
+    "turn_idx": 16,
+    "rewritten": "忍。你不想忍一輩子。"
+  }
+]
