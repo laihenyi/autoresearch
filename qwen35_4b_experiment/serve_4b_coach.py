@@ -99,6 +99,63 @@ def strip_meta(text: str) -> str:
     return text if text else ''
 
 
+# ── Diversity Monitor ────────────────────────────────────────────────────────
+
+class DiversityMonitor:
+    """Track coaching response diversity per session.
+
+    Monitors Distinct-2 (bigram diversity) across a sliding window of last 3
+    coach responses. When diversity drops below threshold, injects a challenge
+    prompt to break mechanical repetition patterns.
+    """
+
+    CHALLENGE_HINT = (
+        "（系統提示：你最近幾次的回應風格相似。"
+        "這次請嘗試不同的教練技巧——例如沉默、隱喻、"
+        "挑戰客戶的框架、或用更短的回應。）"
+    )
+
+    def __init__(self, window: int = 3, threshold: float = 0.40):
+        self._history: dict[str, list[str]] = {}  # session_id → recent responses
+        self._window = window
+        self._threshold = threshold
+
+    def record(self, session_id: str, response: str):
+        """Record a coach response for a session."""
+        if not session_id:
+            return
+        hist = self._history.setdefault(session_id, [])
+        hist.append(response)
+        if len(hist) > self._window:
+            hist.pop(0)
+
+    def should_challenge(self, session_id: str) -> bool:
+        """Check if diversity has dropped below threshold."""
+        if not session_id:
+            return False
+        hist = self._history.get(session_id, [])
+        if len(hist) < self._window:
+            return False
+
+        # Exemption: all responses are very short (encapsulating/silence)
+        if all(len(r.strip()) <= 8 for r in hist):
+            return False
+
+        # Compute Distinct-2 across the window
+        all_chars = "".join(hist)
+        bigrams = [all_chars[i:i+2] for i in range(len(all_chars) - 1)]
+        if not bigrams:
+            return False
+        distinct2 = len(set(bigrams)) / len(bigrams)
+        return distinct2 < self._threshold
+
+    def get_hint(self) -> str:
+        return self.CHALLENGE_HINT
+
+
+diversity_monitor = DiversityMonitor()
+
+
 # ── Model loading ───────────────────────────────────────────────────────────
 
 print(f"Loading model: {MODEL_ID}")
@@ -603,12 +660,23 @@ def _sync_response(
 
     else:
         # ── Single-Pass Generation (non-structured) ──────────────────
-        _, coach_response = _generate_once(messages, 80, req.temperature, req.top_p)
+        # Diversity monitor: inject challenge hint if repetitive
+        gen_messages = list(messages)
+        challenge_fired = False
+        if diversity_monitor.should_challenge(req.session_id):
+            # Inject hint as a system-level nudge before the last user message
+            gen_messages.append({"role": "system", "content": diversity_monitor.get_hint()})
+            challenge_fired = True
+
+        _, coach_response = _generate_once(gen_messages, 80, req.temperature, req.top_p)
         raw_text = coach_response
         filtered_text = strip_meta(raw_text)
         if not filtered_text:
             filtered_text = raw_text[:200]
         output_ids = []
+
+        # Record response for diversity tracking
+        diversity_monitor.record(req.session_id, filtered_text)
 
     elapsed = time.time() - t0
     output_tokens = len(output_ids) if output_ids else 0
@@ -646,6 +714,7 @@ def _sync_response(
             "raw_text": raw_text,
             "filtered_text": filtered_text,
             "elapsed_seconds": round(elapsed, 2),
+            "diversity_challenge": locals().get("challenge_fired", False),
         },
     })
 
