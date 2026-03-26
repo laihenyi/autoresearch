@@ -241,7 +241,7 @@ Phase D (進階)：  Item 3 PRM 過程獎勵模型
 
 ### Item 6: LLM-as-Judge（ICF 職能離線 QA）
 
-**狀態**：⬜ 待開始
+**狀態**：🟡 進行中——腳本完成，但被 `<think>` 洩漏阻擋
 **Phase**：A（第一項）| **工時**：2-3 天 | **成本**：~$1.5 | **風險**：低
 
 **目標**：用 Claude Haiku 評估 coaching sessions 的 4 個 ICF 核心職能維度（1-5 分），建立所有後續改善的驗證基礎。
@@ -266,7 +266,18 @@ Phase D (進階)：  Item 3 PRM 過程獎勵模型
 - Inter-run score variance < 0.5
 
 **實作記錄**：
-> （待填寫）
+> 2026-03-26：`scripts/eval_coaching_llm_judge.py` 完成。
+> - ICF 4 維度 rubric（繁中）已設計
+> - Claude Haiku 呼叫正常，JSON parse 正常
+> - **阻擋問題**：Qwen3 `<think>` 洩漏導致 6/10 sessions 內容被污染到無法評估
+> - 有分數的 sessions（S4, S9）得到 4.5-4.8/5.0 高分——judge 本身可行
+> - **前置條件**：必須先解決 serve 層的 `<think>` strip（Issue P0）
+> - 乾淨的 sessions 才能跑有意義的 baseline 評分
+>
+> **Issue P0：Qwen3 `<think>` 洩漏**
+> - 所有 Qwen3-14B 生成的 sessions 都有 30-75% turns 污染
+> - 簡體中文推理文字混入繁體教練回應
+> - 需要在 serve 層做更徹底的 strip，或探索 `enable_thinking=False` 的正確用法
 
 ---
 
@@ -464,7 +475,7 @@ Phase D (進階)：  Item 3 PRM 過程獎勵模型
 
 | Phase | Item | 狀態 | 開始日期 | 完成日期 | L3 結果 |
 |-------|------|------|---------|---------|---------|
-| A | 6. LLM-as-Judge | ⬜ | — | — | — |
+| A | 6. LLM-as-Judge | 🟡 | 2026-03-26 | blocked by `<think>` | 乾淨 sessions 4.5-4.8/5 |
 | A | 1. 心理狀態註解 | ⬜ | — | — | — |
 | B | 2. 多視角 DPO | ⬜ | — | — | — |
 | C | 5. 語意多樣性監控 | ⬜ | — | — | — |
