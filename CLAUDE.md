@@ -145,11 +145,11 @@ docs: update TODOs — ICF Y.YY <NEW BEST / no change>
 
 ```
 Base: Qwen3-14B
-SFT: adapter_14b_sft_v5c (150 sessions, 131 turns 定點改寫, v4 prompt)
-DPO: adapter_14b_dpo_v2c (150 multi-perspective pairs)
+SFT: adapter_14b_sft_v5e (150 sessions, 281 turns 定點改寫 wave1+2b, v4 prompt)
+DPO: adapter_14b_dpo_v2e (150 multi-perspective pairs)
 Prompt: system_prompt_v4.txt (Unselfing + 方法論)
 Inference: DiversityMonitor + CriticLoop (serve_4b_coach.py)
-ICF: 3.83/5.0 (Trust 3.80, Presence 3.70, Listening 3.70, Evokes 4.10)
+ICF: 3.85/5.0 (Trust 3.70, Presence 3.70, Listening 3.80, Evokes 4.20)
 ```
 
 ### Pod 連線資訊
