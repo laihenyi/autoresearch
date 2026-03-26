@@ -263,8 +263,12 @@ def infer_function_from_text(coach_text: str) -> str:
 # ---------------------------------------------------------------------------
 
 _ADVICE_PATTERNS = re.compile(
-    r"你應該|你可以試試|建議你|我建議|試試看|第一步|你不妨|不如你"
-    r"|我覺得你可以|你要不要|要不要試試|或許你可以"
+    # Direct advice: coach introduces actions/solutions the client hasn't mentioned
+    r"你應該|你可以試試|建議你|我建議|你不妨|不如你"
+    r"|我覺得你可以|要不要試試|或許你可以"
+    # Note: removed "第一步" (legitimate in open questions like "第一步會是什麼？")
+    # Note: removed "試試看" (too broad — reflection like "你想試試看？" is valid)
+    # Note: removed "你要不要" (can be a genuine open question)
 )
 
 _EVALUATION_PATTERNS = re.compile(
@@ -777,7 +781,15 @@ class SessionChecker:
         return re.sub(r"「[^」]*」", "", text)
 
     def _check_no_advice(self):
-        """Coach should not give advice in any turn.
+        """Coach should not give unsolicited advice in any turn.
+
+        Advice = coach introduces NEW actions/solutions the client hasn't
+        mentioned, based on coach's own judgment, with intent to guide.
+
+        NOT advice:
+        - Reflecting client's own words/ideas back (even as options)
+        - Open questions using "第一步" / "下一步" / "怎麼開始"
+        - Asking "你想試試看嗎？" (inviting client to decide)
 
         Excludes text inside 「」 quotes, which are the coach reflecting
         the client's own words back — not coach-originated advice.
