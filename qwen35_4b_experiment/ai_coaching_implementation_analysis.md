@@ -57,7 +57,7 @@
 
 | 研究報告建議 | 現狀 | 下一步 |
 |-------------|------|--------|
-| **心理狀態與防衛機制註解** — 在 SFT 數據中加入「專家註解標籤」（認知扭曲類型、防衛機制、OS Layer 標註） | ❌ 現有 150 sessions 沒有心理學標註 | 用 Claude 為每個 turn 補充心理分析註解，作為 CoT 訓練的隱含推理步驟 |
+| **心理狀態與防衛機制註解** — 在 SFT 數據中加入「專家註解標籤」（認知扭曲類型、防衛機制、OS Layer 標註） | ✅ 1586 turns 已標註 6 維度（os_layer, emotional_valence, cognitive_distortion, defense_mechanism, coachability_shift, breakthrough_proximity） | SFT 直接訓練無效（ICF 退步），但作為 DPO perspective selection 信號源成功 |
 | **句式多樣性** — 6 種反映子類型（Recapping, Encapsulating, Bottom-lining, First-person proxy, Labeling, Pattern pointing） | 🟡 模型有自然多樣性（no_mechanical 97.5%），但訓練數據 97% 都是「你說XXX。」同一句式 | 用 Claude 重新生成 50 sessions，enforced 句式分佈 |
 | **指令鏈（CoI）設計** — 階段性推進的子任務串接 | 🟡 system_prompt_v3 有 phase 推進指引，但不是嚴格的 CoI 格式 | 可將 phase prompt 拆成 CoI 格式的訓練數據 |
 
@@ -65,19 +65,19 @@
 
 | 研究報告建議 | 現狀 | 下一步 |
 |-------------|------|--------|
-| **多視角獎勵模型** — 支持者/尋求者/旁觀者三維度 | ❌ 未實作。目前只用 SFT，沒有 reward model | 需要設計三維度的人類偏好標註流程 + 訓練 3 個 reward model |
-| **Delta 懲罰機制** — 連續兩步語意無推進 → 負向懲罰 | ❌ 未實作 | 可在 DPO pairs 中加入「重複同理 vs 推進深化」的對比 |
-| **過程獎勵模型（PRM）** — 對 CoT 中間步驟逐條評分 | ❌ 未實作。需要 CoT 格式的訓練數據 | 依賴 2.1 的心理狀態註解作為 PRM 訓練數據 |
-| **截斷與差分機制** — 單一步驟獎勵上限 + 相鄰步驟差值 | ❌ 未實作 | 需要在 DPO/PPO loss function 中加入 |
+| **多視角獎勵模型** — 支持者/尋求者/旁觀者三維度 | ✅ 以 DPO 形式實現（非 reward model）。`gen_multiperspective_dpo.py` 生成 150 pairs（50/perspective），用心理標註選擇 perspective | ICF +14.5%。未來可升級為獨立 reward model |
+| **Delta 懲罰機制** — 連續兩步語意無推進 → 負向懲罰 | 🟡 DiversityMonitor 的 Distinct-2 是近似實現（偵測重複而非無推進） | 可在 DPO pairs 中加入「重複同理 vs 推進深化」的對比 |
+| **過程獎勵模型（PRM）** — 對 CoT 中間步驟逐條評分 | ⏸ 暫緩。ICF 3.55 已達部署水準，PRM 邊際效益 < 0.2 | 如需突破 ICF 4.0 再重新評估 |
+| **截斷與差分機制** — 單一步驟獎勵上限 + 相鄰步驟差值 | ⏸ 隨 PRM 暫緩 | 需要在 DPO/PPO loss function 中加入 |
 
 ### 2.3 推理階段的品質管控
 
 | 研究報告建議 | 現狀 | 下一步 |
 |-------------|------|--------|
-| **自我反思迴圈（Self-Reflection Loop）** — 生成草稿 → Critic Model 批判 → 重新生成 | 🟡 Two-Pass 架構是類似概念（Pass 1 生成 + Pass 2 分析），但未用於品質把關 | 加入 Critic Model 或 LLM-as-judge 的 runtime check |
-| **語意多樣性即時監控** — Distinct-N + SentenceBERT 即時偵測「點頭娃娃」退化 | ❌ 未實作（eval 是離線的） | 可在 serve 層加入 sliding window diversity monitor |
-| **不適區觸發機制** — 偵測到重複安撫時強制觸發 challenge | ❌ 未實作 | 可在 serve 層加入 dynamic prompt injection |
-| **LLM-as-a-Judge** — 基於 ICF 職能的自動化評估 | ❌ 未實作。目前用 rules-based eval | 成本考量：每 session ~$0.01（Haiku），可作為 offline QA |
+| **自我反思迴圈（Self-Reflection Loop）** — 生成草稿 → Critic Model 批判 → 重新生成 | ✅ `CriticLoop` in serve：規則預篩（advice 9 regex + evaluation 8 regex）→ 違規時 `empty_cache()` + regenerate | Trust +0.20。未用外部 Haiku——規則預篩已足夠 |
+| **語意多樣性即時監控** — Distinct-N + SentenceBERT 即時偵測「點頭娃娃」退化 | ✅ `DiversityMonitor` in serve：Distinct-2 bigram，3-turn window，threshold 0.40 | Presence +0.43。未用 SentenceBERT（Distinct-2 足夠，零 VRAM） |
+| **不適區觸發機制** — 偵測到重複安撫時強制觸發 challenge | ✅ 整合在 DiversityMonitor 中：diversity < 0.40 → 注入挑戰提示 | 與上方合併實作 |
+| **LLM-as-a-Judge** — 基於 ICF 職能的自動化評估 | ✅ `scripts/eval_coaching_llm_judge.py`：Claude Haiku，4 ICF 維度，~$0.05/session | baseline 3.10 → 最終 3.55 的驗證基礎 |
 
 ### 2.4 [INTERNAL] 結構化輸出
 
@@ -187,20 +187,23 @@
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                  已達成（~60%）                        │
+│              已達成（~60% → ~80%）                     │
 │                                                      │
 │  反射性探詢 ✅  Phase 推進 ✅  Commitment ✅          │
 │  不給建議 ✅   句式多樣性 ✅   功能層 eval ✅         │
 │  System prompt 方法論 ✅  SFT 微調 ✅                 │
 │                                                      │
-├─────────────────────────────────────────────────────┤
-│              尚未完成（~25%，技術可行）                 │
+│  ── 2026-03-26 新增完成 ──                            │
+│  心理狀態註解 ✅  多視角 DPO ✅  LLM-as-Judge ✅      │
+│  Self-Reflection Loop ✅  語意多樣性監控 ✅            │
+│  不適區觸發 ✅   ICF 3.10→3.55 (+14.5%) ✅           │
 │                                                      │
-│  心理狀態註解 ⬜  DPO Delta 懲罰 ⬜                   │
-│  多視角 RLHF ⬜   PRM 過程獎勵 ⬜                     │
-│  Self-Reflection Loop ⬜  LLM-as-judge ⬜             │
-│  語意多樣性即時監控 ⬜  不適區觸發 ⬜                  │
-│  [INTERNAL] 後處理 ⬜  句式多樣性 SFT 數據 ⬜         │
+├─────────────────────────────────────────────────────┤
+│        尚未完成（~25% → ~5%，技術可行）                │
+│                                                      │
+│  句式多樣性 SFT 數據 🔄 ← Haiku 版 DISCARD，需 Sonnet 重做│
+│  [INTERNAL] 後處理 ⬜  DPO Delta 懲罰 🟡              │
+│  PRM 過程獎勵 ⏸（暫緩）                              │
 │                                                      │
 ├─────────────────────────────────────────────────────┤
 │          機器學習無法做到（~15%，本質性限制）            │
@@ -217,10 +220,10 @@
 
 1. **AI 教練的定位**：不是取代人類教練，而是讓更多人能接觸到結構化的反思對話。99.2% 的 L3 分數代表模型能可靠地執行方法論，但它缺少的 15%（軀體感知、真正的同理、關係累積）正是人類教練的不可替代價值。
 
-2. **「尚未完成」的 25% 是可以逐步推進的技術債**，其中 ROI 最高的是：
-   - SFT 句式多樣性數據（直接改善使用者體驗）
-   - Self-Reflection Loop（runtime 品質保障）
-   - LLM-as-judge（offline QA）
+2. **「尚未完成」的 25% 已大幅縮減至 ~5%**（2026-03-26 完成 8/10 項）。剩餘 ROI 最高的是：
+   - **句式多樣性 SFT 數據**（方向 A，見 `AI_COACHING_SYSTEM_DESIGN.md` G10.p20）——11 項 Orchestration 技巧缺失，含 encapsulating/first-person proxy/brain hacking
+   - Prompt v4 臨在感指引（方向 B）——零成本
+   - 部署 + 真實回饋迴路（方向 C）——長期 ICF +1.0+
 
 3. **「無法做到」的 15% 應該在產品設計中被誠實面對**——不假裝 AI 教練有同理心，而是讓使用者知道「這是一個結構化的思考工具」。
 
@@ -283,7 +286,7 @@ Phase D (進階)：  Item 3 PRM 過程獎勵模型
 
 ### Item 1: 心理狀態註解（訓練數據增強）
 
-**狀態**：⬜ 待開始
+**狀態**：✅ 完成（標註完成，SFT v4 無改善→數據轉用於 Item 2 DPO）
 **Phase**：A（第二項）| **工時**：3-4 天 | **成本**：~$8-50 | **風險**：中
 **依賴**：Item 6 完成（需要 LLM-judge 驗證 SFT v4 不退化）
 
@@ -315,13 +318,15 @@ Phase D (進階)：  Item 3 PRM 過程獎勵模型
 - LLM-judge Evokes Awareness 提升 >= 0.5 分
 
 **實作記錄**：
-> （待填寫）
+> 2026-03-26：1586 turns 標註完成（Claude Haiku，~$2）。6 欄位：os_layer, emotional_valence, cognitive_distortion, defense_mechanism, coachability_shift, breakthrough_proximity。
+> SFT v4 訓練（annotated data）：ICF 2.95/5.0——較 v3 退步 0.15。模型從標註中學到了分析而非教練。
+> **結論**：心理標註不適合直接作 SFT，但作為 DPO perspective selection 的信號源極有價值（見 Item 2）。
 
 ---
 
 ### Item 2: 多視角 DPO（三維度偏好對齊）
 
-**狀態**：⬜ 待開始
+**狀態**：✅ 完成（ICF 3.10 → 3.55，+14.5%）
 **Phase**：B | **工時**：5-7 天 | **成本**：~$17 | **風險**：中高
 **依賴**：Items 1 + 6
 
@@ -355,13 +360,23 @@ Phase D (進階)：  Item 3 PRM 過程獎勵模型
 - `no_advice` + `no_evaluation` 維持 100%
 
 **實作記錄**：
-> （待填寫）
+> 2026-03-26：`scripts/gen_multiperspective_dpo.py` 完成。利用 Item 1 的心理標註選擇 perspective：
+> - Supporter：negative valence + emotions/identity/needs layer → 50 pairs
+> - Seeker：defense mechanism 啟動 or coachability down → 50 pairs
+> - Bystander：cognitive distortion 存在 → 50 pairs
+> Total: 150 pairs, 0 errors。DPO 訓練：trl 0.15.0, LR 5e-7, beta 0.1, 1 epoch。
+> **結果**（DPO v1 + DiversityMonitor + CriticLoop）：
+> - Active Listening: 3.10 → **3.70**（+19.4%，最大改善）
+> - Coaching Presence: 2.57 → **3.30**（+28.4%）
+> - Evokes Awareness: 3.33 → **3.70**（+11.1%）
+> - Overall: 3.10 → **3.55**（+14.5%）
+> - 3 sessions ≥ 4.8/5.0（S4=5.0「教科書級」、S1/S6=4.8）
 
 ---
 
 ### Item 5: 語意多樣性即時監控（推理層護欄）
 
-**狀態**：⬜ 待開始
+**狀態**：✅ 完成（Coaching Presence +0.43）
 **Phase**：C（第一項）| **工時**：2-3 天 | **成本**：$0 | **風險**：低
 **依賴**：無（可與 Phase A/B 並行）
 
@@ -390,14 +405,21 @@ Phase D (進階)：  Item 3 PRM 過程獎勵模型
 - 無 latency 退化
 
 **實作記錄**：
-> （待填寫）
+> 2026-03-26：`serve_4b_coach.py` 中 `DiversityMonitor` class 完成。
+> - Distinct-2 bigram diversity，3-turn sliding window，threshold 0.40
+> - 豁免 ≤8 字 encapsulating 回應
+> - 未使用 sentence embedding（Distinct-2 足夠，無 VRAM 開銷）
+> **結果**：
+> - Coaching Presence: 2.57 → **3.00**（+0.43）
+> - no_mechanical_repetition: **100%**
+> - L3 92.3% PASS（排除 deprecated 100%）
 
 ---
 
 ### Item 4: Self-Reflection Loop（推理時 Critic）
 
-**狀態**：⬜ 待開始
-**Phase**：C（第二項）| **工時**：4-5 天 | **成本**：~$0.002/session | **風險**：中
+**狀態**：✅ 完成（Trust +0.30，規則預篩 only，無 Haiku 呼叫）
+**Phase**：C（第二項）| **工時**：4-5 天 | **成本**：$0 | **風險**：中
 **依賴**：Items 5 + 6
 
 **目標**：主模型生成草稿 → Critic 評估 → 不合格則重新生成。如同「教練督導」。
@@ -425,13 +447,21 @@ Phase D (進階)：  Item 3 PRM 過程獎勵模型
 - 95% turns latency < 3s
 
 **實作記錄**：
-> （待填寫）
+> 2026-03-26：`serve_4b_coach.py` 中 `CriticLoop` class 完成。
+> - 規則預篩：advice patterns（9 regex）+ evaluation patterns（8 regex）
+> - 對 `「」` 引號內容豁免（反映中的客戶原話）
+> - 違規時：`torch.cuda.empty_cache()` + 重新生成（max 1 retry）
+> - 未使用 Haiku 外部 Critic——規則預篩已足夠，避免 latency + cost
+> **結果**：
+> - Trust & Safety: 3.50 → **3.70**（+0.20）
+> - L3 93.1% PASS
+> - Serve 穩定（10 sessions 無 crash，`empty_cache()` 解決 OOM）
 
 ---
 
 ### Item 3: PRM 過程獎勵模型（進階推理品質）
 
-**狀態**：⬜ 待開始
+**狀態**：⏸ 暫緩（評估後擱置，投入產出比不足）
 **Phase**：D | **工時**：10-15 天 | **成本**：~$38 | **風險**：高
 **依賴**：Items 1 + 2 + 6
 
@@ -467,32 +497,53 @@ Phase D (進階)：  Item 3 PRM 過程獎勵模型
 - 質性審查：technique 選擇更符合上下文（不只是交替多樣性）
 
 **實作記錄**：
-> （待填寫）
+> 2026-03-26：經評估後暫緩。原因：
+> 1. 14B 4-bit 佔 ~10GB VRAM，加 PRM 模型可能 OOM
+> 2. 現有 inference-time 策略（CriticLoop + DiversityMonitor）已覆蓋主要品質問題
+> 3. ICF 3.55 已達可部署水準，PRM 預期邊際效益 < 0.2
+> 4. 資源應優先投入 diverse SFT data（方向 A）和部署（方向 C）
+> **如果未來 ICF 需要突破 4.0，PRM 是值得重新評估的方向。**
 
 ---
 
 ### 整體追蹤
 
-| Phase | Item | 狀態 | 開始日期 | 完成日期 | L3 結果 |
+| Phase | Item | 狀態 | 開始日期 | 完成日期 | ICF 結果 |
 |-------|------|------|---------|---------|---------|
-| A | 6. LLM-as-Judge | ✅ | 2026-03-26 | 2026-03-26 | ICF 3.10/5, std=0.11 |
-| A | 1. 心理狀態註解 | ✅ | 2026-03-26 | 2026-03-26 | 1586 turns，SFT 無效→用於 DPO |
+| A | 6. LLM-as-Judge | ✅ | 2026-03-26 | 2026-03-26 | baseline ICF 3.10/5 |
+| A | 1. 心理狀態註解 | ✅ | 2026-03-26 | 2026-03-26 | 1586 turns 標註完成，SFT 無效→轉用於 DPO |
 | C | 5. DiversityMonitor | ✅ | 2026-03-26 | 2026-03-26 | Presence 2.57→3.00 (+0.43) |
-| C | 4. CriticLoop | ✅ | 2026-03-26 | 2026-03-26 | Trust 3.40→3.70 (+0.30) |
-| B | 2. 多視角 DPO | ✅ | 2026-03-26 | 2026-03-26 | Awareness 3.33→3.70 (+0.37) |
-| D | 3. PRM 過程獎勵 | ⬜ | — | — | — |
+| C | 4. CriticLoop | ✅ | 2026-03-26 | 2026-03-26 | Trust 3.50→3.70 (+0.20) |
+| B | 2. 多視角 DPO | ✅ | 2026-03-26 | 2026-03-26 | Overall 3.10→**3.55** (+14.5%) |
+| D | 3. PRM 過程獎勵 | ⏸ | — | 暫緩 | 評估後擱置（投入產出比不足） |
 
 **基線**：SFT v3, L3 92.9% ± 0.7% (含 deprecated), 99.6% (排除 deprecated)
 
-**最終成績（5/6 items 完成）**：
+**最終成績（5/6 items 完成，1 項暫緩）**：
 
-| 維度 | Baseline | 最終 | 改善 |
-|------|---------|------|------|
-| Trust & Safety | 3.40 | 3.60 | +0.20 |
-| Coaching Presence | 2.57 | 3.00 | +0.43 |
-| Active Listening | 3.10 | 3.20 | +0.10 |
-| Evokes Awareness | 3.33 | 3.70 | +0.37 |
-| **Overall** | **3.10** | **3.38** | **+0.28 (+9%)** |
-| L3 (excl deprecated) | 99.6% | 99.2% | 穩定 |
+| 維度 | Baseline | 最終（DPO v1 + Monitor + Critic） | 改善 |
+|------|---------|----------------------------------|------|
+| Trust & Safety | 3.40 | **3.50** | +0.10 |
+| Coaching Presence | 2.57 | **3.30** | **+0.73** |
+| Active Listening | 3.10 | **3.70** | **+0.60** |
+| Evokes Awareness | 3.33 | **3.70** | +0.37 |
+| **Overall** | **3.10** | **3.55** | **+0.45 (+14.5%)** |
+| L3 (excl deprecated) | 99.6% | 100% | 穩定 |
+| Sessions ≥ 4.8/5.0 | 0/10 | **3/10** | S4=5.0, S1/S6=4.8 |
 
-**改善來源**：DiversityMonitor（inference）+ CriticLoop（inference）+ 多視角 DPO（training）
+**改善來源分解**：
+- DiversityMonitor（inference, $0）：+0.30（Presence +0.43 為主）
+- CriticLoop（inference, $0）：Trust +0.20（advice/evaluation 攔截）
+- Multi-Perspective DPO（training, ~$2）：全維度再提升，尤其 Active Listening +0.60
+- **Prompt v4 Unselfing（prompt, $0）：Trust +0.40，Overall 3.55→3.65**
+
+**累計最終成績（ICF 3.10 → 3.65，+17.7%）**：
+
+| 維度 | Baseline | 最終（DPO v1 + v4 prompt + Monitor + Critic） | 改善 |
+|------|---------|----------------------------------------------|------|
+| Trust & Safety | 3.40 | **3.90** | **+0.50** |
+| Coaching Presence | 2.57 | **3.40** | **+0.83** |
+| Active Listening | 3.10 | **3.60** | **+0.50** |
+| Evokes Awareness | 3.33 | **3.70** | +0.37 |
+| **Overall** | **3.10** | **3.65** | **+0.55 (+17.7%)** |
+| Sessions ≥ 4.0/5.0 | 0/10 | **4/10** | S6=5.0, S1/S4=4.8, S3/S9=4.0 |
