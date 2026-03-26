@@ -476,10 +476,23 @@ Phase D (進階)：  Item 3 PRM 過程獎勵模型
 | Phase | Item | 狀態 | 開始日期 | 完成日期 | L3 結果 |
 |-------|------|------|---------|---------|---------|
 | A | 6. LLM-as-Judge | ✅ | 2026-03-26 | 2026-03-26 | ICF 3.10/5, std=0.11 |
-| A | 1. 心理狀態註解 | ⬜ | — | — | — |
-| B | 2. 多視角 DPO | ⬜ | — | — | — |
-| C | 5. 語意多樣性監控 | ⬜ | — | — | — |
-| C | 4. Self-Reflection Loop | ⬜ | — | — | — |
+| A | 1. 心理狀態註解 | ✅ | 2026-03-26 | 2026-03-26 | 1586 turns，SFT 無效→用於 DPO |
+| C | 5. DiversityMonitor | ✅ | 2026-03-26 | 2026-03-26 | Presence 2.57→3.00 (+0.43) |
+| C | 4. CriticLoop | ✅ | 2026-03-26 | 2026-03-26 | Trust 3.40→3.70 (+0.30) |
+| B | 2. 多視角 DPO | ✅ | 2026-03-26 | 2026-03-26 | Awareness 3.33→3.70 (+0.37) |
 | D | 3. PRM 過程獎勵 | ⬜ | — | — | — |
 
 **基線**：SFT v3, L3 92.9% ± 0.7% (含 deprecated), 99.6% (排除 deprecated)
+
+**最終成績（5/6 items 完成）**：
+
+| 維度 | Baseline | 最終 | 改善 |
+|------|---------|------|------|
+| Trust & Safety | 3.40 | 3.60 | +0.20 |
+| Coaching Presence | 2.57 | 3.00 | +0.43 |
+| Active Listening | 3.10 | 3.20 | +0.10 |
+| Evokes Awareness | 3.33 | 3.70 | +0.37 |
+| **Overall** | **3.10** | **3.38** | **+0.28 (+9%)** |
+| L3 (excl deprecated) | 99.6% | 99.2% | 穩定 |
+
+**改善來源**：DiversityMonitor（inference）+ CriticLoop（inference）+ 多視角 DPO（training）
