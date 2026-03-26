@@ -1,0 +1,332 @@
+{
+  "tag": "sft_v3_selfref_icf",
+  "timestamp": "2026-03-26T14:57:53.923758",
+  "source": "qwen35_4b_experiment/l3_live_sessions/l3_live_14b_v3_selfref_20260326_065425.jsonl",
+  "model": "claude-haiku-4-5-20251001",
+  "total_sessions": 10,
+  "total_runs": 1,
+  "runs": [
+    {
+      "run_idx": 0,
+      "dimension_means": {
+        "trust_safety": 3.4,
+        "coaching_presence": 3.5,
+        "active_listening": 3.3,
+        "evokes_awareness": 3.7
+      },
+      "overall_mean": 3.48,
+      "per_session": [
+        {
+          "session_idx": 0,
+          "scores": {
+            "trust_safety": 4,
+            "coaching_presence": 5,
+            "active_listening": 4,
+            "evokes_awareness": 5
+          },
+          "mean_score": 4.5,
+          "details": {
+            "trust_safety": {
+              "score": 4,
+              "rationale": "教練整體維持非指導性立場，未給建議或評價，但在「這個問題本身，已經開始觸動什麼了」一句有輕微的引導傾向，暗示客戶應該有所觸動。"
+            },
+            "coaching_presence": {
+              "score": 5,
+              "rationale": "回應簡短精準（多數 1-3 句），在關鍵洞察時刻（「如果不用努力來證明...」）適當留白只說「是的」，節奏完全跟隨客戶的思考節奏，未急著推進。"
+            },
+            "active_listening": {
+              "score": 4,
+              "rationale": "精準反映客戶原話並串連線索（努力→回報→自我證明→價值定義），但反映句式較為重複（多次使用「你說...」結構），未充分展現多元的反映方式。"
+            },
+            "evokes_awareness": {
+              "score": 5,
+              "rationale": "深入挑戰客戶的信念框架（努力=回報→努力=自我證明），引導至身份/價值觀層次，客戶自發產生關鍵洞察（「也許我一直在用努力來證明自己的價值」），並在洞察後適當深化（「什麼樣的有意義會讓你真正感受到連結」），展現層層深化的提問。"
+            },
+            "overall_impression": "這是一場高品質的教練對話，教練展現出卓越的同在感與覺察喚起能力，透過簡潔有力的反映與深層提問，引導客戶從表面的失去熱情深入到核心的身份與價值觀信念，客戶產生了自發的重要洞察。"
+          },
+          "elapsed_s": 6.6,
+          "n_turns": 9
+        },
+        {
+          "session_idx": 1,
+          "scores": {
+            "trust_safety": 2,
+            "coaching_presence": 2,
+            "active_listening": 2,
+            "evokes_awareness": 3
+          },
+          "mean_score": 2.25,
+          "details": {
+            "trust_safety": {
+              "score": 2,
+              "rationale": "教練在『你說的對...你一直在重複你爸的模式』和『但你不想到最後後悔。那現在，有什麼是你可以先做一點點的改變嗎？』處給出了評價和引導性建議，打破了非指導性立場。"
+            },
+            "coaching_presence": {
+              "score": 2,
+              "rationale": "教練的回應過度依賴『鸚鵡式反映』，每次都是完整複述客戶的話再加一個問題，顯得機械化且未能在關鍵洞察時刻留白，反而急著推進到下一步。"
+            },
+            "active_listening": {
+              "score": 2,
+              "rationale": "雖然反映準確，但句式高度重複（『你說...那...呢？』的模板），未能多元化反映方式，也未能串連『不愛表達→源於父親模式→不想重複』的深層線索，停留在表面層次。"
+            },
+            "evokes_awareness": {
+              "score": 3,
+              "rationale": "成功引導客戶發現『重複父親模式』的洞察，但後續未做 layer-check 深化，反而急著轉向『你可以做什麼改變』的行動層，未充分探索這個信念層的覺察。"
+            },
+            "overall_impression": "教練展現了基礎的傾聽技巧和反映能力，但過度依賴制式反映句型、在關鍵時刻給予評價/建議、未能創造深度探索的空間，整體呈現出『結構化諮詢』而非『真正教練』的風格。"
+          },
+          "elapsed_s": 5.9,
+          "n_turns": 9
+        },
+        {
+          "session_idx": 2,
+          "scores": {
+            "trust_safety": 2,
+            "coaching_presence": 4,
+            "active_listening": 2,
+            "evokes_awareness": 2
+          },
+          "mean_score": 2.5,
+          "details": {
+            "trust_safety": {
+              "score": 2,
+              "rationale": "教練的反映句式帶有強烈的引導性（「那是不是讓你覺得...」），暗示特定的解釋方向，而非中立地創造安全探索空間，客戶的自發洞察可能受到這些暗示的影響。"
+            },
+            "coaching_presence": {
+              "score": 4,
+              "rationale": "回應簡短精準，最後的「嗯」展現了適當的留白，但前面多輪對話中的反映句式過於一致，顯示節奏未能充分隨客戶調整。"
+            },
+            "active_listening": {
+              "score": 2,
+              "rationale": "雖然使用了客戶原話反映，但句式高度重複（「你說XXX，那是不是讓你覺得...」出現7次），且反映後立即加入教練的詮釋，未能捕捉話語背後的真實信念，只停留在表面。"
+            },
+            "evokes_awareness": {
+              "score": 2,
+              "rationale": "提問具有明顯的leading question特徵，每次都以「那是不是讓你覺得...」引導客戶朝特定方向（從外部障礙→內部不確定），而非真正挑戰框架；客戶的洞察（「問題出在我自己」）更像是被引導的結果而非自發發現。"
+            },
+            "overall_impression": "這段對話展現了教練的結構化思維，但過度依賴制式的反映句式和隱性引導，削弱了真正的教練臨在感和客戶的自主探索空間，距離ICF核心職能標準仍有明顯差距。"
+          },
+          "elapsed_s": 5.7,
+          "n_turns": 8
+        },
+        {
+          "session_idx": 3,
+          "scores": {
+            "trust_safety": 4,
+            "coaching_presence": 5,
+            "active_listening": 5,
+            "evokes_awareness": 5
+          },
+          "mean_score": 4.75,
+          "details": {
+            "trust_safety": {
+              "score": 4,
+              "rationale": "教練維持非指導性立場，專注於反映和探索，但在「那種感覺，是不是很孤單？」一句中有輕微的暗示性引導，略微減損了完全的中立性。"
+            },
+            "coaching_presence": {
+              "score": 5,
+              "rationale": "回應簡短精準（多為1-2句），在客戶產生洞察時（「說了也沒用」）適當留白，節奏跟隨客戶的自然流動，展現出高度的臨在感。"
+            },
+            "active_listening": {
+              "score": 5,
+              "rationale": "精準反映客戶原話，捕捉話語背後的信念（「說了也沒用」的核心信念）和情緒（孤單、害怕、被否定），串連多輪對話線索（霸凌→不求助→工作困境），反映句式多元且自然。"
+            },
+            "evokes_awareness": {
+              "score": 5,
+              "rationale": "逐層深化探索從事件→情緒→信念→身份（國中的小孩）→渴望，挑戰了客戶對「說出來=軟弱」的框架，引發客戶自發洞察（「我需要告訴他，說出來不是軟弱」），達到認知轉變。"
+            },
+            "overall_impression": "這是一場高品質的教練對話，教練展現出卓越的同在感和傾聽力，透過溫和而深入的探索，引導客戶從童年創傷的表面症狀（惡夢、不求助）深入到核心信念層，最終產生自發的重新框架洞察，完全符合ICF教練核心職能標準。"
+          },
+          "elapsed_s": 6.4,
+          "n_turns": 9
+        },
+        {
+          "session_idx": 4,
+          "scores": {
+            "trust_safety": 4,
+            "coaching_presence": 3,
+            "active_listening": 4,
+            "evokes_awareness": 4
+          },
+          "mean_score": 3.75,
+          "details": {
+            "trust_safety": {
+              "score": 4,
+              "rationale": "教練維持非指導性立場，未給建議或評價，但在客戶說「好像不只是畫畫，很多事都是這樣」後的單句「嗯」顯得略顯被動，可能錯失了深化探索的時刻。"
+            },
+            "coaching_presence": {
+              "score": 3,
+              "rationale": "回應長度不一致，多數時候簡短精準，但部分反映句式過長（如「『畫得不好就不想畫了』——那種對『不好』的感覺...」），且最後一句「嗯」過於簡短，未能適當跟進客戶的關鍵洞察時刻。"
+            },
+            "active_listening": {
+              "score": 4,
+              "rationale": "精準使用客戶原話反映，捕捉情緒與需求，但反映句式高度重複（「『XXX』——」的模式出現7次），且未充分串連「無聊→失去興趣→畫畫挫折→普遍模式」的完整線索脈絡。"
+            },
+            "evokes_awareness": {
+              "score": 4,
+              "rationale": "問題逐步深化，從表面感受探向信念層（「不好」的來源），引發客戶自發洞察（「好像不只是畫畫，很多事都是這樣」），但未在此關鍵洞察後進行layer-check或進一步挑戰其背後的信念/身份框架。"
+            },
+            "overall_impression": "教練展現了扎實的基礎技能——非指導性、積極傾聽、逐層深化——但在反映句式的多樣性、臨場節奏感，以及關鍵洞察時刻的跟進上仍有進步空間，整體品質介於進階與資深之間。"
+          },
+          "elapsed_s": 6.2,
+          "n_turns": 8
+        },
+        {
+          "session_idx": 5,
+          "scores": {
+            "trust_safety": 5,
+            "coaching_presence": 5,
+            "active_listening": 4,
+            "evokes_awareness": 5
+          },
+          "mean_score": 4.75,
+          "details": {
+            "trust_safety": {
+              "score": 5,
+              "rationale": "教練完全避免給建議，當客戶要求直接答案時反而反映其渴望，創造安全探索空間，讓客戶自己發現真實需求。"
+            },
+            "coaching_presence": {
+              "score": 5,
+              "rationale": "回應簡短精準（多為1-2句），適當使用沉默（「嗯」），在客戶產生洞察時留白不搶話，完全跟隨客戶節奏。"
+            },
+            "active_listening": {
+              "score": 4,
+              "rationale": "精準反映客戶原話並捕捉情緒（「壓迫感」「應該」），串連多輪線索，但反映句式略顯重複（多次用「你說XXX」結構）。"
+            },
+            "evokes_awareness": {
+              "score": 5,
+              "rationale": "透過「那是怎麼樣的『應該』？」等問題挑戰客戶的內在框架，引發客戶從表面問題（換工作）深入到信念層（不允許自己說夠了），客戶產生自發的認知轉變。"
+            },
+            "overall_impression": "這是一場高品質的教練對話，教練展現出卓越的非指導性立場、精準的臨在感與深層傾聽，透過簡潔有力的反映與挑戰性提問，引導客戶從表面困境挖掘到核心信念，完全符合ICF核心職能標準。"
+          },
+          "elapsed_s": 5.0,
+          "n_turns": 8
+        },
+        {
+          "session_idx": 6,
+          "scores": {
+            "trust_safety": 4,
+            "coaching_presence": 2,
+            "active_listening": 2,
+            "evokes_awareness": 3
+          },
+          "mean_score": 2.75,
+          "details": {
+            "trust_safety": {
+              "score": 4,
+              "rationale": "教練維持非指導性立場，未給建議或評價，但在客戶說「我想先買一把吉他」後繼續深化細節，略顯急著推進而非完全信任客戶的自發行動。"
+            },
+            "coaching_presence": {
+              "score": 2,
+              "rationale": "教練幾乎每次都使用「反映+追問」的機械式模式，回應雖短但缺乏真正的同在感，未在關鍵洞察時刻（如「那個『不務正業』到現在還在影響我」）留白讓客戶自行沉澱。"
+            },
+            "active_listening": {
+              "score": 2,
+              "rationale": "反映過度機械化且句式高度重複（幾乎每輪都是「XXX。那...」），未能串連多輪線索深化理解，也未捕捉「被父親評價」這條貫穿全程的核心信念線。"
+            },
+            "evokes_awareness": {
+              "score": 3,
+              "rationale": "提問停留在表面探索（「身體有什麼感覺」「什麼樣的吉他」），未真正挑戰客戶的信念框架；客戶自發洞察出現（「那個『不務正業』到現在還在影響我」）但教練未做 layer-check 深化，反而繼續追問細節。"
+            },
+            "overall_impression": "教練掌握了反映技巧的形式但失去了靈魂，過度依賴機械式反映導致同在感缺失，且在關鍵洞察時刻未能深化反而急著推進，整體品質介於初級與中級之間。"
+          },
+          "elapsed_s": 6.0,
+          "n_turns": 10
+        },
+        {
+          "session_idx": 7,
+          "scores": {
+            "trust_safety": 2,
+            "coaching_presence": 2,
+            "active_listening": 3,
+            "evokes_awareness": 2
+          },
+          "mean_score": 2.25,
+          "details": {
+            "trust_safety": {
+              "score": 2,
+              "rationale": "教練在對話後期頻繁提出具有隱含方向性的問題（如「有什麼是你最不想寫的？」「有什麼是你最想先寫下來的？」），試圖引導客戶朝特定答案前進，削弱了安全的探索空間。"
+            },
+            "coaching_presence": {
+              "score": 2,
+              "rationale": "教練的回應過度重複客戶原話，且在客戶已產生自發行動方案後仍持續追問，未能適當留白或尊重客戶的洞察時刻，顯得急著推進而非同在。"
+            },
+            "active_listening": {
+              "score": 3,
+              "rationale": "教練準確反映客戶的表面內容，但反映句式高度重複（「XXX。那...」的模式），且未能深入串連「害怕被評價→保護自己→惡性循環→想打破」的信念線索，反映停留在表面。"
+            },
+            "evokes_awareness": {
+              "score": 2,
+              "rationale": "前半段提問有深度（挑戰「害怕來自過去或預設」），但中後段問題轉為leading questions，暗示特定答案方向（「有什麼是你最不想...」「有什麼是你最想...」），試圖把客戶導向行動而非真正的信念層覺察。"
+            },
+            "overall_impression": "教練在前半段展現了基礎的傾聽和深化能力，但隨著對話進展逐漸偏離教練立場，過度使用重複反映和引導性提問，在客戶產生自發洞察後仍不斷追問，破壞了信任感和同在感。"
+          },
+          "elapsed_s": 5.9,
+          "n_turns": 10
+        },
+        {
+          "session_idx": 8,
+          "scores": {
+            "trust_safety": 4,
+            "coaching_presence": 3,
+            "active_listening": 3,
+            "evokes_awareness": 4
+          },
+          "mean_score": 3.5,
+          "details": {
+            "trust_safety": {
+              "score": 4,
+              "rationale": "教練維持非指導性立場，不給建議，但在「你有什麼想對那個『等別人』的自己說的嗎？」這個問題中帶有輕微的引導傾向，暗示應該有對話或和解。"
+            },
+            "coaching_presence": {
+              "score": 3,
+              "rationale": "教練在客戶自發洞察時（「我在等什麼？」、「我永遠沒辦法走自己的路」）未能適當留白，反而立即反映並推進到下一個問題，節奏略顯急促。"
+            },
+            "active_listening": {
+              "score": 3,
+              "rationale": "反映準確但句式高度重複（每次都用「你說XXX」的結構），且多次反映表面內容而未深入捕捉「害怕失敗要負責」背後的信念層次，缺乏反映方式的多元性。"
+            },
+            "evokes_awareness": {
+              "score": 4,
+              "rationale": "成功引發客戶從「等許可」到「承擔責任」的認知轉變，觸及責任與自主的信念層，但未進行 layer-check 深化（如「這個害怕背後還有什麼？」），洞察深度有限。"
+            },
+            "overall_impression": "教練展現了基礎的教練技能與同理心，成功引發客戶自發洞察，但在臨在感與傾聽多元性上有改進空間，整體達到良好但非卓越水準。"
+          },
+          "elapsed_s": 5.4,
+          "n_turns": 7
+        },
+        {
+          "session_idx": 9,
+          "scores": {
+            "trust_safety": 3,
+            "coaching_presence": 4,
+            "active_listening": 4,
+            "evokes_awareness": 4
+          },
+          "mean_score": 3.75,
+          "details": {
+            "trust_safety": {
+              "score": 3,
+              "rationale": "教練大多保持非指導立場，但在『我感受到你內心的沉重/壓抑/孤獨』處有輕微的詮釋和評價傾向，略微侵入了客戶的內在空間。"
+            },
+            "coaching_presence": {
+              "score": 4,
+              "rationale": "回應簡短精準，適當留白（如客戶沉默後的回應），但在客戶自發洞察『也許我需要允許自己難過』後，仍繼續提問而未充分留白讓洞察沉澱。"
+            },
+            "active_listening": {
+              "score": 4,
+              "rationale": "精準反映客戶原話，捕捉情緒與信念線索（如『男生不可以哭』的核心信念），但反映句式過於重複（『我感受到你內心的XXX』出現三次），多元性不足。"
+            },
+            "evokes_awareness": {
+              "score": 4,
+              "rationale": "透過反映和追問逐步深化，客戶自發到達『他是唯一知道真正的我的人』和『允許自己難過』的洞察，觸及信念層次；但未在洞察出現後做充分的 layer-check，探索還可更深。"
+            },
+            "overall_impression": "這是一場富有同理心的教練對話，成功引導客戶從表面情緒進入核心信念的探索，但在反映的多元性和洞察後的深化上仍有進步空間。"
+          },
+          "elapsed_s": 5.6,
+          "n_turns": 9
+        }
+      ]
+    }
+  ]
+}

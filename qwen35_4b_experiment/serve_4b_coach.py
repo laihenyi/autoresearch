@@ -156,6 +156,129 @@ class DiversityMonitor:
 diversity_monitor = DiversityMonitor()
 
 
+# ── Self-Reflection Critic ───────────────────────────────────────────────────
+
+_CRITIC_ADVICE = re.compile(
+    r"你應該|你可以試試|建議你|我建議|你不妨|不如你"
+    r"|我覺得你可以|要不要試試|或許你可以"
+)
+_CRITIC_EVAL = re.compile(
+    r"你做得很好|你很棒|做得好|很勇敢|我很欣賞|這很好|很了不起"
+    r"|我為你感到驕傲|真的很厲害"
+)
+
+
+class CriticLoop:
+    """Per-turn self-reflection critic (Item 4).
+
+    Rule-based pre-screening catches obvious violations:
+    - Advice patterns
+    - Evaluation patterns
+    - Response too long (> 120 chars for non-opening turns)
+
+    When a violation is detected, the model regenerates with a corrective hint.
+    Max 1 regeneration attempt (total 2 tries).
+    """
+
+    CORRECTIVE_HINTS = {
+        "advice": "（系統提示：你剛才的回應包含建議。請重新回應，只用反映和提問，不給任何建議。）",
+        "evaluation": "（系統提示：你剛才的回應包含評價。請重新回應，不要評價客戶。）",
+        "too_long": "（系統提示：你的回應太長了。請用 1-2 句話回應。）",
+    }
+
+    @staticmethod
+    def check(response: str, turn_idx: int) -> str | None:
+        """Check response for violations. Returns violation type or None."""
+        # Strip quotes before checking (reflected client words are not advice)
+        unquoted = re.sub(r"「[^」]*」", "", response)
+
+        if _CRITIC_ADVICE.search(unquoted):
+            return "advice"
+        if _CRITIC_EVAL.search(unquoted):
+            return "evaluation"
+        return None
+
+    @staticmethod
+    def get_hint(violation: str) -> str:
+        return CriticLoop.CORRECTIVE_HINTS.get(violation, "")
+
+
+critic = CriticLoop()
+
+
+# ── Turn Analyzer (proactive pre-generation hints) ──────────────────────────
+
+_INSIGHT_SIGNALS = re.compile(
+    r"原來|我[才剛]發現|突然[想覺]|其實[是我]|一直以來|"
+    r"好像[是都不]|所以我|難怪|怪不得|也許[真的]|"
+    r"[我這那]就是|終於[明白懂了]|從來沒[想注意]"
+)
+_RESISTANCE_SIGNALS = re.compile(
+    r"我不知道|沒什麼|還好[啦吧]|不想[說談聊]|都可以|隨便|"
+    r"你說呢|沒有為什麼|就這樣[啊吧]|不覺得|反正"
+)
+_EMOTION_DEEP = re.compile(
+    r"[哭泣流淚]|好痛|很[痛傷難]|受不了|[崩潰]|"
+    r"心[很好]痛|覺得自己[很好][無沒差糟爛慘]|活[不著]"
+)
+
+
+class TurnAnalyzer:
+    """Analyze the client's last message and inject context-appropriate hints.
+
+    Detects:
+    - Insight moments → hint: use minimal response, hold space
+    - Resistance → hint: don't push, match energy
+    - Deep emotion → hint: empathize first, no questions
+    - Short/vague input → hint: gentle invitation
+    """
+
+    @staticmethod
+    def analyze(client_msg: str) -> str | None:
+        """Return a coaching hint based on client message patterns, or None."""
+        if not client_msg or len(client_msg.strip()) < 2:
+            return None
+
+        msg = client_msg.strip()
+
+        # Priority 1: Insight moment — HOLD SPACE
+        if _INSIGHT_SIGNALS.search(msg):
+            return (
+                "（系統提示：客戶正在產生洞察。"
+                "請用最短的回應確認（如「嗯。」「是的。」），"
+                "不要追問、不要讚美、不要展開。讓客戶自己消化。）"
+            )
+
+        # Priority 2: Deep emotion — EMPATHIZE FIRST
+        if _EMOTION_DEEP.search(msg):
+            return (
+                "（系統提示：客戶正在經歷深層情緒。"
+                "先用簡短反映情感（不要提問），給空間。"
+                "等客戶準備好再繼續。）"
+            )
+
+        # Priority 3: Resistance — DON'T PUSH
+        if _RESISTANCE_SIGNALS.search(msg):
+            return (
+                "（系統提示：客戶可能在抗拒。"
+                "不要追問或挑戰。用正常化或好奇的語氣回應。"
+                "例如：「不知道也沒關係。」）"
+            )
+
+        # Priority 4: Very short input — GENTLE INVITATION
+        if len(msg) <= 6:
+            return (
+                "（系統提示：客戶說得很少。"
+                "用開放式邀請，不要連續提問。"
+                "例如：「多說一些？」）"
+            )
+
+        return None
+
+
+turn_analyzer = TurnAnalyzer()
+
+
 # ── Model loading ───────────────────────────────────────────────────────────
 
 print(f"Loading model: {MODEL_ID}")
@@ -659,20 +782,61 @@ def _sync_response(
         output_ids = []  # not used for token count in two-pass
 
     else:
-        # ── Single-Pass Generation (non-structured) ──────────────────
-        # Diversity monitor: inject challenge hint if repetitive
+        # ── Single-Pass Generation with Critic + Diversity ────────────
         gen_messages = list(messages)
         challenge_fired = False
+        critic_fired = False
+        critic_violation = None
+
+        # Find last user message index for hint injection
+        _user_idxs = [i for i, m in enumerate(gen_messages) if m["role"] == "user"]
+        _last_user_idx = _user_idxs[-1] if _user_idxs else None
+
+        # Turn analyzer: inject context-appropriate hint based on client message
+        turn_hint = None
+        if _last_user_idx is not None:
+            turn_hint = turn_analyzer.analyze(gen_messages[_last_user_idx]["content"])
+            if turn_hint:
+                # Append hint to last user message content (avoids mid-sequence system msg NaN)
+                gen_messages[_last_user_idx] = {
+                    **gen_messages[_last_user_idx],
+                    "content": gen_messages[_last_user_idx]["content"] + "\n\n" + turn_hint,
+                }
+
+        # Diversity monitor: inject challenge hint into last user message
         if diversity_monitor.should_challenge(req.session_id):
-            # Inject hint as a system-level nudge before the last user message
-            gen_messages.append({"role": "system", "content": diversity_monitor.get_hint()})
+            if _last_user_idx is not None:
+                gen_messages[_last_user_idx] = {
+                    **gen_messages[_last_user_idx],
+                    "content": gen_messages[_last_user_idx]["content"] + "\n\n" + diversity_monitor.get_hint(),
+                }
             challenge_fired = True
 
+        # Count turns for critic (approximate from message history)
+        turn_idx = sum(1 for m in messages if m["role"] == "assistant")
+
+        # Generate + critic check (max 2 attempts)
         _, coach_response = _generate_once(gen_messages, 80, req.temperature, req.top_p)
-        raw_text = coach_response
-        filtered_text = strip_meta(raw_text)
+        filtered_text = strip_meta(coach_response)
         if not filtered_text:
-            filtered_text = raw_text[:200]
+            filtered_text = coach_response[:200]
+
+        violation = critic.check(filtered_text, turn_idx)
+        if violation:
+            # Free VRAM before regeneration to avoid OOM
+            torch.cuda.empty_cache()
+            # Regenerate with corrective hint
+            retry_messages = list(gen_messages)
+            retry_messages.append({"role": "system", "content": critic.get_hint(violation)})
+            _, retry_response = _generate_once(retry_messages, 80, req.temperature, req.top_p)
+            retry_filtered = strip_meta(retry_response)
+            if retry_filtered:
+                filtered_text = retry_filtered
+                coach_response = retry_response
+            critic_fired = True
+            critic_violation = violation
+
+        raw_text = coach_response
         output_ids = []
 
         # Record response for diversity tracking
@@ -715,6 +879,9 @@ def _sync_response(
             "filtered_text": filtered_text,
             "elapsed_seconds": round(elapsed, 2),
             "diversity_challenge": locals().get("challenge_fired", False),
+            "turn_hint": locals().get("turn_hint"),
+            "critic_fired": locals().get("critic_fired", False),
+            "critic_violation": locals().get("critic_violation"),
         },
     })
 
