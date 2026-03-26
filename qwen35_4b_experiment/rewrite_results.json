@@ -122,7 +122,7 @@
   {
     "session_idx": 16,
     "turn_idx": 6,
-    "rewritten": "經營。你用了這個詞。那是愛，還是工作？"
+    "rewritten": "你心裡在說：『如果我不夠努力經營，他就會離開。』⋯⋯是這樣嗎？"
   },
   {
     "session_idx": 16,
@@ -282,7 +282,7 @@
   {
     "session_idx": 54,
     "turn_idx": 12,
-    "rewritten": "崩潰。你說的是媽媽的崩潰，還是你的？"
+    "rewritten": "你心裡在說：『如果我選了烘焙，媽媽的投資就白費了。』⋯⋯是這樣嗎？"
   },
   {
     "session_idx": 54,
@@ -302,7 +302,7 @@
   {
     "session_idx": 55,
     "turn_idx": 12,
-    "rewritten": "應該。那個標準是誰的？"
+    "rewritten": "應該。到處都是應該。"
   },
   {
     "session_idx": 56,
@@ -322,7 +322,7 @@
   {
     "session_idx": 57,
     "turn_idx": 12,
-    "rewritten": "喉嚨很緊。那些卡住的話是什麼？"
+    "rewritten": "喉嚨裡卡著一整座山的話。"
   },
   {
     "session_idx": 59,
@@ -347,7 +347,7 @@
   {
     "session_idx": 64,
     "turn_idx": 12,
-    "rewritten": "你學了媽媽那一套。現在你想繼續嗎？"
+    "rewritten": "你想要照顧自己，但你繼承了媽媽的規則——自己永遠排最後。"
   },
   {
     "session_idx": 64,
@@ -447,7 +447,7 @@
   {
     "session_idx": 93,
     "turn_idx": 6,
-    "rewritten": "學了沒用。那是事實，還是你的規則？"
+    "rewritten": "你心裡在說：『不完美的學習不算學。』⋯⋯是這樣嗎？"
   },
   {
     "session_idx": 93,
@@ -507,7 +507,7 @@
   {
     "session_idx": 126,
     "turn_idx": 4,
-    "rewritten": "做不到。你在保護自己不去看見什麼？"
+    "rewritten": "你心裡在說：『如果我看了，就得承認自己不夠好。』⋯⋯是這樣嗎？"
   },
   {
     "session_idx": 126,
@@ -532,7 +532,7 @@
   {
     "session_idx": 132,
     "turn_idx": 4,
-    "rewritten": "嚇自己。你怎麼知道的？"
+    "rewritten": "嚇自己。你已經知道答案了。"
   },
   {
     "session_idx": 132,
@@ -542,7 +542,7 @@
   {
     "session_idx": 133,
     "turn_idx": 4,
-    "rewritten": "少了什麼。你最在意的是哪一塊？"
+    "rewritten": "少了什麼。"
   },
   {
     "session_idx": 134,
@@ -562,7 +562,7 @@
   {
     "session_idx": 136,
     "turn_idx": 6,
-    "rewritten": "居高臨下。那是她的態度，還是你的感覺？"
+    "rewritten": "你心裡在說：『她看不起我，就像我看不起自己一樣。』⋯⋯是這樣嗎？"
   },
   {
     "session_idx": 136,
@@ -597,7 +597,7 @@
   {
     "session_idx": 139,
     "turn_idx": 14,
-    "rewritten": "你想要學攝影，但你在猶豫。那個猶豫裡面是什麼？"
+    "rewritten": "你想要學攝影，但你不允許自己「浪費時間」。"
   },
   {
     "session_idx": 141,
@@ -647,7 +647,7 @@
   {
     "session_idx": 149,
     "turn_idx": 6,
-    "rewritten": "什麼都做不好。那是事實嗎？"
+    "rewritten": "你心裡在說：『我什麼都做不好，所以我活該生自己的氣。』⋯⋯是這樣嗎？"
   },
   {
     "session_idx": 149,
