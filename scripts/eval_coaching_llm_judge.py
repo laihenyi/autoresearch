@@ -175,7 +175,7 @@ def call_judge(client: anthropic.Anthropic, conversation_text: str) -> dict:
 
     response = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=500,
+        max_tokens=1024,
         system=ICF_JUDGE_SYSTEM,
         messages=[{"role": "user", "content": prompt}],
         temperature=0.3,

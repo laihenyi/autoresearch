@@ -429,18 +429,22 @@ def _build_messages(req: ChatRequest) -> tuple[list[dict], dict | None]:
 
 
 def _tokenize_for_generation(messages: list[dict]) -> tuple:
-    """Tokenize messages into model inputs. Returns (inputs, input_len)."""
+    """Tokenize messages into model inputs. Returns (inputs, input_len).
+
+    Uses enable_thinking=False which prefills <think>\\n\\n</think>\\n\\n
+    to tell Qwen3 to skip reasoning and go directly to response.
+    """
     try:
         text = tokenizer.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=False,
+            messages, tokenize=False, add_generation_prompt=True,
             enable_thinking=False,
         )
     except TypeError:
+        # Fallback for tokenizers that don't support enable_thinking
         text = tokenizer.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=False,
         )
-    # Force assistant turn without <think> reasoning
-    text += "<|im_start|>assistant\n"
+        text += "<|im_start|>assistant\n"
     inputs = tokenizer(text, return_tensors="pt").to(model.device)
     input_len = inputs["input_ids"].shape[1]
     return inputs, input_len
@@ -477,26 +481,43 @@ def _generate_once(messages, max_new_tokens, temperature, top_p):
         )
     output_ids = out[0][input_len:]
     raw_text = tokenizer.decode(output_ids, skip_special_tokens=True)
-    # Strip <think>...</think> blocks (Qwen3 thinking mode)
+
+    # === Phase 1: Strip <think> blocks ===
     raw_text = re.sub(r'<think>.*?</think>\s*', '', raw_text, flags=re.DOTALL)
-    # Handle unclosed <think> (model didn't emit </think> before content)
-    if '<think>' in raw_text and '</think>' not in raw_text:
-        # Take everything after the last <think> block's likely end
-        # Qwen3 pattern: <think>...reasoning...\n\n actual_response
-        idx = raw_text.rfind('<think>')
-        after_think = raw_text[idx + len('<think>'):]
-        # Find the first non-reasoning content (after double newline)
-        parts = re.split(r'\n\n+', after_think)
-        # The actual response is typically the last substantial part
-        for part in reversed(parts):
-            cleaned = part.strip()
-            if cleaned and len(cleaned) < 200:  # coaching responses are short
-                raw_text = cleaned
-                break
+    if '<think>' in raw_text:
+        if '</think>' in raw_text:
+            raw_text = raw_text.split('</think>')[-1].strip()
         else:
-            raw_text = parts[-1].strip() if parts else ""
-    if '</think>' in raw_text:
-        raw_text = raw_text.split('</think>')[-1].strip()
+            # Unclosed <think> — everything after <think> is reasoning
+            raw_text = raw_text[:raw_text.index('<think>')].strip()
+
+    # === Phase 2: Strip simplified Chinese reasoning leakage ===
+    # Qwen3 sometimes outputs reasoning WITHOUT <think> tags
+    _SC_MARKERS = [
+        "根据", "需要", "用户", "确保", "规则", "总结", "接下来",
+        "首先", "因此", "同时", "此外", "不过", "应该", "选择",
+        "避免", "注意", "分析", "评估", "策略", "关键", "模型",
+    ]
+    if raw_text:
+        lines = raw_text.split("\n")
+        clean_lines = []
+        for line in lines:
+            s = line.strip()
+            if not s:
+                continue
+            sc_count = sum(1 for m in _SC_MARKERS if m in s)
+            # Skip lines with 2+ simplified Chinese markers
+            if sc_count >= 2:
+                continue
+            # Skip long lines with any SC marker (likely reasoning)
+            if len(s) > 80 and sc_count >= 1:
+                continue
+            clean_lines.append(line)
+        raw_text = "\n".join(clean_lines).strip()
+
+    if not raw_text:
+        raw_text = "嗯。"
+
     return output_ids, raw_text
 
 
