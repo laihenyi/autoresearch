@@ -155,8 +155,8 @@ ICF: 3.85/5.0 (Trust 3.70, Presence 3.70, Listening 3.80, Evokes 4.20)
 ### Pod 連線資訊
 
 ```
-Host: 213.173.110.214
-Port: 21248
+Host: 213.173.107.89
+Port: 19158
 Key: ~/.ssh/id_ed25519
 User: root
 Workspace: /workspace

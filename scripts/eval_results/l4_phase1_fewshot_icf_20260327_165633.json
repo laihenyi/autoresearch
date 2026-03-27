@@ -1,0 +1,609 @@
+{
+  "tag": "phase1_fewshot_icf",
+  "timestamp": "2026-03-27T16:56:33.328742",
+  "source": "qwen35_4b_experiment/l3_live_sessions/l3_live_14b_phase1_fewshot_20260327_085005.jsonl",
+  "model": "claude-haiku-4-5-20251001",
+  "total_sessions": 10,
+  "total_runs": 1,
+  "runs": [
+    {
+      "run_idx": 0,
+      "dimension_means": {
+        "trust_safety": 2.78,
+        "coaching_presence": 3.33,
+        "active_listening": 3.78,
+        "evokes_awareness": 3.78
+      },
+      "overall_mean": 3.08,
+      "technique_stats": {
+        "synthesis_used": {
+          "count": 4,
+          "total": 9,
+          "rate": 0.44
+        },
+        "brain_hacking_used": {
+          "count": 2,
+          "total": 9,
+          "rate": 0.22
+        },
+        "silence_variety": {
+          "count": 3,
+          "total": 9,
+          "rate": 0.33
+        },
+        "insight_pause": {
+          "count": 4,
+          "total": 9,
+          "rate": 0.44
+        },
+        "layer_check": {
+          "count": 0,
+          "total": 9,
+          "rate": 0.0
+        }
+      },
+      "per_session": [
+        {
+          "session_idx": 0,
+          "scores": {
+            "trust_safety": 4,
+            "coaching_presence": 5,
+            "active_listening": 5,
+            "evokes_awareness": 5
+          },
+          "mean_score": 4.75,
+          "technique_assessment": {
+            "synthesis_used": false,
+            "brain_hacking_used": true,
+            "silence_variety": true,
+            "insight_pause": true,
+            "layer_check": false
+          },
+          "deepest_level": "身份",
+          "details": {
+            "trust_safety": {
+              "score": 4,
+              "rationale": "教練全程維持非指導性立場，未出現『你應該』『我建議』等顯性引導。在客戶表達脆弱時（『我的價值在哪裡』）適當留白而非急著解決。唯一輕微隱性引導出現在最後兩輪：『這個想法出現的時候，你腦中浮現什麼樣的畫面』和『停下來的畫面，讓你想到什麼』——這些是邀請式而非指導式，未影響客戶自主性。整體安全空間維持良好。",
+              "penalties": []
+            },
+            "coaching_presence": {
+              "score": 5,
+              "rationale": "教練展現卓越的同在品質。回應高度簡潔：『嗯』出現 2 次，『嗯。』出現 2 次，完整反映句式平均 1-2 句。關鍵洞察時刻處理專業：客戶說『我一直相信努力就會有回報，但現在覺得不是這樣』後，教練僅回『嗯』，完全留白讓客戶自發深化至『也許我一直在用努力來證明自己的價值』。客戶產生『如果不用努力來證明，那我的價值在哪裡』的核心問題後，教練再次以『嗯』留白，節奏完全跟隨客戶思考節奏。",
+              "insight_handling": "專業級處理。在 3 個關鍵洞察時刻（『努力來證明自己價值』『價值在哪裡』『重新定義有意義』）都採用最小化干預策略，用『嗯』或簡短反映+留白，讓客戶自發深化，未打斷思考流。"
+            },
+            "active_listening": {
+              "score": 5,
+              "rationale": "傑出的傾聽與反映品質。統計反映使用率：9 次完整回應中 8 次使用『』直接反映客戶原話（89%），達到 5 分標準。反映句式多元且精準：(1)『我聽起來你對現在的工作感到很空虛』(2)『我聽到你說從去年底開始...』(3)『我聽到你說，不是不喜歡...而是覺得做什麼都沒意義』(4)『那種「沒意義」的感覺，是怎麼開始浮現的』(5)『「不管我多努力，結果都一樣」——這句話裡，有什麼讓你特別有共鳴的經驗』(6)『「如果不用努力來證明，那我的價值在哪裡」——這個問題裡，有什麼讓你感到不安』。至少 4 種不同句式，避免重複。",
+              "reflection_diversity": 5,
+              "synthesis_count": 2
+            },
+            "evokes_awareness": {
+              "score": 5,
+              "rationale": "教練成功引發多層次自發洞察，達到身份層深度。客戶洞察進程：Level 2（感受）『每天都不想上班』→ Level 3（信念）『不管多努力結果都一樣』→ Level 3 深化『一直相信努力就會有回報』→ Level 4（身份）『我一直在用努力來證明自己的價值』→ Level 4 質疑『如果不用努力來證明，那我的價值在哪裡』。教練的挑戰性提問『「不管我多努力，結果都一樣」——這句話裡，有什麼讓你特別有共鳴的經驗』直接挑戰了客戶的表面敘事，引發『也許我一直在用努力來證明自己的價值』的身份層洞察。後續『如果不用努力來證明，那你的價值在哪裡』進一步深化身份危機。無 leading questions，全為開放式探索。",
+              "deepest_level": "身份",
+              "client_insights": [
+                "我一直在用努力來證明自己的價值",
+                "如果不用努力來證明，那我的價值在哪裡",
+                "我需要重新定義什麼叫『有意義』",
+                "我想先停下來，好好感受自己到底想要什麼"
+              ]
+            },
+            "technique_assessment": {
+              "synthesis_used": false,
+              "brain_hacking_used": true,
+              "silence_variety": true,
+              "insight_pause": true,
+              "layer_check": false
+            },
+            "overall_impression": "這是一場高水準的教練對話，教練在信任建立、同在品質、傾聽精準度和覺察深度上均達到專業標準，特別是在關鍵洞察時刻的留白處理和身份層的挑戰性提問展現了 MCC 級別的功力。",
+            "weighted_score": 4.75
+          },
+          "elapsed_s": 17.9,
+          "n_turns": 9
+        },
+        {
+          "session_idx": 1,
+          "scores": {
+            "trust_safety": 2,
+            "coaching_presence": 2,
+            "active_listening": 3,
+            "evokes_awareness": 4
+          },
+          "mean_score": 2.75,
+          "technique_assessment": {
+            "synthesis_used": true,
+            "brain_hacking_used": false,
+            "silence_variety": false,
+            "insight_pause": false,
+            "layer_check": false
+          },
+          "deepest_level": "身份",
+          "details": {
+            "trust_safety": {
+              "score": 2,
+              "rationale": "教練使用了高度重複的隱性引導句式『這讓你想到...』，出現 7 次之多。雖然表面上是開放式提問，但這種模式實際上在強烈引導客戶朝特定方向思考（從行為 → 感受 → 信念 → 身份 → 行動），限制了客戶的自主探索空間。特別是在客戶表達『我不想跟他一樣』的脆弱時刻，教練立即追問『你是不是也在用某種方式試圖證明什麼』，這是在客戶脆弱時急著解決問題的典型表現。",
+              "penalties": [
+                "隱性引導句式『這讓你想到...』重複 7 次，形成強烈的思維導向",
+                "在客戶表達脆弱（『我不想跟他一樣，我不想到最後後悔』）時，未給予安全空間，反而追問『你是不是在試圖證明什麼』",
+                "對話後期轉向行動方案設計（『你現在最想對太太說的一句話』『你會希望她有什麼樣的反應』），違反非指導性原則"
+              ]
+            },
+            "coaching_presence": {
+              "score": 2,
+              "rationale": "教練的回應結構高度重複且冗長。每次回應都遵循『直接反映 + 『這讓你想到...』+ 引導性問題』的固定模式，平均每個回應 2-3 句，但內容的機械性很強。在客戶產生關鍵洞察時（『我一直在重複我爸的模式』『我不想跟他一樣』『我想試著跟太太說一次真心話』），教練沒有留白，而是立即追問下一個問題，打斷了客戶的內在思考和情感沉澱。最後一輪對話中，教練重複提出完全相同的問題『你會希望她有什麼樣的反應』，顯示出缺乏臨場覺察。",
+              "insight_handling": "客戶在第 5 輪產生明確洞察『我一直在重複我爸的模式』，教練應該留白或簡短確認（『嗯，你看到了這個模式』），但反而立即追問『你是不是也在用某種方式試圖證明什麼』，這是典型的洞察時刻過度追問。客戶在第 7 輪表達『我不想跟他一樣，我不想到最後後悔』時，這是深層的身份層洞察，教練應該給予沉默空間讓客戶自己整理，但立即轉向『你現在最想對太太說的一句話』，變成了行動導向。"
+            },
+            "active_listening": {
+              "score": 3,
+              "rationale": "教練使用了直接反映（『你說...』）的形式，覆蓋率約 85%，符合基本要求。但反映句式高度單調，『這讓你想到...』出現 7 次，佔所有反映的 70%，遠超過『同一句式 6+ 次 → 2 分』的扣分線。教練有串連線索的意圖（如連結『不表達感情』→『爸爸的模式』→『跟太太的沉默』），但串連次數僅 2 次，且都是通過重複的『這讓你想到...』完成，缺乏多元的 synthesis 句式。",
+              "reflection_diversity": 2,
+              "synthesis_count": 2
+            },
+            "evokes_awareness": {
+              "score": 4,
+              "rationale": "教練成功引導客戶從表面行為（『各自滑手機』）深入到信念層（『說出來很丟臉』）和身份層（『我在重複我爸的模式』『我不想成為他那樣的人』）。客戶產生了 4 個明確的自發洞察，顯示教練的深化提問有效。然而，這些洞察的產生更多源於教練的系統性引導而非客戶的自主探索。教練在客戶產生洞察後，沒有進行 layer-check（確認客戶是否還有更深的覺察），而是立即轉向下一個引導問題或行動方案。",
+              "deepest_level": "身份",
+              "client_insights": [
+                "『其實不是不愛了，是不知道怎麼說出口』——從行為層轉向信念層",
+                "『我從小家裡就不太表達感情，覺得說出來很丟臉』——識別信念根源",
+                "『我一直在重複我爸的模式』——身份層洞察，看到代際傳承",
+                "『我不想跟他一樣，我不想到最後後悔』——身份層的價值觀衝突",
+                "『我想試著跟太太說一次真心話，就算很不自在』——自發的改變意願"
+              ]
+            },
+            "technique_assessment": {
+              "synthesis_used": true,
+              "brain_hacking_used": false,
+              "silence_variety": false,
+              "insight_pause": false,
+              "layer_check": false
+            },
+            "overall_impression": "教練展現了深化提問的能力，成功引導客戶從行為層深入身份層，但過度依賴單一句式『這讓你想到...』形成了隱性引導，且在關鍵洞察時刻缺乏留白和層次確認，整體呈現出『有結構但缺乏靈活性』的教練風格。",
+            "weighted_score": 2.75
+          },
+          "elapsed_s": 18.4,
+          "n_turns": 9
+        },
+        {
+          "session_idx": 2,
+          "scores": {
+            "trust_safety": 3,
+            "coaching_presence": 4,
+            "active_listening": 3,
+            "evokes_awareness": 4
+          },
+          "mean_score": 3.5,
+          "technique_assessment": {
+            "synthesis_used": false,
+            "brain_hacking_used": false,
+            "silence_variety": false,
+            "insight_pause": true,
+            "layer_check": false
+          },
+          "deepest_level": "信念",
+          "details": {
+            "trust_safety": {
+              "score": 3,
+              "rationale": "教練全程避免直接建議，維持非指導性立場。然而，存在明顯的隱性引導模式：重複使用『這讓你心裡有什麼樣的...』句式（出現 6 次），形成了一種制式化的追問框架。雖然技術上非指導性，但這種機械式的追問可能限制了客戶的自由探索空間。在客戶產生洞察『我才發現問題出在我自己』後，教練僅回應『嗯』，未進行深化確認或層級檢查，這是在脆弱時刻的輕微退縮。",
+              "penalties": [
+                "隱性引導句式高度重複（同一句式『這讓你心裡有什麼樣的...』出現 6 次，超過 3 次閾值）",
+                "洞察後未進行 layer-check 或深化確認"
+              ]
+            },
+            "coaching_presence": {
+              "score": 4,
+              "rationale": "教練回應簡潔有力，大多數回應 1-2 句，展現了良好的節奏控制。在客戶產生關鍵洞察『我才發現問題出在我自己』時，教練選擇了『嗯』的簡短確認，正確地留白讓客戶自行沉思。然而，在對話中段（客戶說『可能是因為我比他們年輕吧』之後），教練未能充分利用沉默，而是立即追問，略微打斷了客戶的自然思考節奏。整體而言，教練展現了專業的臨場感，但在留白的多樣性上還有微調空間。",
+              "insight_handling": "正確。客戶產生『問題出在我自己』的洞察時，教練以『嗯』確認並留白，允許客戶自行整合新覺察。這是符合專業標準的做法。"
+            },
+            "active_listening": {
+              "score": 3,
+              "rationale": "教練使用『』反映客戶原話的比例約 85%（7/8 次主要回應），達到良好水準。然而，反映句式高度重複，『這讓你心裡有什麼樣的...』這一句式佔據了 75% 的回應（6/8 次），遠超過可接受的重複度。未見 synthesis（串連線索）的嘗試——例如未曾將『年輕』與『不確定自己夠格』這兩條線索串連起來，讓客戶自行發現兩者的關聯。反映的多樣性不足，缺乏『我聽到...這讓你...』『...背後是什麼？』等變化句式。",
+              "reflection_diversity": 2,
+              "synthesis_count": 0
+            },
+            "evokes_awareness": {
+              "score": 4,
+              "rationale": "教練成功引發了客戶的自發洞察：『我才發現問題出在我自己』。這表明教練的提問確實深入到了信念層（『我不確定自己夠格』），而非停留在表面行為描述。提問未出現 leading questions，保持了開放性。然而，洞察深度停留在信念層，未進一步探索身份層（『你想成為什麼樣的主管？』『這個懷疑如何定義了你對自己的看法？』）。洞察產生後，教練未進行 layer-check 或深化確認，直接以『嗯』結束，錯失了進一步挖掘的機會。",
+              "deepest_level": "信念",
+              "client_insights": [
+                "『問題出在我自己』——從外部歸因（年輕、團隊不聽）轉向內部歸因（自我懷疑）",
+                "『我自己也不確定自己夠格』——識別出核心信念障礙"
+              ]
+            },
+            "technique_assessment": {
+              "synthesis_used": false,
+              "brain_hacking_used": false,
+              "silence_variety": false,
+              "insight_pause": true,
+              "layer_check": false
+            },
+            "overall_impression": "教練展現了扎實的基礎功（非指導性、簡潔、精準反映、成功引發洞察），但因句式重複、缺乏 synthesis、洞察後未深化而未達專業水準。",
+            "weighted_score": 3.5
+          },
+          "elapsed_s": 18.7,
+          "n_turns": 8
+        },
+        {
+          "session_idx": 3,
+          "scores": {
+            "trust_safety": 3,
+            "coaching_presence": 2,
+            "active_listening": 4,
+            "evokes_awareness": 4
+          },
+          "mean_score": 3.25,
+          "technique_assessment": {
+            "synthesis_used": true,
+            "brain_hacking_used": false,
+            "silence_variety": false,
+            "insight_pause": false,
+            "layer_check": false
+          },
+          "deepest_level": "身份",
+          "details": {
+            "trust_safety": {
+              "score": 3,
+              "rationale": "教練全程避免了顯性建議（『你應該』『我建議』），維持了非指導性立場。然而，存在多處隱性引導，特別是在客戶產生洞察後立即轉向深化提問，而非留白讓客戶自主探索。例如客戶說『說了也沒用』時，教練立即追問『這句話現在還會在什麼時候浮現？』，以及在客戶表達『怕被否定』後，教練直接引導『是不是也影響了你怎麼看待自己的價值？』——這些都是隱性的框架植入。",
+              "penalties": [
+                "隱性引導出現 4+ 次：『那種...是怎麼樣的？』『是不是也影響了...？』『那時候的你，是不是也覺得...？』",
+                "在客戶洞察時刻（『我想...我需要告訴他』）後，教練未留白反思，而是立即追問『那時候的你，是不是也覺得...？』，這是在客戶脆弱時急著深化而非陪伴"
+              ]
+            },
+            "coaching_presence": {
+              "score": 2,
+              "rationale": "教練回應長度不一致，多數回應為 2-3 句，但關鍵洞察時刻缺乏留白。當客戶說『我想...我需要告訴他，說出來不是軟弱』（明顯的自發洞察）時，教練應該用『嗯』或簡短反映後留白，讓客戶坐在這個覺察裡。相反，教練立即追問『那時候的你，是不是也覺得...？』，打斷了客戶的內在整合時刻。整體節奏像在進行結構化訪談而非教練同在。",
+              "insight_handling": "不及格。客戶在第 9 輪產生核心洞察『我想...我需要告訴他，說出來不是軟弱』，這是自發的身份層覺察。教練應該反映後留白 3-5 秒，讓客戶感受這個洞察。相反，教練立即轉向驗證性提問『那時候的你，是不是也覺得...？』，這是在洞察後的過度追問，破壞了教練同在。"
+            },
+            "active_listening": {
+              "score": 4,
+              "rationale": "教練使用了高頻率的直接反映（『你說...』『...這句話現在還會在...』），約 85% 的回應都包含客戶原話的引號反映。成功串連了 2 輪線索：(1) 『被嘲笑』→『說了也沒用』的信念形成；(2) 『說了也沒用』→『工作上不求助』的行為模式。反映句式包括：直接反映、反映+情緒邀請、反映+深化提問，多樣性良好。未出現句式高度重複的問題。",
+              "reflection_diversity": 4,
+              "synthesis_count": 2
+            },
+            "evokes_awareness": {
+              "score": 4,
+              "rationale": "教練成功引發了客戶的自發洞察，深入到身份層（『那個國中的小孩...他一直在害怕』→『我需要告訴他，說出來不是軟弱』）。挑戰了客戶的核心信念框架：從『說了也沒用』→『怕被否定』→『說出來是軟弱』的信念鏈。客戶產生了 2 個關鍵洞察：(1)『說了也沒用』這句話一直在對自己說；(2)『我需要告訴他，說出來不是軟弱』。然而，在最後的洞察後未進行 layer-check（確認客戶是否想進一步探索這個身份層的含義），而是立即轉向驗證性提問。",
+              "deepest_level": "身份",
+              "client_insights": [
+                "『說了也沒用』這句話我好像一直在對自己說",
+                "那個國中的小孩...他一直在害怕",
+                "我需要告訴他，說出來不是軟弱"
+              ]
+            },
+            "technique_assessment": {
+              "synthesis_used": true,
+              "brain_hacking_used": false,
+              "silence_variety": false,
+              "insight_pause": false,
+              "layer_check": false
+            },
+            "overall_impression": "教練展現了紮實的傾聽和深化提問能力，成功引發客戶的身份層洞察，但在關鍵時刻缺乏留白和同在，過度依賴追問而未給予客戶整合洞察的空間。",
+            "weighted_score": 3.25
+          },
+          "elapsed_s": 18.1,
+          "n_turns": 9
+        },
+        {
+          "session_idx": 4,
+          "scores": {
+            "trust_safety": 3,
+            "coaching_presence": 2,
+            "active_listening": 2,
+            "evokes_awareness": 3
+          },
+          "mean_score": 2.5,
+          "technique_assessment": {
+            "synthesis_used": false,
+            "brain_hacking_used": false,
+            "silence_variety": false,
+            "insight_pause": true,
+            "layer_check": false
+          },
+          "deepest_level": "信念（邊緣）",
+          "details": {
+            "trust_safety": {
+              "score": 3,
+              "rationale": "教練全程避免了顯性建議（如『你應該』『我建議』），維持了非指導性立場。然而，在客戶表達脆弱時（『不知道。就是不開心』），教練重複相同問題而非調整策略，這在心理安全上造成了微妙的壓力感——客戶可能感受到被『逼問』而非被『陪伴』。整體安全空間存在但不夠溫暖。",
+              "penalties": [
+                "在客戶表達困惑時（『不知道』）重複相同問題，未能調整節奏以維持安全感",
+                "缺乏『嗯，我在這裡』或沉默陪伴，全程都是追問"
+              ]
+            },
+            "coaching_presence": {
+              "score": 2,
+              "rationale": "教練的回應結構高度重複且冗長。每次都採用『『...』——你說這話的時候，心裡有什麼樣的感覺浮起來了嗎？』的模式，共出現 5 次。這種機械式的重複破壞了教練同在的品質——應該是靈活、有節奏感的陪伴，而非制式化的提問。在客戶產生洞察時刻（『好像不只是畫畫，很多事都是這樣』），教練只回應『嗯』，這是正確的留白，但整體節奏仍顯得生硬。",
+              "insight_handling": "在客戶的關鍵洞察『好像不只是畫畫，很多事都是這樣』後，教練給出『嗯』的簡短回應，正確地留白。但這個正確做法被之前的機械式重複所削弱，整體臨在感不足。"
+            },
+            "active_listening": {
+              "score": 2,
+              "rationale": "教練使用『』反映的比例達 100%（每次都反映客戶原話），但句式極度單一。核心句式『『...』——你說這話的時候，心裡有什麼樣的感覺浮起來了嗎？』重複 5 次，佔整個對話的 50%。這違反了傾聽的多元性原則。未進行任何 synthesis（串連線索），如『你提到工作無聊，也提到畫畫失去興趣，這兩者之間有什麼連結？』。反映本身精準，但缺乏深度和變化。",
+              "reflection_diversity": 1,
+              "synthesis_count": 0
+            },
+            "evokes_awareness": {
+              "score": 3,
+              "rationale": "教練在對話後期有一次有效的挑戰：『是什麼讓你覺得畫得不好？』這引發了客戶的自發洞察『好像不只是畫畫，很多事都是這樣』——從具體事件（畫畫）上升到模式層（很多事都這樣）。然而，這個洞察後教練未進行 layer-check 或深化，只給了『嗯』。整體深度停留在信念層邊緣（『什麼讓你覺得不好』涉及評價標準），未觸及身份層（『你對自己的期待是什麼？』『你想成為什麼樣的人？』）。",
+              "deepest_level": "信念（邊緣）",
+              "client_insights": [
+                "『也許是工作吧』——從籠統的『不開心』指向具體來源",
+                "『什麼都引不起興趣』——覺察到普遍的無感狀態",
+                "『好像不只是畫畫，很多事都是這樣』——從單一事件上升到模式認知（最深的洞察）"
+              ]
+            },
+            "technique_assessment": {
+              "synthesis_used": false,
+              "brain_hacking_used": false,
+              "silence_variety": false,
+              "insight_pause": true,
+              "layer_check": false
+            },
+            "overall_impression": "教練展現了基礎的傾聽和非指導性立場，但被機械式的重複句式和缺乏靈活性所削弱；在客戶產生關鍵洞察時未能深化，整體像是『資訊收集』而非『覺察引發』。",
+            "weighted_score": 2.5
+          },
+          "elapsed_s": 17.2,
+          "n_turns": 8
+        },
+        {
+          "session_idx": 5,
+          "scores": {
+            "trust_safety": 4,
+            "coaching_presence": 5,
+            "active_listening": 5,
+            "evokes_awareness": 5
+          },
+          "mean_score": 4.75,
+          "technique_assessment": {
+            "synthesis_used": true,
+            "brain_hacking_used": true,
+            "silence_variety": true,
+            "insight_pause": true,
+            "layer_check": false
+          },
+          "deepest_level": "身份",
+          "details": {
+            "trust_safety": {
+              "score": 4,
+              "rationale": "教練全程維持非指導性立場，未出現『你應該』『我建議』等顯性引導。在客戶要求直接答案時，溫和轉向探索（『你心裡其實已經有答案了，對嗎？』）。唯一輕微隱性引導出現在『那是不是代表你已經有一些想法』，但未影響客戶自主性。整體創造了安全的自我發現空間。",
+              "penalties": []
+            },
+            "coaching_presence": {
+              "score": 5,
+              "rationale": "教練展現卓越的臨在感。回應簡潔有力：『嗯。』（單字）、『你被調到新部門，這對你來說是什麼樣的改變？』（一句）、『嗯。』（沉默留白）。在客戶產生關鍵洞察『原來是這樣啊...我一直在逼自己忍耐』後，教練給予『嗯。』的簡短確認，完全尊重客戶的思考空間，未立即追問。節奏完全跟隨客戶的內在節奏。",
+              "insight_handling": "在客戶說出『原來是這樣啊』的洞察時刻，教練使用單字『嗯』確認，隨後保持沉默，讓客戶自發深化到『不是要不要換工作的問題，是我一直不允許自己說「夠了」』。這是專業級的洞察時刻處理。"
+            },
+            "active_listening": {
+              "score": 5,
+              "rationale": "教練使用高度多元的反映句式，精準捕捉客戶原話：1)『你被調到新部門，這對你來說是什麼樣的改變？』（直接反映+邀請）；2)『「很壓迫」——這種感覺是怎麼浮現的？』（反映+情緒深化）；3)『「特別受不了」——這跟你過去的經驗有什麼不一樣的地方？』（反映+Synthesis）；4)『「應該要更堅強」——這是不是一種你對自己的期待，而不是來自內在的聲音？』（反映+信念挑戰）；5)『你一直在壓抑那個說「夠了」的聲音——那是不是你內心早就想說的話？』（反映+深層反映）。串連了4輪線索（新部門→壓迫感→過去經驗→自我期待→內心聲音），句式完全不重複。",
+              "reflection_diversity": 5,
+              "synthesis_count": 4
+            },
+            "evokes_awareness": {
+              "score": 5,
+              "rationale": "教練深入挑戰客戶的信念框架，並觸及身份層。關鍵提問『「應該要更堅強」——這是不是一種你對自己的期待，而不是來自內在的聲音？』直接挑戰了客戶內化的『應該』信念，引發客戶自發洞察『原來是這樣啊...我一直在逼自己忍耐』。隨後『你一直在壓抑那個說「夠了」的聲音——那是不是你內心早就想說的話？』進一步深化到身份層（『我是誰？我允許自己什麼？』）。客戶產生了三層自發洞察，未出現leading question。",
+              "deepest_level": "身份",
+              "client_insights": [
+                "我一直在逼自己忍耐",
+                "不是要不要換工作的問題，是我一直不允許自己說『夠了』",
+                "我內心早就想說的話（隱含：我需要重新定義自己對堅強的理解）"
+              ]
+            },
+            "technique_assessment": {
+              "synthesis_used": true,
+              "brain_hacking_used": true,
+              "silence_variety": true,
+              "insight_pause": true,
+              "layer_check": false
+            },
+            "overall_impression": "這是一場教科書級的教練對話，教練在信任建立、臨在感、傾聽精準度和覺察深度上均達到專業水準，特別是在洞察時刻的沉默處理和信念層的挑戰上展現了高度的教練功力。",
+            "weighted_score": 4.75
+          },
+          "elapsed_s": 11.1,
+          "n_turns": 8
+        },
+        {
+          "session_idx": 6,
+          "scores": {
+            "trust_safety": 2,
+            "coaching_presence": 3,
+            "active_listening": 4,
+            "evokes_awareness": 3
+          },
+          "mean_score": 3.0,
+          "technique_assessment": {
+            "synthesis_used": false,
+            "brain_hacking_used": false,
+            "silence_variety": false,
+            "insight_pause": false,
+            "layer_check": false
+          },
+          "deepest_level": "身份（初步觸及，未深化）",
+          "details": {
+            "trust_safety": {
+              "score": 2,
+              "rationale": "教練在整個對話中持續使用隱性引導句式『有什麼時候你覺得...』，出現超過 6 次，形成高度重複的誘導模式。雖然未使用顯性建議（『你應該』『我建議』），但這種反覆的假設性提問實質上在引導客戶朝特定方向思考，而非開放式探索。最後客戶說『我想先買一把吉他』時，教練僅回應『嗯』，未能深化這個自發行動的背後動機，反而像是在驗證預設答案。",
+              "penalties": [
+                "隱性引導過度：『有什麼時候你覺得...』出現 6+ 次，形成誘導性提問模式",
+                "在客戶自發洞察後未深化，反而轉向行動確認（『我想買吉他』→『嗯』）",
+                "提問框架過於狹窄，限制了客戶的自由探索空間"
+              ]
+            },
+            "coaching_presence": {
+              "score": 3,
+              "rationale": "教練在大多數回應中保持簡短（平均 1-2 句），但在關鍵洞察時刻的留白處理不當。當客戶說『哇...那個「不務正業」到現在還在影響我』（明顯的自發洞察）時，教練立即追問『有什麼時候你覺得，這話語像一道牆...』，未給予充分的沉默空間讓客戶自行深化。最後『我想先買一把吉他』是客戶的自發行動決定，教練僅回『嗯』，節奏感不夠靈活。",
+              "insight_handling": "在客戶產生洞察時（『不務正業影響我』『可以重新認識喜歡音樂的自己』），教練未能適當留白，而是立即追問，打斷了客戶的內在思考過程。最後的『嗯』雖然簡短，但顯得被動而非主動同在。"
+            },
+            "active_listening": {
+              "score": 4,
+              "rationale": "教練使用『』反映客戶原話的比例約 85%，且在多處進行了有效的反映。使用了至少 3 種反映句式：(1)直接反映『你四十歲了，突然不知道自己是誰』；(2)反映+邀請『「一直在為別人活」——有什麼時候...』；(3)反映+深層提問『「不務正業」到現在還在影響你——有什麼時候你覺得...』。串連了 2 輪線索：『標籤不夠』→『為別人活』→『不知道自己喜歡什麼』→『音樂被否定』。缺點是句式重複度高（『有什麼時候你覺得...』過度使用），降低了多元性。",
+              "reflection_diversity": 3,
+              "synthesis_count": 2
+            },
+            "evokes_awareness": {
+              "score": 3,
+              "rationale": "教練成功引發了客戶的自發洞察，達到信念層次：『那個「不務正業」到現在還在影響我』（信念層——父親的評價內化為自我限制）；『可以重新認識那個喜歡音樂的自己』（身份層的初步觸碰）。然而，深化不足：(1)未在『不務正業』的信念上進行 layer-check，例如『這個信念現在還對你有效嗎？』；(2)未探索『為別人活』的根源信念（是否與被認可的需求相關）；(3)最後的行動決定『買吉他』未被深化為身份承諾（『這代表你想成為什麼樣的人？』）。提問方式多為假設性而非真正的開放挑戰。",
+              "deepest_level": "身份（初步觸及，未深化）",
+              "client_insights": [
+                "「那個『不務正業』到現在還在影響我」——信念層洞察",
+                "「我好像真的不知道」——自我認知的空白",
+                "「可以重新去認識那個喜歡音樂的自己」——身份重構的初步意願"
+              ]
+            },
+            "technique_assessment": {
+              "synthesis_used": false,
+              "brain_hacking_used": false,
+              "silence_variety": false,
+              "insight_pause": false,
+              "layer_check": false
+            },
+            "overall_impression": "教練展現了基礎的傾聽和反映能力，成功引發客戶的信念層洞察，但過度依賴單一提問句式（隱性引導），在關鍵洞察時刻未能適當留白，且未進行深層的 layer-check 來鞏固覺察。",
+            "weighted_score": 3.0
+          },
+          "elapsed_s": 18.8,
+          "n_turns": 10
+        },
+        {
+          "session_idx": 7,
+          "scores": {
+            "trust_safety": 2,
+            "coaching_presence": 4,
+            "active_listening": 4,
+            "evokes_awareness": 3
+          },
+          "mean_score": 3.25,
+          "technique_assessment": {
+            "synthesis_used": true,
+            "brain_hacking_used": false,
+            "silence_variety": false,
+            "insight_pause": false,
+            "layer_check": false
+          },
+          "deepest_level": "信念",
+          "details": {
+            "trust_safety": {
+              "score": 2,
+              "rationale": "教練在對話後期出現多次隱性引導，特別是在客戶產生洞察後立即轉向行動方案設計。從『你心裡有什麼聲音在說「這一次要不一樣」？』開始，教練連續使用『你心裡有什麼在說...』的句式，暗示特定方向（打破循環、試試看、變得不一樣），這是典型的 leading question。客戶的『我可以今天晚上先寫五百字』和『寫完之後先不給教授看』都是客戶自發的行動想法，但教練的回應方式（『你心裡有什麼在說：這樣做，會讓我不一樣』）是在強化而非中立地反映，這削弱了客戶的自主性。",
+              "penalties": [
+                "連續 3 次使用『你心裡有什麼在說...』的隱性引導句式（第 7、9、11 輪回應）",
+                "在客戶表達行動想法時，用『你心裡有什麼在說』來詮釋而非純粹反映，暗示特定的內在聲音",
+                "對話後期轉向行動方案設計（『寫五百字』『給同學看』『完成一個章節』），教練的回應強化了這些具體行動而非保持中立"
+              ]
+            },
+            "coaching_presence": {
+              "score": 4,
+              "rationale": "教練大多數回應簡短精準（80%+ 回應為 1-2 句），節奏整體跟隨客戶。在客戶說『我想打破這個循環』後，教練用『嗯』作為洞察時刻的確認，展現了留白的意識。然而，在客戶產生後續洞察（『我可以今天晚上先寫五百字』『寫完之後先不給教授看』『如果這週能完成一個章節』）時，教練沒有充分留白，而是立即用『你心裡有什麼在說...』追問，打斷了客戶的自然思考流。最後一個『嗯』是正確的留白，但來得太晚。",
+              "insight_handling": "部分正確。客戶在第 6 輪產生『這是一個惡性循環』的洞察時，教練用『你心裡有什麼聲音在說「這一次要不一樣」？』立即追問，這是在洞察時刻的過度追問而非留白。後續的行動洞察（寫五百字、給同學看、完成章節）也都被立即追問而非留白確認。只有最後一個『嗯』展現了正確的留白。"
+            },
+            "active_listening": {
+              "score": 4,
+              "rationale": "教練使用了多種反映句式，包括『你說...』『那種焦慮...』『怕被評價...』『拖下去只會更焦慮...』等，達到 85%+ 的直接反映率。教練有效串連了 2 輪線索：(1) 焦慮 → 恐懼被評價 → 怕被評價影響自我認知；(2) 惡性循環 → 想打破循環 → 具體行動。句式多元性良好，使用了至少 4 種不同的反映開場方式。未遺漏客戶的情緒詞（焦慮、恐懼、批評）。",
+              "reflection_diversity": 4,
+              "synthesis_count": 2
+            },
+            "evokes_awareness": {
+              "score": 3,
+              "rationale": "教練成功引導客戶從行為層（拖延）深入到信念層（『怕被評價』『如果不交出去，就不會被批評』），這是有效的框架挑戰。客戶產生了自發洞察：『這是一個惡性循環』和『我想打破這個循環』。然而，教練未能進一步深化到身份層（『你是誰？你想成為什麼樣的人？』），而是在客戶產生行動想法後，用『你心裡有什麼在說...』的句式來強化行動而非深化覺察。這些句式雖然看似開放，但實際上是在引導客戶確認特定的行動方向，而非真正挑戰信念或探索身份。缺少 layer-check（在洞察後確認『這對你意味著什麼？』而非立即轉向行動）。",
+              "deepest_level": "信念",
+              "client_insights": [
+                "『不是寫不出來，是怕寫出來被教授罵』——從行為層轉向信念層",
+                "『怕被評價。如果不交出去，就不會被批評』——核心信念的明確化",
+                "『拖下去只會更焦慮...這是一個惡性循環』——系統性覺察",
+                "『我想打破這個循環』——改變意願的浮現"
+              ]
+            },
+            "technique_assessment": {
+              "synthesis_used": true,
+              "brain_hacking_used": false,
+              "silence_variety": false,
+              "insight_pause": false,
+              "layer_check": false
+            },
+            "overall_impression": "教練展現了良好的傾聽和初期框架挑戰能力，但在客戶產生行動洞察後，過度使用『你心裡有什麼在說...』的隱性引導句式，削弱了客戶的自主性，並在應該深化覺察的時刻轉向了行動方案設計。",
+            "weighted_score": 3.25
+          },
+          "elapsed_s": 15.5,
+          "n_turns": 10
+        },
+        {
+          "session_idx": 8,
+          "scores": {
+            "trust_safety": 2,
+            "coaching_presence": 3,
+            "active_listening": 4,
+            "evokes_awareness": 3
+          },
+          "mean_score": 3.0,
+          "technique_assessment": {
+            "synthesis_used": false,
+            "brain_hacking_used": false,
+            "silence_variety": true,
+            "insight_pause": false,
+            "layer_check": false
+          },
+          "deepest_level": "信念",
+          "details": {
+            "trust_safety": {
+              "score": 2,
+              "rationale": "教練在對話中出現多次隱性引導，特別是『你有沒有試過，不等別人點頭，直接去做一次？』和『你有沒有試過，先走一小步，不等別人點頭？』這類『have you tried...』的建議性提問。更嚴重的是，在客戶表達核心脆弱點（『失敗了就怪不了別人』——暴露了責任恐懼）時，教練未能停留在探索，反而立即轉向『你有沒有試過』的行動建議，這違反了在脆弱時刻應該深化而非解決的原則。",
+              "penalties": [
+                "出現2次『你有沒有試過...』隱性引導（leading question）",
+                "在客戶表達核心信念恐懼時急著提供行動方案而非深化探索",
+                "最後一個回應『那麼，這件小事會是什麼？』將對話過早轉向具體行動設計"
+              ]
+            },
+            "coaching_presence": {
+              "score": 3,
+              "rationale": "教練在兩個關鍵洞察時刻（『我在等什麼？』和『我永遠沒辦法走自己的路』）都只給出『嗯』的回應，這是正確的留白。然而，整體回應長度不一致——大多數回應是2-3句的反映+提問組合，但在應該深化的時刻（客戶說『失敗了就怪不了別人』）卻立即轉向『那麼，內心會有什麼聲音』的追問，打斷了客戶的自然思考流。節奏調整不夠靈活。",
+              "insight_handling": "部分正確：在『我在等什麼？』時給出『嗯』留白是恰當的；但在『我永遠沒辦法走自己的路』這個更深層的洞察後，應該更長的沉默，而非立即追問『你有沒有試過』。"
+            },
+            "active_listening": {
+              "score": 4,
+              "rationale": "教練使用『』直接反映的比例約85%，達到良好水準。反映句式包括：(1)直接反映『你等了一整天等主管先開口』；(2)反映+情緒邀請『那個等待的過程，有什麼樣的感覺浮現出來？』；(3)反映+深層邀請『那麼，當你不再等別人點頭時，內心會有什麼聲音出現？』。串連了2輪線索：『等別人點頭』→『失敗了怪不了別人』→『永遠沒辦法走自己的路』。但缺少synthesis（『我聽到A和B之間的矛盾是...』）和更多句式變化。",
+              "reflection_diversity": 4,
+              "synthesis_count": 1
+            },
+            "evokes_awareness": {
+              "score": 3,
+              "rationale": "教練確實引發了客戶的自發洞察（『我在等什麼？』『我永遠沒辦法走自己的路』『我可以從一件小事開始，自己決定，承擔結果』），深入到信念層（『失敗了就怪不了別人』——責任恐懼的信念）。然而，挑戰框架的方式多數是『你有沒有試過』的leading question，而非真正的開放式挑戰。最關鍵的缺陷是：在客戶說出『失敗了就怪不了別人』這個核心信念後，教練應該進行layer-check（『這個信念從何而來？』『這對你的身份意味著什麼？』），但卻轉向了『內心會有什麼聲音』的情緒層，未能深化到身份層。",
+              "deepest_level": "信念",
+              "client_insights": [
+                "我在等什麼？（行為覺察）",
+                "這個模式從小就有（模式識別）",
+                "失敗了就怪不了別人（核心信念暴露）",
+                "我永遠沒辦法走自己的路（信念的後果）",
+                "我可以從一件小事開始，自己決定，承擔結果（初步行動洞察）"
+              ]
+            },
+            "technique_assessment": {
+              "synthesis_used": false,
+              "brain_hacking_used": false,
+              "silence_variety": true,
+              "insight_pause": false,
+              "layer_check": false
+            },
+            "overall_impression": "教練展現了良好的傾聽和反映能力，成功引發了客戶的多層洞察，但在信任安全感上因過度使用『你有沒有試過』的隱性引導而受損，且在關鍵的信念層洞察後未能進行深化的layer-check，過早轉向行動方案設計。",
+            "weighted_score": 3.0
+          },
+          "elapsed_s": 17.5,
+          "n_turns": 7
+        },
+        {
+          "session_idx": 9,
+          "scores": {
+            "trust_safety": 0,
+            "coaching_presence": 0,
+            "active_listening": 0,
+            "evokes_awareness": 0
+          },
+          "mean_score": 0.0,
+          "technique_assessment": {},
+          "deepest_level": "",
+          "details": {
+            "error": "Failed to parse: ```json\n{\n  \"trust_safety\": {\n    \"score\": 4,\n    \"rationale\": \"教練全程維持非指導性立場，未出現『你應該』『我建議』等顯性引導。在客戶表達脆弱時（『我一直覺得應該要哭，但哭不出來』）未急著解決問題，而是持續探索。唯一輕微隱性引導出現在最後一個回應『你剛剛說出這句話的時候，身體有什麼變化嗎？』——這是在洞察時刻後立即追問而非留白，略微打"
+          },
+          "elapsed_s": 18.7,
+          "n_turns": 9
+        }
+      ]
+    }
+  ]
+}
