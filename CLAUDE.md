@@ -149,7 +149,8 @@ SFT: adapter_14b_sft_v5e (150 sessions, 281 turns 定點改寫 wave1+2b, v4 prom
 DPO: adapter_14b_dpo_v2e (150 multi-perspective pairs)
 Prompt: system_prompt_v4.txt (Unselfing + 方法論)
 Inference: DiversityMonitor + CriticLoop (serve_4b_coach.py)
-ICF: 3.85/5.0 (Trust 3.70, Presence 3.70, Listening 3.80, Evokes 4.20)
+ICF: 4.10/5.0 (Trust 3.80, Presence 4.00, Listening 4.40, Evokes 4.20)
+Note: 舊 Judge (max_tokens=2048) 報 3.85，修復後 (4096) 為 4.10。0 parse failures。
 ```
 
 ### Pod 連線資訊
