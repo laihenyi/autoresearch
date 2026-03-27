@@ -254,6 +254,62 @@ def _estimate_phase(messages: list[dict]) -> str:
         return "closing"
 
 
+# ── Client State Detection (Phase 4) ────────────────────────────────────────
+
+# High-emotion keywords → Energy Replenishing Mode (#7)
+_HIGH_EMOTION_KEYWORDS = [
+    "受不了", "崩潰", "撐不住", "活不下去", "想死", "好累", "太痛了",
+    "絕望", "無助", "恐慌", "想哭", "哭了", "嚎啕", "窒息", "喘不過氣",
+    "心碎", "毀了", "完了", "沒救了", "放棄",
+]
+
+_ENERGY_REPLENISH_HINT = (
+    "（系統提示：客戶目前處於高情緒狀態。請切換至 Energy Replenishing Mode：\n"
+    "・降低認知負荷——不要問深層問題\n"
+    "・錨定存在感——「我在這裡。」「你不需要現在想出答案。」\n"
+    "・回應極短（≤ 10 字）\n"
+    "・交回控制權——「你想怎麼使用我們剩下的時間？」）"
+)
+
+# Low-coachability signals → slow down (#19 state machine retreat)
+_LOW_COACH_KEYWORDS = [
+    "不想聊", "浪費時間", "沒什麼好說", "隨便", "不知道", "都可以",
+    "你說呢", "你覺得呢", "我沒意見", "算了", "沒差",
+]
+
+_DEFENSE_KEYWORDS = [
+    "你不了解", "你不懂", "不是這樣", "你搞錯了", "別問了",
+    "夠了", "不要問", "跟你說也沒用",
+]
+
+_SLOW_DOWN_HINT = (
+    "（系統提示：客戶投入度低或出現防衛。請放慢節奏：\n"
+    "・不要深入探索——先重建安全感\n"
+    "・承認客戶的感受：「你覺得這沒什麼好聊的。」\n"
+    "・交回主導權：「你想從哪裡開始？」\n"
+    "・如果持續抗拒，優雅收尾：「門隨時開著。」）"
+)
+
+
+def detect_client_state(client_msg: str) -> str | None:
+    """Detect if client is in high-emotion or low-coachability state."""
+    if not client_msg:
+        return None
+
+    # High emotion check
+    if any(kw in client_msg for kw in _HIGH_EMOTION_KEYWORDS):
+        return "high_emotion"
+
+    # Low coachability: defense + low engagement
+    defense = any(kw in client_msg for kw in _DEFENSE_KEYWORDS)
+    low_engage = any(kw in client_msg for kw in _LOW_COACH_KEYWORDS)
+    # Short + dismissive = low coachability
+    if defense or (low_engage and len(client_msg.strip()) < 20):
+        return "low_coachability"
+
+    return None
+
+
 # ── Self-Reflection Critic ───────────────────────────────────────────────────
 
 _CRITIC_ADVICE = re.compile(
@@ -890,8 +946,23 @@ def _sync_response(
         _user_idxs = [i for i, m in enumerate(gen_messages) if m["role"] == "user"]
         _last_user_idx = _user_idxs[-1] if _user_idxs else None
 
-        # Phase estimation (used for debug output; few-shot injection DISABLED — caused Trust crash)
+        # Phase estimation
         phase = _estimate_phase(messages)
+
+        # Client state detection (Phase 4: Energy Replenishing + Coachability)
+        client_state = None
+        if _last_user_idx is not None:
+            client_state = detect_client_state(gen_messages[_last_user_idx]["content"])
+            if client_state == "high_emotion":
+                gen_messages[_last_user_idx] = {
+                    **gen_messages[_last_user_idx],
+                    "content": gen_messages[_last_user_idx]["content"] + "\n\n" + _ENERGY_REPLENISH_HINT,
+                }
+            elif client_state == "low_coachability":
+                gen_messages[_last_user_idx] = {
+                    **gen_messages[_last_user_idx],
+                    "content": gen_messages[_last_user_idx]["content"] + "\n\n" + _SLOW_DOWN_HINT,
+                }
 
         # Turn analyzer: inject context-appropriate hint based on client message
         turn_hint = None
@@ -992,6 +1063,7 @@ def _sync_response(
             "elapsed_seconds": round(elapsed, 2),
             "diversity_challenge": locals().get("challenge_fired", False),
             "phase": locals().get("phase", ""),
+            "client_state": locals().get("client_state"),
             "turn_hint": locals().get("turn_hint"),
             "circular_hint": locals().get("circular_hint"),
             "critic_fired": locals().get("critic_fired", False),
