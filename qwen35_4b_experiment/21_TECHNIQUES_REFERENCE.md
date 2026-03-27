@@ -152,9 +152,30 @@
 - **根因**：rejected 樣本與模型的 Trust-safe 行為重疊。DPO 在學技巧同時懲罰了 Trust。
 - **教訓**：technique-targeted DPO 的 rejected 不能是「只追問感受」——這正是模型維持 Trust 的好行為。
 
-### Phase 4：Serve 層增強（~半天，$0）
-- [ ] #7 Energy Replenishing：偵測高情緒關鍵詞 → 注入安全感指令
-- [ ] Coachability-aware pace：短回覆 + 防衛語言 → 降低 temperature + 注入放慢提示
+### Phase 4：Serve 層增強 — ✅ 完成（DISCARD）
+- [x] #7 Energy Replenishing + Coachability pace：DISCARD（ICF 3.85→3.51）
+- **根因**：hint injection 層太多（Monitor + Critic + TurnAnalyzer + Circular + ClientState）互相干擾
+- **教訓**：serve 層不能無限堆疊 hints。目前 DiversityMonitor + CriticLoop 是甜蜜點。
+
+### 所有 Phase 完成狀態
+
+| Phase | 結果 | ICF | 有效改善 |
+|-------|------|-----|---------|
+| Phase 1 Circular Pattern + CHALLENGE_HINT | ✅ KEEP | — | 反映指引改善 |
+| Phase 1 Few-shot injection | ✗ DISCARD | 3.08 | — |
+| Phase 3 DPO v3 (LR 5e-7) | ✗ DISCARD | 3.83* | Synthesis 88% 但 Trust -0.32 |
+| Phase 3 DPO v3b (LR 3e-7) | ✗ DISCARD | 3.80* | Layer Check 25% 但 Trust -0.45 |
+| Phase 4 Energy + Coachability | ✗ DISCARD | 3.51 | — |
+
+*排除 LLM Judge parse 失敗
+
+### 模型能力天花板分析
+
+ICF 3.85 可能接近 Qwen3-14B + 150 sessions SFT + 150 DPO pairs 的能力天花板。
+進一步的 serve 層注入和 DPO 介入都在退步。突破需要：
+1. 修 LLM Judge（20% parse 失敗扭曲結果）
+2. 換 base model（TAIDE-12B 繁中語感）
+3. 真實使用者數據（部署 + 回饋迴路）
 
 ---
 
