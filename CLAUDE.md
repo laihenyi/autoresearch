@@ -86,7 +86,7 @@ All else equal, simpler code wins. A tiny val_bpb gain adding ugly complexity is
 1. PREPARE（準備）
    - 確認 Pod 上 adapter backup 已存在
    - 確認訓練數據已上傳
-   - 確認磁碟空間足夠（du -sh /workspace/adapter_*）
+   - **確認磁碟空間足夠**（`du -sh /workspace/adapter_*`）—— 每個 adapter ~1-4GB，DPO 訓練過程中 checkpoint 會額外佔 ~5GB。如果總 adapter 佔用 > 10GB，先清理 DISCARD 過的舊 adapter。這是反覆發生的問題，必須每次訓練前檢查。
 
 2. TRAIN（訓練）—— nohup background
    - SFT: nohup python3 scripts/train_14b_sft_v3.py ... > log 2>&1 &

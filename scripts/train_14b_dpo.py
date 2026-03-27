@@ -145,7 +145,9 @@ def main():
     trainer.train()
 
     trainer.save_model(args.output_dir)
-    tokenizer.save_pretrained(args.output_dir)
+    # Re-save tokenizer from base model to preserve chat_template
+    base_tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
+    base_tokenizer.save_pretrained(args.output_dir)
 
     print(f"\nDPO complete! Saved to: {args.output_dir}")
     peak = torch.cuda.max_memory_allocated() / 1024**3

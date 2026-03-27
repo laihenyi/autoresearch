@@ -169,7 +169,9 @@ def main():
 
     # Save adapter explicitly via peft
     model.save_pretrained(args.output_dir)
-    tokenizer.save_pretrained(args.output_dir)
+    # Re-save tokenizer from base model to preserve chat_template
+    base_tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
+    base_tokenizer.save_pretrained(args.output_dir)
 
     try:
         metrics = trainer.evaluate()
