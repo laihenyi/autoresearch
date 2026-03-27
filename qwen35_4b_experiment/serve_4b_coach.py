@@ -890,14 +890,8 @@ def _sync_response(
         _user_idxs = [i for i, m in enumerate(gen_messages) if m["role"] == "user"]
         _last_user_idx = _user_idxs[-1] if _user_idxs else None
 
-        # Phase-specific few-shot injection (from Design Doc F2)
+        # Phase estimation (used for debug output; few-shot injection DISABLED — caused Trust crash)
         phase = _estimate_phase(messages)
-        few_shot = PHASE_FEW_SHOTS.get(phase, "")
-        if few_shot and _last_user_idx is not None:
-            gen_messages[_last_user_idx] = {
-                **gen_messages[_last_user_idx],
-                "content": gen_messages[_last_user_idx]["content"] + "\n\n" + few_shot,
-            }
 
         # Turn analyzer: inject context-appropriate hint based on client message
         turn_hint = None
