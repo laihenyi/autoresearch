@@ -126,9 +126,10 @@
 
 ## 五、實作路徑
 
-### Phase 1：零成本 quick wins（~1 天）
-- [ ] #11 Circular Pattern：改 DiversityMonitor，重複偵測時注入反映提示而非技巧提示
-- [ ] Serve 層 few-shot injection：從設計文件 Part F2 的 31 組 BAD/GOOD 範例中挑 per-phase 2-3 組注入 serve
+### Phase 1：零成本 quick wins — ✅ 完成（部分 KEEP，部分 DISCARD）
+- [x] #11 Circular Pattern：改 DiversityMonitor，重複偵測時注入反映提示 ✅ KEEP
+- [x] CHALLENGE_HINT 改善：從「用不同技巧」改為具體反映指引 ✅ KEEP
+- [x] Serve 層 few-shot injection：DISCARD（ICF 3.85→3.08，Trust 暴跌。模型機械複製範例句式）
 
 ### Phase 2：SFT v6 數據改善（~2-3 天，~$15）
 
@@ -144,9 +145,12 @@
 - [ ] 策略 A（優先）：從 50 sessions 中提取最佳回應，定點替換原始 150 sessions 中的對應 turns
 - [ ] 策略 B（備選）：如果 50 sessions 品質夠高且風格一致，嘗試小規模混入（10 sessions）驗證
 
-### Phase 3：Technique-targeted DPO v3（~1 天，~$5）
-- [ ] chosen: #1 synthesis / #2 brain hack / #4 paraphrase / #5 drawing distinctions
-- [ ] rejected: 同場景的機械化「你說XXX。那YYY呢？」
+### Phase 3：Technique-targeted DPO v3 — ✅ 完成（DISCARD）
+- [x] 148 pairs 生成（5 技巧 × ~30 pairs）
+- [x] DPO v3（LR 5e-7）：Synthesis 44%→88% 但 Trust -0.32 → DISCARD
+- [x] DPO v3b（LR 3e-7）：Layer Check 0%→25% 但 Trust -0.45 → DISCARD
+- **根因**：rejected 樣本與模型的 Trust-safe 行為重疊。DPO 在學技巧同時懲罰了 Trust。
+- **教訓**：technique-targeted DPO 的 rejected 不能是「只追問感受」——這正是模型維持 Trust 的好行為。
 
 ### Phase 4：Serve 層增強（~半天，$0）
 - [ ] #7 Energy Replenishing：偵測高情緒關鍵詞 → 注入安全感指令
@@ -154,9 +158,9 @@
 
 ---
 
-## 六、LLM Judge v2 技巧評估（⬜ 待實作）
+## 六、LLM Judge v2 技巧評估（✅ 已實作）
 
-> **注意**：以下是計畫中的功能，尚未實作到 `eval_coaching_llm_judge.py`。
+> 已整合到 `eval_coaching_llm_judge.py`。但有 ~20% sessions parse 失敗（score=0）待修。
 
 目標：在 LLM Judge 中新增 `technique_assessment` 欄位，評估 5 項關鍵技巧：
 
