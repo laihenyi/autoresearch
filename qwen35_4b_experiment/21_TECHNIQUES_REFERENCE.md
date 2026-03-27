@@ -171,11 +171,16 @@
 
 ### 模型能力天花板分析
 
-ICF 3.85 可能接近 Qwen3-14B + 150 sessions SFT + 150 DPO pairs 的能力天花板。
-進一步的 serve 層注入和 DPO 介入都在退步。突破需要：
-1. 修 LLM Judge（20% parse 失敗扭曲結果）
-2. 換 base model（TAIDE-12B 繁中語感）
-3. 真實使用者數據（部署 + 回饋迴路）
+ICF 4.10（修復 Judge 後真實分數）。進一步的 serve 層注入和 DPO 介入都在退步。
+
+**已排除的突破路線**：
+1. ~~修 LLM Judge~~ → ✅ 完成（max_tokens 2048→4096，ICF 3.85→4.10）
+2. ~~換 base model（TAIDE-12B）~~ → ✗ FAIL（zero-shot 完全不可用：重複、洩漏、不教練）
+3. ~~Phase 1-4 serve/DPO 介入~~ → 全部 DISCARD 或退步
+
+**唯一剩餘的突破路線**：
+- **方向 C：部署到真實使用者**（合成 eval 已飽和，需真實數據突破）
+- MacBook MLX 本地測試：`scripts/setup_macbook_coaching.sh`（需驗證 adapter merge）
 
 ---
 
