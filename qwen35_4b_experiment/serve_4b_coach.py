@@ -107,18 +107,60 @@ class DiversityMonitor:
     Monitors Distinct-2 (bigram diversity) across a sliding window of last 3
     coach responses. When diversity drops below threshold, injects a challenge
     prompt to break mechanical repetition patterns.
+
+    Also tracks client vocabulary for Circular Pattern detection (#11).
     """
 
     CHALLENGE_HINT = (
         "（系統提示：你最近幾次的回應風格相似。"
-        "這次請嘗試不同的教練技巧——例如沉默、隱喻、"
-        "挑戰客戶的框架、或用更短的回應。）"
+        "這次請用不同的反映方式——例如：\n"
+        "・一個詞的 encapsulating（「控制。」「恐懼。」）\n"
+        "・隱喻（「引擎快沒油了。」「盔甲太重了。」）\n"
+        "・串連線索（「你提到 A、B、C——它們之間有什麼連結？」）\n"
+        "・留白（「⋯⋯」或「嗯。」）\n"
+        "不要再用「你說XXX。那YYY呢？」的句式。）"
     )
+
+    # Keywords that indicate client patterns worth naming
+    PATTERN_KEYWORDS = [
+        "不夠好", "沒意義", "不知道", "沒辦法", "做不到",
+        "應該", "必須", "不能", "不敢", "不想",
+        "壓力", "焦慮", "害怕", "恐懼", "擔心",
+        "孤獨", "空虛", "累", "疲憊", "無力",
+        "失敗", "後悔", "愧疚", "羞恥", "委屈",
+    ]
 
     def __init__(self, window: int = 3, threshold: float = 0.40):
         self._history: dict[str, list[str]] = {}  # session_id → recent responses
+        self._client_words: dict[str, dict[str, int]] = {}  # session_id → {word: count}
         self._window = window
         self._threshold = threshold
+
+    def record_client(self, session_id: str, client_msg: str):
+        """Track client vocabulary for circular pattern detection."""
+        if not session_id or not client_msg:
+            return
+        words = self._client_words.setdefault(session_id, {})
+        for keyword in self.PATTERN_KEYWORDS:
+            if keyword in client_msg:
+                words[keyword] = words.get(keyword, 0) + 1
+
+    def get_circular_pattern_hint(self, session_id: str) -> str | None:
+        """Detect circular patterns and return a hint to name them."""
+        if not session_id:
+            return None
+        words = self._client_words.get(session_id, {})
+        # Find words that appeared 3+ times
+        repeated = [(w, c) for w, c in words.items() if c >= 3]
+        if not repeated:
+            return None
+        # Pick the most repeated one
+        word, count = max(repeated, key=lambda x: x[1])
+        return (
+            f"（系統提示：客戶已經{count}次說「{word}」。"
+            f"請主動命名這個模式：「你第{count}次說『{word}』。"
+            f"那個『{word}』是什麼？」不要再用問句探索——直接反映這個重複。）"
+        )
 
     def record(self, session_id: str, response: str):
         """Record a coach response for a session."""
@@ -154,6 +196,62 @@ class DiversityMonitor:
 
 
 diversity_monitor = DiversityMonitor()
+
+
+# ── Per-Phase Few-Shot Examples (from Design Doc F2) ─────────────────────────
+
+PHASE_FEW_SHOTS = {
+    "opening": (
+        "【教練回應範例】\n"
+        "客戶：「我想請你幫我想想下週的會議怎麼處理。」\n"
+        "好的回應：「你希望在那個會議中實現什麼？」（從『怎麼做』轉向『想要什麼』）\n"
+        "客戶：「你覺得我該不該換工作？」\n"
+        "好的回應：「在你問我之前，你自己心裡傾向什麼？」（把焦點拉回客戶自己）"
+    ),
+    "exploring": (
+        "【教練回應範例】\n"
+        "客戶：「我覺得不管我怎麼做，都不會被認可。」\n"
+        "好的回應：「『不會被認可』——你在哪些時刻最強烈地感受到這個？」（用客戶原話做錨點）\n"
+        "客戶長段落描述問題 →\n"
+        "好的回應：「你在用別人的方式，量自己的價值。」（底線提取，一句話濃縮核心矛盾）"
+    ),
+    "deepening": (
+        "【教練回應範例】\n"
+        "客戶：「我不應該什麼都管，但忍不住插手。」\n"
+        "好的回應：「你心裡有個聲音在說：『如果我不管，一切都會失控。』⋯⋯是這樣嗎？」（第一人稱代言）\n"
+        "客戶：「我的團隊都說我太嚴格了。」\n"
+        "好的回應：「你的高標準是你的優勢——但有時候我們的優勢也是我們的盲點。你的標準在保護你什麼？」（辯證重構）"
+    ),
+    "insight": (
+        "【教練回應範例】\n"
+        "客戶：「我好像一直在證明自己。為了證明我值得被愛。」\n"
+        "好的回應：「......你值得被愛。這句話在你心裡是什麼感覺？」（不急，用客戶的話回映核心）\n"
+        "客戶：「嗯...我突然覺得...我好像一直在怕什麼。」\n"
+        "好的回應：「你在怕什麼？」（三個字，把空間完全留給客戶）"
+    ),
+    "closing": (
+        "【教練回應範例】\n"
+        "客戶表達洞察後 →\n"
+        "好的回應：「你剛才看見了一個新的東西。從這個新的位置看出去，你想做什麼？」（New→Next Bridge）\n"
+        "客戶說出行動 →\n"
+        "好的回應：「什麼時候？」（簡短，讓客戶定義 timeline）"
+    ),
+}
+
+
+def _estimate_phase(messages: list[dict]) -> str:
+    """Estimate current coaching phase from conversation length."""
+    asst_count = sum(1 for m in messages if m.get("role") == "assistant")
+    if asst_count <= 2:
+        return "opening"
+    elif asst_count <= 5:
+        return "exploring"
+    elif asst_count <= 8:
+        return "deepening"
+    elif asst_count <= 10:
+        return "insight"
+    else:
+        return "closing"
 
 
 # ── Self-Reflection Critic ───────────────────────────────────────────────────
@@ -792,15 +890,35 @@ def _sync_response(
         _user_idxs = [i for i, m in enumerate(gen_messages) if m["role"] == "user"]
         _last_user_idx = _user_idxs[-1] if _user_idxs else None
 
+        # Phase-specific few-shot injection (from Design Doc F2)
+        phase = _estimate_phase(messages)
+        few_shot = PHASE_FEW_SHOTS.get(phase, "")
+        if few_shot and _last_user_idx is not None:
+            gen_messages[_last_user_idx] = {
+                **gen_messages[_last_user_idx],
+                "content": gen_messages[_last_user_idx]["content"] + "\n\n" + few_shot,
+            }
+
         # Turn analyzer: inject context-appropriate hint based on client message
         turn_hint = None
+        circular_hint = None
         if _last_user_idx is not None:
-            turn_hint = turn_analyzer.analyze(gen_messages[_last_user_idx]["content"])
+            client_msg = gen_messages[_last_user_idx]["content"]
+            turn_hint = turn_analyzer.analyze(client_msg)
             if turn_hint:
                 # Append hint to last user message content (avoids mid-sequence system msg NaN)
                 gen_messages[_last_user_idx] = {
                     **gen_messages[_last_user_idx],
-                    "content": gen_messages[_last_user_idx]["content"] + "\n\n" + turn_hint,
+                    "content": client_msg + "\n\n" + turn_hint,
+                }
+            # Track client vocabulary for circular pattern detection (#11)
+            diversity_monitor.record_client(req.session_id, client_msg)
+            # Check for circular patterns
+            circular_hint = diversity_monitor.get_circular_pattern_hint(req.session_id)
+            if circular_hint:
+                gen_messages[_last_user_idx] = {
+                    **gen_messages[_last_user_idx],
+                    "content": gen_messages[_last_user_idx]["content"] + "\n\n" + circular_hint,
                 }
 
         # Diversity monitor: inject challenge hint into last user message
@@ -879,7 +997,9 @@ def _sync_response(
             "filtered_text": filtered_text,
             "elapsed_seconds": round(elapsed, 2),
             "diversity_challenge": locals().get("challenge_fired", False),
+            "phase": locals().get("phase", ""),
             "turn_hint": locals().get("turn_hint"),
+            "circular_hint": locals().get("circular_hint"),
             "critic_fired": locals().get("critic_fired", False),
             "critic_violation": locals().get("critic_violation"),
         },
