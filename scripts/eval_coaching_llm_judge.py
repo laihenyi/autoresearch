@@ -270,7 +270,7 @@ def call_judge(client: anthropic.Anthropic, conversation_text: str, model: str =
 
     response = client.messages.create(
         model=model,
-        max_tokens=2048,  # Increased for v2 detailed output
+        max_tokens=4096,  # v2 rubric needs more space (was 2048, caused 20% truncation)
         system=ICF_JUDGE_SYSTEM,
         messages=[{"role": "user", "content": prompt}],
         temperature=0.3,
@@ -278,7 +278,11 @@ def call_judge(client: anthropic.Anthropic, conversation_text: str, model: str =
 
     text = response.content[0].text.strip()
 
-    # Parse JSON from response (may be wrapped in ```json ... ```)
+    # Strip markdown code fences
+    text = re.sub(r"^```json\s*", "", text)
+    text = re.sub(r"\s*```$", "", text)
+
+    # Parse JSON from response
     json_match = re.search(r"\{[\s\S]*\}", text)
     if json_match:
         try:
@@ -286,7 +290,28 @@ def call_judge(client: anthropic.Anthropic, conversation_text: str, model: str =
         except json.JSONDecodeError:
             pass
 
-    return {"error": f"Failed to parse: {text[:200]}"}
+    # Fallback: try to repair truncated JSON by closing brackets
+    if json_match:
+        partial = json_match.group()
+        for _ in range(10):
+            try:
+                return json.loads(partial + "}")
+            except json.JSONDecodeError:
+                partial += "}"
+        # Try with null values for missing fields
+        try:
+            # Extract whatever scores we can find
+            scores = {}
+            for dim in ["trust_safety", "coaching_presence", "active_listening", "evokes_awareness"]:
+                score_match = re.search(rf'"{dim}":\s*\{{\s*"score":\s*(\d)', text)
+                if score_match:
+                    scores[dim] = {"score": int(score_match.group(1))}
+            if scores:
+                return scores
+        except Exception:
+            pass
+
+    return {"error": f"Failed to parse: {text[:300]}"}
 
 
 # ---------------------------------------------------------------------------
