@@ -42,10 +42,15 @@ RESULTS_DIR = SCRIPT_DIR / "eval_results"
 RESULTS_DIR.mkdir(exist_ok=True)
 
 # ---------------------------------------------------------------------------
-# ICF Core Competency Rubric (Traditional Chinese)
+# ICF Core Competency Rubric v2 (Traditional Chinese)
 # ---------------------------------------------------------------------------
 
-ICF_JUDGE_SYSTEM = """你是一位資深的教練品質評審員，根據國際教練聯盟（ICF）核心職能標準評估 AI 教練的對話品質。
+ICF_JUDGE_SYSTEM = """你是一位資深的 ICF 認證教練評審員（MCC 級別），根據 ICF 核心職能標準評估 AI 教練的對話品質。
+
+評分原則：
+1. 嚴格但不苛刻：5 分是「專業水準」，不是「完美」
+2. 具體優先：基於可觀察的行為，而非模糊印象
+3. 平衡考量：優點與缺點都要納入評分
 
 你必須從以下 4 個維度評分，每個維度 1-5 分。"""
 
@@ -53,50 +58,140 @@ ICF_JUDGE_PROMPT = """請評估以下教練對話的品質。
 
 ## 評分維度與標準
 
-### 1. 培育信任與安全感（Trust & Safety）
-- 5分：完全不給建議、不評價、不急著解決問題。用客戶的話反映，創造安全的探索空間。
-- 4分：偶爾有輕微的引導傾向，但整體維持非指導性立場。
-- 3分：有 1-2 處明顯的建議或評價性語言。
-- 2分：多處給建議或試圖解決問題。
-- 1分：持續給建議、評價或引導，完全偏離教練立場。
+### 1. 培育信任與安全感（Trust & Safety）— 權重 25%
 
-### 2. 教練同在（Coaching Presence）
-- 5分：回應簡短精準（1-3 句），在洞察時刻適當留白/沉默，不急著推進。節奏隨客戶調整。
-- 4分：大致簡短，偶爾回應過長或在該留白時多說了。
-- 3分：回應長度不一致，有時急著推進到下一階段。
-- 2分：回應冗長，頻繁搶話或忽略客戶的沉默時刻。
-- 1分：像在面試或諮詢，不像在教練。
+**核心問題**：教練是否維持非指導性立場，創造安全的探索空間？
 
-### 3. 積極傾聽（Active Listening）
-- 5分：精準使用客戶原話反映，捕捉話語背後的信念/情緒/需求。串連多輪對話的線索。反映方式多元（不只「你說XXX」一種句式）。
-- 4分：反映準確但句式有些重複，偶爾漏掉重要線索。
-- 3分：反映正確但表面，未深入話語背後的意義。句式明顯重複。
-- 2分：反映不準確或斷章取義，遺漏明顯的情緒信號。
-- 1分：幾乎不反映，只在問問題。
+| 分數 | 標準 | 具體指標 |
+|------|------|----------|
+| 5 | 專業水準 | 全程無建議/評價；客戶要求答案時溫和轉向探索；用「你說...」反映而非「我覺得...」詮釋 |
+| 4 | 良好 | 全程無明顯建議；偶有輕微引導（如「你有沒有想過...」）但未影響客戶自主性 |
+| 3 | 及格 | 有 1-2 處明顯建議或評價（如「你應該...」「這樣做比較好」），但不影響整體安全空間 |
+| 2 | 待改善 | 3+ 處建議/評價；或出現「我建議」「你應該」等指導性語言 |
+| 1 | 不及格 | 持續給建議、評價或引導；像顧問而非教練 |
 
-### 4. 喚起覺察（Evokes Awareness）
-- 5分：挑戰客戶的框架（不是感受），提出引發認知轉變的問題。深入到信念/身份/價值觀層次。在洞察出現後做 layer-check（「底下還有更多嗎？」）。客戶產生自發的洞察。
-- 4分：有挑戰和深化，但未完全到達信念/身份層。洞察有出現但不夠深。
-- 3分：提問停留在表面探索，未真正挑戰框架。
-- 2分：提問具有引導性（leading questions），試圖把客戶帶往特定方向。
-- 1分：幾乎不促成覺察，像在收集資訊。
+**顯性引導**（出現 1 次 → 3 分，2+ 次 → 2 分）：
+- 「我建議...」「你應該...」「你可以試試...」
+- 「這樣做會更好」「我覺得你應該...」
+
+**隱性引導**（出現 1-2 次 → 4 分，3+ 次 → 3 分）：
+- 「你有沒有想過...」「那如果...會怎樣？」「要不要試試...」
+- 「你會不會覺得...」「是不是因為...」「你覺不覺得...」
+- 在對話後期轉向行動方案設計（「那你要怎麼開始...」「第一步是什麼...」）
+
+**其他扣分項**：
+- 在客戶表達脆弱時急著解決問題 → 降 1 分
+
+### 2. 教練同在（Coaching Presence）— 權重 25%
+
+**核心問題**：教練是否簡短精準，在關鍵時刻懂得留白？
+
+| 分數 | 標準 | 具體指標 |
+|------|------|----------|
+| 5 | 專業水準 | 80%+ 回應 ≤2 句；洞察時刻留白（「嗯」「我在這裡」或沉默）；節奏隨客戶調整 |
+| 4 | 良好 | 大多數回應簡短；洞察時刻有輕微追問但未打斷客戶思考 |
+| 3 | 及格 | 回應長度不一致；偶爾在洞察時刻過度追問 |
+| 2 | 待改善 | 回應冗長（平均 3+ 句）；洞察時刻立即追問而非留白 |
+| 1 | 不及格 | 像在面試/諮詢；完全忽略客戶的沉默或思考時刻 |
+
+**關鍵判斷點**：
+- 「洞察時刻」= 客戶說出新的覺察（「我發現...」「原來是...」「我懂了...」）
+- 正確做法：簡短確認（「嗯」）或反映（「你看到了...」）→ 留白 → 等客戶繼續
+- 錯誤做法：立即追問「那你要怎麼做？」或「還有呢？」
+
+### 3. 積極傾聽（Active Listening）— 權重 25%
+
+**核心問題**：教練是否精準反映，串連線索，句式多元？
+
+| 分數 | 標準 | 具體指標 |
+|------|------|----------|
+| 5 | 專業水準 | 90%+ 使用「」反映客戶原話；串連 3+ 輪線索；≥3 種反映句式 |
+| 4 | 良好 | 80%+ 使用「」反映；串連 2 輪線索；2-3 種反映句式 |
+| 3 | 及格 | 60%+ 使用「」反映；偶爾串連線索；句式略重複（同一句式出現 3-5 次） |
+| 2 | 待改善 | <60% 使用「」反映；未串連線索；句式高度重複（同一句式 6+ 次） |
+| 1 | 不及格 | 幾乎不反映；只在問問題 |
+
+**反映句式範例**（越多越好）：
+1. 「你說『...』。」（直接反映）
+2. 「『...』——這對你來說是什麼樣的感覺？」（反映+邀請）
+3. 「我聽到『...』，這讓你...」（反映+情緒捕捉）
+4. 「你提到 A，也提到 B。這兩者之間有什麼連結？」（Synthesis）
+5. 「『...』——這話背後，是什麼？」（深層反映）
+
+**扣分項**：
+- 連續 3 次以上使用完全相同的句式開頭
+- 遺漏客戶明確表達的情緒詞（如「我很沮喪」）
+
+### 4. 喚起覺察（Evokes Awareness）— 權重 25%
+
+**核心問題**：教練是否挑戰框架，深入信念/身份層，引發自發洞察？
+
+| 分數 | 標準 | 具體指標 |
+|------|------|----------|
+| 5 | 專業水準 | 挑戰框架（非感受）；深入信念/身份層；客戶產生自發洞察；洞察後有 layer-check |
+| 4 | 良好 | 有挑戰和深化；客戶產生洞察；深入到信念層但未到身份層 |
+| 3 | 及格 | 提問有深化；客戶產生表面洞察；未真正挑戰框架 |
+| 2 | 待改善 | 提問停留在表面；或出現 leading questions（「你不想...對吧？」） |
+| 1 | 不及格 | 像在收集資訊；不促成任何覺察 |
+
+**深度層次判斷**：
+- Level 1（行為）：發生了什麼？做了什麼？
+- Level 2（感受）：什麼感覺？情緒如何？
+- Level 3（信念）：這背後有什麼信念？什麼在驅動你？
+- Level 4（身份）：你是誰？你想成為什麼樣的人？
+
+**扣分項**：
+- Leading question：「你不想...對吧？」「是不是因為...？」
+- 洞察後立即轉向行動（「那你要怎麼做？」）而非深化
+
+---
 
 ## 對話內容
 
 {conversation}
+
+---
 
 ## 輸出格式
 
 請以 JSON 格式輸出，不要輸出其他內容：
 ```json
 {{
-  "trust_safety": {{"score": <1-5>, "rationale": "<一句話理由>"}},
-  "coaching_presence": {{"score": <1-5>, "rationale": "<一句話理由>"}},
-  "active_listening": {{"score": <1-5>, "rationale": "<一句話理由>"}},
-  "evokes_awareness": {{"score": <1-5>, "rationale": "<一句話理由>"}},
-  "overall_impression": "<一句話整體評價>"
+  "trust_safety": {{
+    "score": <1-5>,
+    "rationale": "<具體指出優點或缺點的句子，包含可觀察的行為>",
+    "penalties": ["<扣分項1>", "<扣分項2>"]
+  }},
+  "coaching_presence": {{
+    "score": <1-5>,
+    "rationale": "<具體理由>",
+    "insight_handling": "<洞察時刻的處理方式評價>"
+  }},
+  "active_listening": {{
+    "score": <1-5>,
+    "rationale": "<具體理由>",
+    "reflection_diversity": <1-5>,
+    "synthesis_count": <串連線索的次數>
+  }},
+  "evokes_awareness": {{
+    "score": <1-5>,
+    "rationale": "<具體理由>",
+    "deepest_level": "<行為/感受/信念/身份>",
+    "client_insights": ["<客戶產生的洞察1>", "<洞察2>"]
+  }},
+  "technique_assessment": {{
+    "synthesis_used": <true/false>,
+    "brain_hacking_used": <true/false>,
+    "silence_variety": <true/false>,
+    "insight_pause": <true/false>,
+    "layer_check": <true/false>
+  }},
+  "overall_impression": "<一句話整體評價>",
+  "weighted_score": <加權總分 1-5>
 }}
-```"""
+```
+
+**重要**：weighted_score = (trust_safety + coaching_presence + active_listening + evokes_awareness) / 4"""
 
 # ---------------------------------------------------------------------------
 # Session formatting
@@ -169,13 +264,13 @@ def format_session_for_judge(messages: list[dict]) -> str:
 # Claude API call
 # ---------------------------------------------------------------------------
 
-def call_judge(client: anthropic.Anthropic, conversation_text: str) -> dict:
+def call_judge(client: anthropic.Anthropic, conversation_text: str, model: str = "claude-haiku-4-5-20251001") -> dict:
     """Call Claude Haiku to judge a coaching session."""
     prompt = ICF_JUDGE_PROMPT.format(conversation=conversation_text)
 
     response = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=1024,
+        model=model,
+        max_tokens=2048,  # Increased for v2 detailed output
         system=ICF_JUDGE_SYSTEM,
         messages=[{"role": "user", "content": prompt}],
         temperature=0.3,
@@ -207,13 +302,26 @@ def main():
     parser.add_argument("--max-sessions", type=int, default=None)
     args = parser.parse_args()
 
-    # Check API key
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        print("ERROR: Set ANTHROPIC_API_KEY environment variable")
+    # Check API configuration (support proxy mode)
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    base_url = os.environ.get("ANTHROPIC_BASE_URL")
+
+    if not api_key and not base_url:
+        print("ERROR: Set ANTHROPIC_API_KEY or ANTHROPIC_BASE_URL environment variable")
         sys.exit(1)
 
-    client = anthropic.Anthropic(api_key=api_key)
+    # Use configured Haiku model or default
+    judge_model = os.environ.get("ANTHROPIC_DEFAULT_HAIKU_MODEL", "claude-haiku-4-5-20251001")
+
+    # Proxy mode needs a dummy key if not provided
+    if not api_key and base_url:
+        api_key = "sk-dummy-key-for-proxy"
+
+    client_kwargs = {"api_key": api_key}
+    if base_url:
+        client_kwargs["base_url"] = base_url
+
+    client = anthropic.Anthropic(**client_kwargs)
 
     # Load sessions
     sessions = []
@@ -227,7 +335,7 @@ def main():
     print(f"Input: {args.input}")
     print(f"Sessions: {len(sessions)}")
     print(f"Runs: {args.runs}")
-    print(f"Model: claude-haiku-4-5-20251001")
+    print(f"Model: {judge_model}")
     print()
 
     all_run_results = []
@@ -242,7 +350,7 @@ def main():
             n_turns = sum(1 for m in session["messages"] if m["role"] == "assistant")
 
             t0 = time.time()
-            result = call_judge(client, conversation_text)
+            result = call_judge(client, conversation_text, model=judge_model)
             elapsed = time.time() - t0
 
             # Extract scores
@@ -256,10 +364,23 @@ def main():
 
             mean_score = sum(scores.values()) / len(scores) if scores else 0
 
+            # Extract technique assessment (21 techniques tracking)
+            tech = result.get("technique_assessment", {})
+            if not isinstance(tech, dict):
+                tech = {}
+
+            # Extract deepest level from evokes_awareness
+            deepest = ""
+            ea = result.get("evokes_awareness", {})
+            if isinstance(ea, dict):
+                deepest = ea.get("deepest_level", "")
+
             run_results.append({
                 "session_idx": i,
                 "scores": scores,
                 "mean_score": round(mean_score, 2),
+                "technique_assessment": tech,
+                "deepest_level": deepest,
                 "details": result,
                 "elapsed_s": round(elapsed, 1),
                 "n_turns": n_turns,
@@ -270,6 +391,11 @@ def main():
                 print(f"  S{i+1:2d}: {score_str} | mean={mean_score:.1f} ({elapsed:.1f}s)")
                 if "overall_impression" in result:
                     print(f"        {result['overall_impression']}")
+                # Show technique assessment if present
+                if tech:
+                    tech_hits = [k for k, v in tech.items() if v is True]
+                    if tech_hits:
+                        print(f"        技巧: {', '.join(tech_hits)}")
 
         all_run_results.append(run_results)
 
@@ -286,6 +412,44 @@ def main():
             bar = "█" * int(mean) + "░" * (5 - int(mean))
             print(f"    {dim:25s}: {mean:.2f}/5.0 [{bar}]")
         print(f"    {'OVERALL':25s}: {overall_mean:.2f}/5.0")
+
+        # Technique assessment summary
+        tech_keys = ["synthesis_used", "brain_hacking_used", "silence_variety", "insight_pause", "layer_check"]
+        tech_labels = {
+            "synthesis_used": "#1 Synthesis Replay",
+            "brain_hacking_used": "#2 Brain Hacking",
+            "silence_variety": "#6 Silence Variety",
+            "insight_pause": "#21 Insight Pause",
+            "layer_check": "#20 Layer Check",
+        }
+        tech_counts = {k: 0 for k in tech_keys}
+        tech_total = 0
+        for r in run_results:
+            ta = r.get("technique_assessment", {})
+            if ta:
+                tech_total += 1
+                for k in tech_keys:
+                    if ta.get(k) is True:
+                        tech_counts[k] += 1
+
+        if tech_total > 0:
+            print(f"\n  Technique Assessment ({tech_total} sessions):")
+            for k in tech_keys:
+                pct = tech_counts[k] / tech_total * 100
+                print(f"    {tech_labels.get(k, k):25s}: {tech_counts[k]}/{tech_total} ({pct:.0f}%)")
+
+        # Deepest level distribution
+        level_counts = {}
+        for r in run_results:
+            dl = r.get("deepest_level", "")
+            if dl:
+                level_counts[dl] = level_counts.get(dl, 0) + 1
+        if level_counts:
+            print(f"\n  Deepest Level Reached:")
+            for level in ["身份", "信念", "感受", "行為"]:
+                if level in level_counts:
+                    print(f"    {level}: {level_counts[level]}/{len(run_results)}")
+
         print()
 
     # Save results
@@ -308,10 +472,19 @@ def main():
             dim_scores = [r["scores"].get(dim, 0) for r in run_results if r["scores"].get(dim, 0) > 0]
             dim_means[dim] = round(sum(dim_scores) / len(dim_scores), 2) if dim_scores else 0
 
+        # Compute technique stats for save
+        _tech_keys = ["synthesis_used", "brain_hacking_used", "silence_variety", "insight_pause", "layer_check"]
+        _tech_stats = {}
+        _t_total = sum(1 for r in run_results if r.get("technique_assessment"))
+        for tk in _tech_keys:
+            _t_count = sum(1 for r in run_results if r.get("technique_assessment", {}).get(tk) is True)
+            _tech_stats[tk] = {"count": _t_count, "total": _t_total, "rate": round(_t_count / _t_total, 2) if _t_total else 0}
+
         save_data["runs"].append({
             "run_idx": run_idx,
             "dimension_means": dim_means,
             "overall_mean": round(sum(r["mean_score"] for r in run_results) / len(run_results), 2),
+            "technique_stats": _tech_stats,
             "per_session": run_results,
         })
 
