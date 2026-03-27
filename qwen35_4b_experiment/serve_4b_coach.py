@@ -949,20 +949,9 @@ def _sync_response(
         # Phase estimation
         phase = _estimate_phase(messages)
 
-        # Client state detection (Phase 4: Energy Replenishing + Coachability)
-        client_state = None
-        if _last_user_idx is not None:
-            client_state = detect_client_state(gen_messages[_last_user_idx]["content"])
-            if client_state == "high_emotion":
-                gen_messages[_last_user_idx] = {
-                    **gen_messages[_last_user_idx],
-                    "content": gen_messages[_last_user_idx]["content"] + "\n\n" + _ENERGY_REPLENISH_HINT,
-                }
-            elif client_state == "low_coachability":
-                gen_messages[_last_user_idx] = {
-                    **gen_messages[_last_user_idx],
-                    "content": gen_messages[_last_user_idx]["content"] + "\n\n" + _SLOW_DOWN_HINT,
-                }
+        # Client state detection (Phase 4: DISABLED — too many hint layers cause regression)
+        # Code kept for reference but not injected into generation
+        client_state = detect_client_state(gen_messages[_last_user_idx]["content"]) if _last_user_idx else None
 
         # Turn analyzer: inject context-appropriate hint based on client message
         turn_hint = None
