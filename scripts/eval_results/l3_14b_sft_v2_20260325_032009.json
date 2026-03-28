@@ -1,0 +1,293 @@
+{
+  "tag": "14b_sft_v2",
+  "timestamp": "2026-03-25T03:20:09.279905",
+  "source": "qwen35_4b_experiment/l3_live_sessions/l3_live_14b_sft_v2_20260325_024710.jsonl",
+  "total_sessions": 10,
+  "per_session": [
+    {
+      "session_idx": 0,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 2-4"
+      }
+    },
+    {
+      "session_idx": 1,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'reflection' at turns 4-6"
+      }
+    },
+    {
+      "session_idx": 2,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": false,
+        "insight_minimal_response": false,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": false,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "phase_transition_valid": "skipped from exploring to insight at turn 8",
+        "opening_contracting": "single opening turn, client led",
+        "deepening_before_insight": "only 0 deepening turns before insight (need >= 2)",
+        "insight_minimal_response": "insight response too long (1082 chars): <think>\n好的，用户现在说：“哇...你這樣一問，我才發現問題出在我自己。” 这说明用户开始有了自我觉察，可能进入...",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 1-3",
+        "technique_diversity_per_phase": "phase 'exploring' has 6 turns but only 1 technique: open_question"
+      }
+    },
+    {
+      "session_idx": 3,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns"
+      }
+    },
+    {
+      "session_idx": 4,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": false,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "phase_no_skip": "exploring appeared without opening",
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'reflection' at turns 2-4"
+      }
+    },
+    {
+      "session_idx": 5,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'reflection' at turns 4-6"
+      }
+    },
+    {
+      "session_idx": 6,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": false,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 2-4",
+        "technique_diversity_per_phase": "phase 'deepening' has 3 turns but only 1 technique: open_question"
+      }
+    },
+    {
+      "session_idx": 7,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": false,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 1-3",
+        "technique_diversity_per_phase": "phase 'exploring' has 7 turns but only 1 technique: open_question"
+      }
+    },
+    {
+      "session_idx": 8,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": false,
+        "opening_contracting": true,
+        "deepening_before_insight": false,
+        "insight_minimal_response": false,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": false,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "phase_no_skip": "exploring appeared without opening",
+        "opening_contracting": "no opening turns",
+        "deepening_before_insight": "only 0 deepening turns before insight (need >= 2)",
+        "insight_minimal_response": "insight response too long (564 chars): <think>\n好的，用户突然意识到自己一直在等别人的许可才敢行动。首先，我需要确认这个洞察是否准确，所以先用反映来确认...",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 2-4",
+        "technique_diversity_per_phase": "phase 'exploring' has 3 turns but only 1 technique: open_question"
+      }
+    },
+    {
+      "session_idx": 9,
+      "results": {
+        "phase_transition_valid": false,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": false,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "phase_transition_valid": "skipped from exploring to insight at turn 8",
+        "opening_contracting": "single opening turn, client led",
+        "deepening_before_insight": "only 0 deepening turns before insight (need >= 2)",
+        "no_consecutive_technique": "3 consecutive 'reflection' at turns 1-3"
+      }
+    }
+  ],
+  "check_summary": {
+    "phase_transition_valid": {
+      "passed": 8,
+      "total": 10,
+      "rate": 0.8
+    },
+    "phase_no_skip": {
+      "passed": 8,
+      "total": 10,
+      "rate": 0.8
+    },
+    "opening_contracting": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "deepening_before_insight": {
+      "passed": 7,
+      "total": 10,
+      "rate": 0.7
+    },
+    "insight_minimal_response": {
+      "passed": 8,
+      "total": 10,
+      "rate": 0.8
+    },
+    "no_consecutive_technique": {
+      "passed": 1,
+      "total": 10,
+      "rate": 0.1
+    },
+    "technique_diversity_per_phase": {
+      "passed": 6,
+      "total": 10,
+      "rate": 0.6
+    },
+    "coachability_safety": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "no_advice": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "no_evaluation": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "commitment_sequence": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "commitment_action_timeline": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    }
+  },
+  "overall_pass_rate": 0.8167
+}

@@ -1,0 +1,22 @@
+{
+  "tag": "14b_zs_struct_l2",
+  "timestamp": "2026-03-25T09:05:14.926558",
+  "mode": "offline",
+  "source": "qwen35_4b_experiment/l3_live_sessions/l3_live_14b_zeroshot_structured_20260325_083005.jsonl",
+  "elapsed_s": 0.0,
+  "aggregate": {
+    "total_turns": 87,
+    "total_sessions": 10,
+    "block_rate": 0.977,
+    "block_count": 85,
+    "avg_fields_present": 16.85,
+    "avg_fields_valid": 16.54,
+    "total_expected_fields": 25,
+    "field_completeness": 0.674,
+    "field_validity": 0.6616,
+    "enum_validity": 0.9098,
+    "phase_coherence": 0.7,
+    "contracting_rate": 0.0,
+    "contracting_sessions_checked": 10
+  }
+}

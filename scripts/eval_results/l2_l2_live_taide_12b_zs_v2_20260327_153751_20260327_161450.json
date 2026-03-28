@@ -1,0 +1,22 @@
+{
+  "tag": "l2_live_taide_12b_zs_v2_20260327_153751",
+  "timestamp": "2026-03-27T16:14:50.645957",
+  "mode": "offline",
+  "source": "/workspace/qwen35_4b_experiment/l3_live_sessions/l3_live_taide_12b_zs_v2_20260327_153751.jsonl",
+  "elapsed_s": 0.0,
+  "aggregate": {
+    "total_turns": 87,
+    "total_sessions": 10,
+    "block_rate": 0.0805,
+    "block_count": 7,
+    "avg_fields_present": 0.0,
+    "avg_fields_valid": 0.0,
+    "total_expected_fields": 25,
+    "field_completeness": 0.0,
+    "field_validity": 0.0,
+    "enum_validity": 0.0,
+    "phase_coherence": 1.0,
+    "contracting_rate": 0.0,
+    "contracting_sessions_checked": 10
+  }
+}

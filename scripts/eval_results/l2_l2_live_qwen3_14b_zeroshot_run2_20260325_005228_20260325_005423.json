@@ -1,0 +1,22 @@
+{
+  "tag": "l2_live_qwen3_14b_zeroshot_run2_20260325_005228",
+  "timestamp": "2026-03-25T00:54:23.533879",
+  "mode": "offline",
+  "source": "/workspace/qwen35_4b_experiment/l3_live_sessions/l3_live_qwen3_14b_zeroshot_run2_20260325_005228.jsonl",
+  "elapsed_s": 0.0,
+  "aggregate": {
+    "total_turns": 87,
+    "total_sessions": 10,
+    "block_rate": 0.0115,
+    "block_count": 1,
+    "avg_fields_present": 0.28,
+    "avg_fields_valid": 0.25,
+    "total_expected_fields": 25,
+    "field_completeness": 0.011,
+    "field_validity": 0.0101,
+    "enum_validity": 0.6,
+    "phase_coherence": 0.9,
+    "contracting_rate": 0.0,
+    "contracting_sessions_checked": 10
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "tag": "l2_live_14b_sft_v5b_dpo_v2b_20260326_122700",
+  "timestamp": "2026-03-26T12:29:15.840718",
+  "mode": "offline",
+  "source": "/workspace/qwen35_4b_experiment/l3_live_sessions/l3_live_14b_sft_v5b_dpo_v2b_20260326_122700.jsonl",
+  "elapsed_s": 0.0,
+  "aggregate": {
+    "total_turns": 87,
+    "total_sessions": 10,
+    "block_rate": 0.0,
+    "block_count": 0,
+    "avg_fields_present": 0.0,
+    "avg_fields_valid": 0.0,
+    "total_expected_fields": 25,
+    "field_completeness": 0.0,
+    "field_validity": 0.0,
+    "enum_validity": 0.0,
+    "phase_coherence": 1.0,
+    "contracting_rate": 0.0,
+    "contracting_sessions_checked": 10
+  }
+}

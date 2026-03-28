@@ -1,0 +1,22 @@
+{
+  "tag": "14b_prompt_v3_l2",
+  "timestamp": "2026-03-25T15:28:21.853469",
+  "mode": "offline",
+  "source": "qwen35_4b_experiment/l3_live_sessions/l3_live_14b_prompt_v3_run1_20260325_145000.jsonl",
+  "elapsed_s": 0.0,
+  "aggregate": {
+    "total_turns": 87,
+    "total_sessions": 10,
+    "block_rate": 1.0,
+    "block_count": 87,
+    "avg_fields_present": 13.46,
+    "avg_fields_valid": 13.29,
+    "total_expected_fields": 25,
+    "field_completeness": 0.5384,
+    "field_validity": 0.5315,
+    "enum_validity": 0.9345,
+    "phase_coherence": 0.7,
+    "contracting_rate": 0.0,
+    "contracting_sessions_checked": 10
+  }
+}

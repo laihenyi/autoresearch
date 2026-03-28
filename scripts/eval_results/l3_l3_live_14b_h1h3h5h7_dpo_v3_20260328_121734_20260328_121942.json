@@ -1,0 +1,295 @@
+{
+  "tag": "l3_live_14b_h1h3h5h7_dpo_v3_20260328_121734",
+  "timestamp": "2026-03-28T12:19:42.214317",
+  "source": "/workspace/qwen35_4b_experiment/l3_live_sessions/l3_live_14b_h1h3h5h7_dpo_v3_20260328_121734.jsonl",
+  "total_sessions": 10,
+  "per_session": [
+    {
+      "session_idx": 0,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "no_mechanical_repetition": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 1-3"
+      }
+    },
+    {
+      "session_idx": 1,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "no_mechanical_repetition": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 4-6"
+      }
+    },
+    {
+      "session_idx": 2,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "no_mechanical_repetition": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 1-3"
+      }
+    },
+    {
+      "session_idx": 3,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "no_mechanical_repetition": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 1-3"
+      }
+    },
+    {
+      "session_idx": 4,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "no_mechanical_repetition": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 1-3"
+      }
+    },
+    {
+      "session_idx": 5,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": true,
+        "no_mechanical_repetition": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns"
+      }
+    },
+    {
+      "session_idx": 6,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "no_mechanical_repetition": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 3-5"
+      }
+    },
+    {
+      "session_idx": 7,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "no_mechanical_repetition": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 1-3"
+      }
+    },
+    {
+      "session_idx": 8,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "no_mechanical_repetition": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 4-6"
+      }
+    },
+    {
+      "session_idx": 9,
+      "results": {
+        "phase_transition_valid": true,
+        "phase_no_skip": true,
+        "opening_contracting": true,
+        "deepening_before_insight": true,
+        "insight_minimal_response": true,
+        "no_consecutive_technique": false,
+        "no_mechanical_repetition": true,
+        "technique_diversity_per_phase": true,
+        "coachability_safety": true,
+        "no_advice": true,
+        "no_evaluation": true,
+        "commitment_sequence": true,
+        "commitment_action_timeline": true
+      },
+      "details": {
+        "opening_contracting": "no opening turns",
+        "no_consecutive_technique": "3 consecutive 'open_question' at turns 1-3"
+      }
+    }
+  ],
+  "check_summary": {
+    "phase_transition_valid": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "phase_no_skip": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "opening_contracting": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "deepening_before_insight": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "insight_minimal_response": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "no_consecutive_technique": {
+      "passed": 1,
+      "total": 10,
+      "rate": 0.1
+    },
+    "no_mechanical_repetition": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "technique_diversity_per_phase": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "coachability_safety": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "no_advice": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "no_evaluation": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "commitment_sequence": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    },
+    "commitment_action_timeline": {
+      "passed": 10,
+      "total": 10,
+      "rate": 1.0
+    }
+  },
+  "overall_pass_rate": 0.9308
+}
