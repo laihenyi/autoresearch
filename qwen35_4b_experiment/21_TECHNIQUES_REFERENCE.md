@@ -177,10 +177,12 @@ ICF 4.10（修復 Judge 後真實分數）。進一步的 serve 層注入和 DPO
 1. ~~修 LLM Judge~~ → ✅ 完成（max_tokens 2048→4096，ICF 3.85→4.10）
 2. ~~換 base model（TAIDE-12B）~~ → ✗ FAIL（zero-shot 完全不可用：重複、洩漏、不教練）
 3. ~~Phase 1-4 serve/DPO 介入~~ → 全部 DISCARD 或退步
+4. ~~H1-H7 假設（規則式 SFT 改寫 + serve 層調整）~~ → 全部 DISCARD（ICF 3.17/3.62）
+
+**結論：ICF 4.10 = 當前架構天花板。合成 eval 已飽和。**
 
 **唯一剩餘的突破路線**：
-- **方向 C：部署到真實使用者**（合成 eval 已飽和，需真實數據突破）
-- MacBook MLX 本地測試：`scripts/setup_macbook_coaching.sh`（需驗證 adapter merge）
+- **方向 C：部署到真實使用者**（真實回饋數據定向改進）
 
 ---
 
